@@ -12,10 +12,10 @@ const validateLoginInput = require("../../validation/login");
 // Load User model
 const User = require("../../models/User");
 
-// localhost:####/api/users/achievments
-router.get("/achievments", (req, res) => {
+// localhost:####/api/users/achievements
+router.get("/achievements", (req, res) => {
   const data = User.find({})
-  console.log(data.)
+  console.log(data)
 })
 
 // @route POST api/users/register
