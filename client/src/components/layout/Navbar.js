@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 class Navbar extends Component {
   render() {
@@ -7,15 +9,20 @@ class Navbar extends Component {
       <div className="navbar-fixed">
         <nav className="z-depth-0">
           <div className="nav-wrapper white">
-            <Link
-              to="/"
+            <Link to="/"
               style={{
-                fontFamily: "monospace"
+                fontFamily: "monospace",
+                fontWeight: "bold",
+                fontSize: '50px',
               }}
               className="col s5 brand-logo center black-text"
             >
-              <i className="material-icons">star</i>
-              GOLD STAR
+                <p style={{color:"gold"}}>
+                  <FontAwesomeIcon icon={faStar} />
+                  GOLD STAR
+                  <FontAwesomeIcon icon={faStar} />
+                </p>
+
             </Link>
           </div>
         </nav>
