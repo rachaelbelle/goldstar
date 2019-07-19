@@ -22,9 +22,10 @@ class Landing extends Component {
                 style={{
                   width: "140px",
                   borderRadius: "3px",
-                  letterSpacing: "1.5px"
+                  letterSpacing: "1.5px",
+                  color: "black",
                 }}
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
               >
                 Register
               </Link>
@@ -35,7 +36,8 @@ class Landing extends Component {
                 style={{
                   width: "140px",
                   borderRadius: "3px",
-                  letterSpacing: "1.5px"
+                  letterSpacing: "1.5px",
+                  color: "black",
                 }}
                 className="btn btn-large btn-flat waves-effect white black-text"
               >
