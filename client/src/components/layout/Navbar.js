@@ -1,25 +1,27 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 class Navbar extends Component {
   render() {
     return (
-      <div className="navbar-fixed">
-        <nav className="z-depth-0">
-          <div className="nav-wrapper white">
-            <Link
-              to="/"
-              style={{
-                fontFamily: "monospace"
-              }}
-              className="col s5 brand-logo center black-text"
-            >
-              <i className="material-icons">star</i>
+      <div className="container">
+          <Link to="/"
+            style={{
+              fontFamily: "monospace",
+              fontWeight: "bold",
+              fontSize: '60px',
+            }}
+            className="col s12 brand-logo center black-text"
+          >
+            <p style={{ color: "gold" }}>
+              <FontAwesomeIcon icon={faStar} />
               GOLD STAR
-            </Link>
-          </div>
-        </nav>
-      </div>
+                  <FontAwesomeIcon icon={faStar} />
+            </p>
+          </Link>
+        </div>
     );
   }
 }
