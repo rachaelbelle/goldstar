@@ -20,7 +20,7 @@ class Star extends React.Component {
     
     return (                
       <div>
-        <h2>Rating from state: {rating}</h2>
+        <h2>Rate Your Achievment: {rating}</h2>
         <StarRatingComponent 
           name="rate1"
         //   style ={{

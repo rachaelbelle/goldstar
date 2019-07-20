@@ -17,6 +17,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 
 import Earnings from "./components/pages/achievment";
 import Star from "./components/pages/Star";
+import Video from "./components/pages/Youtube";
 
 import "./App.css";
 
@@ -52,7 +53,8 @@ class App extends Component {
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/achievements" component={Earnings} />
-              <PrivateRoute exact path="/star" component={Star}/>}
+              <PrivateRoute exact path="/star" component={Star}/>
+              <PrivateRoute exact path="/Searchbar" component={Video}/>
               {/* <PrivateRoute exact path="/chatpage" component={Chatpage} /> */}
             </Switch>
           </div>
