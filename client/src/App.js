@@ -15,6 +15,8 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 
 import "./App.css";
+import Earnings from "./components/layout/achievement_view";
+import Tasks from "./components/layout/task_view";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -46,7 +48,9 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/dashboard" component={Earnings} />
+              <PrivateRoute exact path="/achievements" component={Earnings} />
+              <PrivateRoute exact path="/tasks" component={Tasks} /> 
             </Switch>
           </div>
         </Router>
