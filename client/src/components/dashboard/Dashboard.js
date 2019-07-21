@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { logoutUser } from "../../actions/authActions";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 class Dashboard extends Component {
   onLogoutClick = e => {
@@ -23,6 +26,20 @@ class Dashboard extends Component {
                 <span style={{ fontFamily: "monospace" }}>GOLDSTAR</span> app ★ 
               </p>
             </h4>
+            <Link to="/tasks"
+              style={{
+                fontFamily: "monospace",
+                fontSize: '20px',
+              }}
+              className="col s5 brand-logo center black-text"
+            >
+                <p style={{color:"gold"}}>
+                  <FontAwesomeIcon icon={faStar} />
+                  View Tasks
+                  <FontAwesomeIcon icon={faStar} />
+                </p>
+
+            </Link>
             <button
               style={{
                 width: "150px",
