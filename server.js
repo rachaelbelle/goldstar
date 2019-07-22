@@ -35,7 +35,7 @@ if(process.env.NODE_ENV === 'production'){
     dbTest,
     { useNewUrlParser: true }
   )
-  .then(() => console.log("MongoDB TEST successfully connected"))
+  .then(() => console.log("MongoDB TEST successfully connected."))
   .catch(err => console.log(err));
 }
 
