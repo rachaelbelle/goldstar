@@ -25,10 +25,9 @@ class Star extends React.Component {
           <h2>Rating from state: {rating}</h2>
           <StarRatingComponent
             name="rate1"
-            //   style ={{
-            //       width: "140px",
-
-            //   }}
+              style ={{
+                  width: "10px",
+              }}
             starCount={5}
             value={rating}
             onStarClick={this.onStarClick.bind(this)}
