@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Navbar from "./Navbar";
 import Axios from "axios";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { Modal, Button, TextInput, Icon } from 'react-materialize';
 import { Link } from "react-router-dom";
+import StarRatingComponent from 'react-star-rating-component';
 
-class Tasks extends React.Component {
+class Tasks extends Component {
 
     state = {
         userData: [],
@@ -53,9 +53,10 @@ class Tasks extends React.Component {
         })
     }
 
-    taskStarUpdate = (data) => {
+    taskStarUpdate(nextValue, prevValue, name) {
+        
         this.setState({
-            taskStars: data.currentTarget.value,
+            taskStars: nextValue,
             showModal: true
         })
     }
@@ -84,7 +85,7 @@ class Tasks extends React.Component {
         this.setState({
             userData: newData,
             taskName: '',
-            taskStars: ''
+            taskStars: 0
         })
     }
 
@@ -93,21 +94,56 @@ class Tasks extends React.Component {
         const { userData, showModal, taskName, taskStars } = this.state;
         return (
             <>
+                <div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
+                    <div className="col s10 m6 l4">
+                        <Link to="/dashboard" className="btn-flat waves-effect">
+                            <i className="material-icons ">keyboard_backspace</i>
+                            Back to dashboard
+                        </Link>
+                    </div>
+                </div>
                 <>
-                    <h1>Ready to kill it today, {user.name}?</h1>
+                    <h1 style={{ "fontSize": "3vw" }}>Ready to kill it today, {user.name.split(" ")[0]}?</h1>
                     <ul>{
                         userData.map(task =>
-                            <li>Stars: {task.stars} Name: {task.name}</li>
+                            <li key={task.name} style={{ margin: 10, display: "inline-block" }} className="container left-align">
+                                <div  style={{
+                                                "fontSize": "5vw",
+
+                                                '*, *:before, *:after': {
+                                                    "fontSize": "5vw",
+                                                    "verticalAlign": "middle"
+                                                }
+                                            }}
+                                > 
+                                    <StarRatingComponent
+                                        name={task.name}
+                                        starCount={task.stars}
+                                        value={task.stars}
+                                        editing={false}
+                                    />
+                                    <span style={{"fontSize": "2vw", paddingLeft: "25px"}} >Name: {task.name} </span> 
+                                </div>
+                            </li>
                         )
                     }
                     </ul>
-                    <Modal header="Modal Header" open={showModal} trigger={<Button >Click to add new Task</Button>}>
-                        <p>
-                            Please type stuff
-                    </p>
+                    <Modal header="Adding task" open={showModal} trigger={<Button >Click to add new Task</Button>}>
+                        <p style={{ "fontSize": "2vw" }}>
+                            Don't fear adding... you can do it <span style={{color: "gold"}}> {user.name.split(" ")[0]}!</span>
+                        </p>
                         <form>
                             <TextInput label="Task name" data-length={10} value={taskName} onChange={this.taskNameUpdate} />
-                            <TextInput label="Difficulty" data-length={10} value={taskStars} onChange={this.taskStarUpdate} />
+                            <StarRatingComponent
+                                name="rate1"
+                                //   style ={{
+                                //       width: "140px",
+
+                                //   }}
+                                starCount={5}
+                                value={taskStars}
+                                onStarClick={this.taskStarUpdate.bind(this)}
+                            />
                         </form>
                         <Button waves="light" style={{ marginRight: '5px' }} onClick={this.closeModal}>
                             Cancel
@@ -121,19 +157,12 @@ class Tasks extends React.Component {
                     </Modal>
 
 
-                    <p>Want to see how great you're already doing?</p>
-                    <p>Go to My Achievements</p>
-                    <p>Need some motivation?</p>
-                    <p>Go to motivational videos or check out other users' tasks</p>
+                    <p style={{ "fontSize": "2vw" }}>Want to see how great you're already doing?</p>
+                    <p style={{ "fontSize": "2vw" }}>Go to My Achievements</p>
+                    <p style={{ "fontSize": "2vw" }}>Need some motivation?</p>
+                    <p style={{ "fontSize": "2vw" }}>Go to motivational videos or check out other users' tasks</p>
                 </>
-                <div style={{ marginTop: "4rem" }} className="row">
-                    <div className="col s4 offset-s4">
-                        <Link to="/dashboard" className="btn-flat waves-effect">
-                            <i className="material-icons left">keyboard_backspace</i> Back to
-                            dashboard
-            </Link>
-                    </div>
-                </div>
+
             </>
 
         );

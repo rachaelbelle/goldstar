@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import Navbar from "./Navbar";
 import Axios from "axios";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import StarRatingComponent from 'react-star-rating-component';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 // import API from "./apiland"
 // api is...
 // const api = {
@@ -13,9 +15,7 @@ import { Link } from "react-router-dom";
 // }
 
 
-
-
-class Earnings extends React.Component {
+class Earnings extends Component {
 
     state = {
         userData: []
@@ -55,36 +55,53 @@ class Earnings extends React.Component {
 
         userData.forEach(task => {
             totalStars += task.stars;
-            liElements.push(<li>Stars: {task.stars}, Name: {task.name}</li>);
+            liElements.push(
+                <li key={task.name} style={{ margin: 10, display: "inline-block" }} className="container left-align">
+                    <div  style={{
+                                    "fontSize": "5vw",
+
+                                    '*, *:before, *:after': {
+                                        "fontSize": "5vw",
+                                        "verticalAlign": "middle"
+                                    }
+                                }}
+                    > 
+                        <StarRatingComponent
+                            name={task.name}
+                            starCount={task.stars}
+                            value={task.stars}
+                            editing={false}
+                        />
+                        <span style={{"fontSize": "2vw", paddingLeft: "25px"}} >Name: {task.name} </span> 
+                    </div>
+                </li>
+            );
         });
 
         return (
             <>
-                <>
-                    <h1>Today's Earnings</h1>
-                    <p>Welcome back {user.name}! Here are the gold stars you've earned so far:</p>
-                    <ul>{
-                        // removing map so we dont traverse the array twice, once for stars, and once for li elements
-                        // userData.map(task => 
-                        //     <li>Stars: {task.stars}, Name: {task.name}</li>
-                        // )
-                        liElements
-                    }
-                    </ul>
-                    <p>You have earned {totalStars} stars today.</p>
-                    <p>Ready to earn some more stars?</p>
-                    <p>Go to My Tasks</p>
-                    <p>Need some motivation?</p>
-                    <p>Go to motivational videos or check out other users' tasks</p>
-                </>
-                <div style={{ marginTop: "4rem" }} className="row">
-                    <div className="col s4 offset-s4">
+                <div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
+                    <div className="col s10 m6 l4">
                         <Link to="/dashboard" className="btn-flat waves-effect">
-                            <i className="material-icons left">keyboard_backspace</i> Back to
-                            dashboard
-                  </Link>
+                            <i className="material-icons ">keyboard_backspace</i>
+                            Back to dashboard
+                        </Link>
                     </div>
                 </div>
+                <>
+                    <h1 style={{ "fontSize": "3vw" }}>Today's Earnings</h1>
+                    <p style={{ "fontSize": "2vw" }}>Welcome back {user.name.split(" ")[0]}! Here are the gold stars you've earned so far:</p>
+                    <ul style={{ margin: 10, display: "inline-block" }}> {liElements} </ul>
+                    <p style={{ "fontSize": "2vw" }}>You have earned {totalStars} 
+                        <span style={{ color: "gold" }}>
+                            <FontAwesomeIcon icon={faStar} />
+                        </span> 
+                        {(totalStars > 1)?"s":null} today.</p>
+                    <p style={{ "fontSize": "2vw" }}>Ready to earn some more stars?</p>
+                    <p style={{ "fontSize": "2vw" }}>Go to My Tasks</p>
+                    <p style={{ "fontSize": "2vw" }}>Need some motivation?</p>
+                    <p style={{ "fontSize": "2vw" }}>Go to motivational videos or check out other users' tasks</p>
+                </>
             </>
         );
     }
