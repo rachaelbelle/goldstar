@@ -5,6 +5,11 @@ import { connect } from "react-redux";
 import { Modal, Button, TextInput, Icon } from 'react-materialize';
 import { Link } from "react-router-dom";
 import StarRatingComponent from 'react-star-rating-component';
+import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons'
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
 
 class Tasks extends Component {
 
@@ -83,7 +88,7 @@ class Tasks extends Component {
     }
 
     taskStarUpdate(nextValue, prevValue, name) {
-        
+
         this.setState({
             taskStars: nextValue,
             showModal: true
@@ -189,13 +194,31 @@ class Tasks extends Component {
                     <ul>{
                         userData.map(task =>
                             <li key={task.name} style={{ margin: 10, display: "inline-block" }} className="container left-align">
+                                <div  style={{
+                                                "fontSize": "5vw",
+
+                                                '*, *:before, *:after': {
+                                                    "fontSize": "5vw",
+                                                    "verticalAlign": "middle"
+                                                }
+                                            }}
+                                >
                                     <StarRatingComponent
                                         name={task.name}
-                                        starCount={task.maxStars}
-                                        value={task.curStars}
-                                        onStarClick={this.uiStarUpdate.bind(this)}
+                                        starCount={task.stars}
+                                        value={task.stars}
+                                        editing={false}
+                                        renderStarIcon={(index, value) => {
+                                            return (
+                                              <span>
+                                                  {(index <= value) ? <FontAwesomeIcon id='goldStarSolid' icon={faStar}/> : <FontAwesomeIcon icon={faStarEmpty}/>}
+                                              </span>
+                                            );
+                                          }}
+
                                     />
-                                    <span style={{"fontSize": "2vw", paddingLeft: "25px"}} >Name: {task.name} </span> 
+                                    <span style={{"fontSize": "2vw", paddingLeft: "25px"}} > {task.name} </span>
+                                </div>
                             </li>
                         )
                     }
@@ -214,12 +237,19 @@ class Tasks extends Component {
                                 //   }}
                                 starCount={5}
                                 value={taskStars}
-                                onStarClick={this.taskStarUpdate.bind(this)}
+                                onStarClick={this.taskStarUpdate.bind(this)}              renderStarIcon={(index, value) => {
+                                    return (
+                                      <span>
+                                          {(index <= value) ? <FontAwesomeIcon id='goldStarSolid' icon={faStar}/> : <FontAwesomeIcon icon={faStarEmpty}/>}
+                                      </span>
+                                    );
+                                  }}
+
                             />
                         </form>
                         <Button waves="light" style={{ marginRight: '5px' }} onClick={this.closeModal}>
                             Cancel
-                    </Button>
+                    </Button >
                         <Button type="submit" waves="light" onClick={this.saveTask}>
                             Save
                         <Icon right>

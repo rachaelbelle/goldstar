@@ -1,28 +1,19 @@
 .dv-star-rating-star {
-    font-size: 50px;
+    font-size: 3vw;
+    vertical-align: middle;
+    color: gold;
 }
-
-i {
-    font-size: 5vh; 
-    vertical-align: 'middle';
-    height: 5vh;
+li{
+    margin: 10;
+    display: "inline-block";
 }
-
-li {
-    vertical-align: 'middle';
-    height: 5vh;
-    clear: both;
-    margin: 10
+#goldStarSolid{
+    color: gold;
 }
-
-.starName {
-    font-size: 2vw; 
-    padding-left: 25;
-    vertical-align: 'middle';
-    height: 5vh;
+.btn{
+    background-color: gold;
+    color: black;
 }
-
-.clr{
-    clear:both;
-    float: left; 
-}
+.btn:hover {
+    background-color: gold;
+ }

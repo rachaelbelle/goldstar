@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import StarRatingComponent from 'react-star-rating-component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 // import API from "./apiland"
 // api is...
@@ -56,18 +57,24 @@ class Earnings extends Component {
         userData.forEach(task => {
             totalStars += task.stars;
             liElements.push(
-                <li key={task.name} style={{ margin: 10, display: "inline-block" }} className="container left-align">
+                <div>
+                  <li key={task.name}  className="container left-align">
                         <StarRatingComponent
                             name={task.name}
                             starCount={task.stars}
                             value={task.stars}
                             editing={false}
-                            key={task.name}
-                            id={task.name}
-                        />
-                        <span className="starName" style={{}} >Name: {task.name} </span>
-                </li>
-                
+                            renderStarIcon={(index, value) => {
+                                return (
+                                  <span>
+                                      {(index <= value) ? <FontAwesomeIcon id='goldStarSolid' icon={faStar}/> : <FontAwesomeIcon icon={faStarEmpty}/>}
+                                  </span>
+                                );
+                              }}
+                            />
+                        <span style={{"fontSize": "2vw", paddingLeft: "25px"}}> {task.name} </span>
+                  </li>
+                </div>
             );
         });
 
@@ -85,10 +92,10 @@ class Earnings extends Component {
                     <h1 style={{ "fontSize": "3vw" }}>Today's Earnings</h1>
                     <p style={{ "fontSize": "2vw" }}>Welcome back {user.name.split(" ")[0]}! Here are the gold stars you've earned so far:</p>
                     <ul style={{ margin: 10, display: "inline-block" }}> {liElements} </ul>
-                    <p style={{ "fontSize": "2vw" }}>You have earned {totalStars} 
+                    <p style={{ "fontSize": "2vw" }}>You have earned {totalStars}
                         <span style={{ color: "gold" }}>
                             <FontAwesomeIcon icon={faStar} />
-                        </span> 
+                        </span>
                         {(totalStars > 1)?"s":null} today.</p>
                     <p style={{ "fontSize": "2vw" }}>Ready to earn some more stars?</p>
                     <p style={{ "fontSize": "2vw" }}>Go to My Tasks</p>
