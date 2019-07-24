@@ -10,3 +10,10 @@ li{
 #goldStarSolid{
     color: gold;
 }
+.btn{
+    background-color: gold;
+    color: black;
+}
+.btn:hover {
+    background-color: gold;
+ }

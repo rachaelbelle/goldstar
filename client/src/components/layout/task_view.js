@@ -167,7 +167,7 @@ class Tasks extends Component {
                         </form>
                         <Button waves="light" style={{ marginRight: '5px' }} onClick={this.closeModal}>
                             Cancel
-                    </Button>
+                    </Button >
                         <Button type="submit" waves="light" onClick={this.saveTask}>
                             Save
                         <Icon right>
