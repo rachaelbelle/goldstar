@@ -3,14 +3,31 @@
     vertical-align: middle;
     color: gold;
 }
-li{
+li {
     margin: 10;
-    display: "inline-block";
+    display: inline-block;
 }
-#goldStarSolid{
+
+#taskname {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 2vw;
+    display: inline-block;
+    text-align: left;
+}
+
+.tab .tabs {
+    text-align: left;
+}
+
+FontAwesomeIcon {
+    display: inline-block;
+}
+
+#goldStarSolid {
     color: gold;
 }
-.btn{
+.btn {
     background-color: gold;
     color: black;
 }

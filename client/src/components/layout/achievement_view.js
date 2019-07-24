@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Axios from "axios";
+import axios from "axios";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -18,8 +18,15 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 class Earnings extends Component {
 
-    state = {
-        userData: []
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            userData: [],
+            showModal: false,
+            taskStars: 0,
+            taskName: '',
+        };
     }
 
     componentDidMount() {
@@ -29,21 +36,37 @@ class Earnings extends Component {
     getAchievements = () => {
         //input being a string
         // const data = API.get()
-        const data = [
-            {
-                stars: 2,
-                name: 'Buy groceries'
-            },
-            {
-                stars: 3,
-                name: 'Apply to 5 jobs'
-            },
-            {
-                stars: 1,
-                name: 'Eat Breakfast'
-            }
-        ]
-        this.setState({ userData: data })
+        // const data = [
+        //     {
+        //         curStars: 2,
+        //         maxStars: 2,
+        //         name: 'Buy groceries'
+        //     },
+        //     {
+        //         curStars: 3,
+        //         maxStars: 3,
+        //         name: 'Apply to 5 jobs'
+        //     },
+        //     {
+        //         curStars: 1,
+        //         maxStars: 1,
+        //         name: 'Eat Breakfast'
+        //     }
+        // ]
+        // this.setState({ userData: data })
+
+        axios
+            .post("/api/tasks/getAllCompletedTasks", this.props.auth.user)
+            .then(res => {
+
+                console.log("Got data from DB, will set that in achievement view");
+                this.setState({ 
+                    userData: res.data 
+                })
+            })
+            .catch(err => {
+                console.log("Errored out when getting task data: " + err);
+            });
     }
 
 
@@ -55,14 +78,15 @@ class Earnings extends Component {
         let liElements = [];
 
         userData.forEach(task => {
-            totalStars += task.stars;
+            totalStars += task.curStars;
             liElements.push(
-                <div>
-                  <li key={task.name}  className="container left-align">
+                
+                  <li key={task.name}  className="tabs col s10 left left-align">
                         <StarRatingComponent
+                            className="tab col s1 m1 l1 left left-align"
                             name={task.name}
-                            starCount={task.stars}
-                            value={task.stars}
+                            starCount={task.maxStars}
+                            value={task.curStars}
                             editing={false}
                             renderStarIcon={(index, value) => {
                                 return (
@@ -72,9 +96,9 @@ class Earnings extends Component {
                                 );
                               }}
                             />
-                        <span style={{"fontSize": "2vw", paddingLeft: "25px"}}> {task.name} </span>
+                        <span id="taskname" className="tab col s5 m5 l5 left left-align"> {task.name} </span>
                   </li>
-                </div>
+                
             );
         });
 
@@ -90,8 +114,8 @@ class Earnings extends Component {
                 </div>
                 <>
                     <h1 style={{ "fontSize": "3vw" }}>Today's Earnings</h1>
-                    <p style={{ "fontSize": "2vw" }}>Welcome back {user.name.split(" ")[0]}! Here are the gold stars you've earned so far:</p>
-                    <ul style={{ margin: 10, display: "inline-block" }}> {liElements} </ul>
+                    <p style={{ "fontSize": "2vw" }}>Welcome back <span style={{color: "gold"}}> {user.name.split(" ")[0]}</span>! Here are the gold stars you've earned so far:</p>
+                    <ul className="row" style={{ margin: 10, display: "inline-block" }}>{liElements}</ul>
                     <p style={{ "fontSize": "2vw" }}>You have earned {totalStars}
                         <span style={{ color: "gold" }}>
                             <FontAwesomeIcon icon={faStar} />

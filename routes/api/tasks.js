@@ -12,246 +12,259 @@ const validateLoginInput = require("../../validation/login");
 // Load User model
 const Task = require("../../models/Task");
 
-// @route GET api/users/register
-// @desc Register user
-// @access Public
+// @route GET api/tasks/getAllTasks
+// @desc Get all Tasks from user
+// @param user obj which includes id and name
+// @return array of tasks
 router.get("/getAllTasks", (req, res) => {
   // Form validation
 
-  User.findOne({ 'name': req.body.name }).then(user => {
-    
+  console.log("user id is: " + req.body.user.id)
+
+  User.findOne({ '_id': req.body.user.id }).then(user => {
+
     if (user) {
-      
+
       let taskIds = user.tasks;
       // console.log("tasks UNDONE from id are: ");
       // console.log(taskIds);
 
-      if( taskIds === null || typeof taskIds === 'undefined' || taskIds === 'undefined'){
+      if (taskIds === null || typeof taskIds === 'undefined' || taskIds === 'undefined') {
         return res.status(200).json([]);
       } else {
 
         Task.find({
-          '_id': { $in : taskIds}  
+          '_id': { $in: taskIds }
         })
-        .then( tasks => {
-    
-          // console.log("All tasks UNDONE from DB are: ");
-          // console.log(tasks);
+          .then(tasks => {
 
-          if( tasks === null || typeof tasks === 'undefined' || tasks === 'undefined'){
-            return res.status(200).json([]);
-          } else {
-            // console.log("Will return to UI the tasks: ");
-            // console.log(tasks);
-            return res.status(200).json(tasks)
-          }
+            console.log("All tasks UNDONE from DB are: ");
+            console.log(tasks);
 
-        });
+            if (tasks === null || typeof tasks === 'undefined' || tasks === 'undefined') {
+              return res.status(200).json([]);
+            } else {
+              // console.log("Will return to UI the tasks: ");
+              // console.log(tasks);
+              return res.status(200).json(tasks)
+            }
+
+          });
       }
 
     } else {
-      return res.status(400).json({ user : "User does not exist." });
+      return res.status(400).json({ user: "User does not exist." });
     }
   });
 
-  
+
 });
 
+// @route POST api/tasks/getUndoneTasks
+// @desc Get all incomplete Tasks from user
+// @param user obj which includes id and name
+// @return array of incomplete tasks
 router.post("/getUndoneTasks", (req, res) => {
-  
+
   // console.log("Get all UNDONE tasks request: ");
   // console.log(req.body);
 
-  User.findOne({ 'name': req.body.name }).then(user => {
-    
-    if (user) {
-      
-      let taskIds = user.tasks;
-      // console.log("tasks UNDONE from id are: ");
-      // console.log(taskIds);
+  console.log("Getting all undone tasks for user: "+req.body.id);
 
-      if( taskIds === null || typeof taskIds === 'undefined' || taskIds === 'undefined'){
+  User.findById({ '_id': req.body.id }).then(user => {
+
+    if (user) {
+
+      //console.log("Found User");
+      let taskIds = user.tasks;
+      //console.log("tasks UNDONE from id are: ");
+      //console.log(taskIds);
+
+      if (taskIds === null || typeof taskIds === 'undefined' || taskIds === 'undefined') {
+        console.log("ERROR: Got null or undefined users from DB.")
         return res.status(200).json([]);
       } else {
 
+        console.log("User has: "+taskIds.length+" undone tasks")
+
         Task.find({
-          '_id': { $in : taskIds}, completed: false  
+          '_id': { $in: taskIds }, completed: false
         })
-        .then( tasks => {
-      
-
-          // console.log("All tasks UNDONE from DB are: ");
-          // console.log(tasks);
-
-          if( tasks === null || typeof tasks === 'undefined' || tasks === 'undefined'){
-            return res.status(200).json([]);
-          } else {
-            // console.log("Will return to UI the tasks: ");
+          .then(tasks => {
+            // console.log("All tasks UNDONE from DB are: ");
             // console.log(tasks);
-            return res.status(200).json(tasks)
-          }
 
-        });
+            if (tasks === null || typeof tasks === 'undefined' || tasks === 'undefined') {
+              console.log("ERROR: Got null or undefined tasks from DB.")
+              return res.status(200).json([]);
+            } else {
+
+              console.log("Got all undone tasks for user. Returing them to UI.")
+              // console.log("Will return to UI the tasks: ");
+              // console.log(tasks);
+              return res.status(200).json(tasks)
+            }
+          });
       }
-
     } else {
-      return res.status(400).json({ user : "User does not exist." });
+      return res.status(400).json({ user: "User does not exist." });
     }
   });
 
 });
 
+// @route POST api/tasks/getAllCompletedTasks
+// @desc Get all complete Tasks from user
+// @param user obj which includes id and name
+// @return array of complete tasks
 router.post("/getAllCompletedTasks", (req, res) => {
   // Form validation
 
   // console.log("Get all UNDONE tasks request: ");
   // console.log(req.body);
 
-  User.findOne({ 'name': req.body.name }).then(user => {
-    
+  User.findById({ '_id': req.body.id }).then(user => {
+
     if (user) {
-      
+
       let taskIds = user.tasks;
       // console.log("tasks UNDONE from id are: ");
       // console.log(taskIds);
 
-      if( taskIds === null || typeof taskIds === 'undefined' || taskIds === 'undefined'){
-        return res.status(200).json([]);
+      if (taskIds === null || typeof taskIds === 'undefined' || taskIds === 'undefined') {
+        console.error("Users taskIds Returned a null or undefined array")
+        return res.status(400).json("Users taskIds Returned a null or undefined array.");
       } else {
 
         Task.find({
-          '_id': { $in : taskIds}, completed: true  
+          '_id': { $in: taskIds }, completed: true
         })
-        .then( tasks => {
-      
+          .then(tasks => {
 
-          // console.log("All tasks UNDONE from DB are: ");
-          // console.log(tasks);
 
-          if( tasks === null || typeof tasks === 'undefined' || tasks === 'undefined'){
-            return res.status(200).json([]);
-          } else {
-            // console.log("Will return to UI the tasks: ");
+            // console.log("All tasks UNDONE from DB are: ");
             // console.log(tasks);
-            return res.status(200).json(tasks)
-          }
 
-        });
+            if (tasks === null || typeof tasks === 'undefined' || tasks === 'undefined') {
+              console.error("Tasks from user id list returned a null or undefined array")
+              return res.status(400).json("Tasks from user id list returned a null or undefined array.");
+            } else {
+              // console.log("Will return to UI the tasks: ");
+              // console.log(tasks);
+              console.log("Returning to UI "+tasks.length+" tasks");
+              return res.status(200).json(tasks)
+            }
+
+          });
 
       }
 
     } else {
-      return res.status(400).json({ user : "User does not exist." });
+      console.error("User does not exist in DB");
+      return res.status(400).json("User does not exist.");
     }
   });
 
 });
 
-// @route POST api/users/login
-// @desc Login user and return JWT token
-// @access Public
+// @route POST api/tasks/createNewTask
+// @desc Create new task and add to user logged in
+// @param taskName, taskcurStars, taskMaxStars, user obj
+// @return new task
 router.post("/createNewTask", (req, res) => {
   // Form validation
 
-  console.log("Task body is: ");
-  console.log(req.body);
+  // console.log("Task body is: ");
+  // console.log(req.body);
 
   const name = req.body.name;
-  const curStars = req.body.curStars;
+  //below is not necessary because default for current stars is 0
+  //same can be said about the completed field in DB which is default to false
+  //const curStars = req.body.curStars;
   const maxStars = req.body.maxStars;
+
+  const userId = req.body.user.id;
 
   const newTask = new Task({
     name,
-    stars
+    maxStars
   });
 
-//.then(user => res.json(user))
-//.catch(err => console.log(err));
-  
-// Find user by email
-  newTask.save().then( task => {
-    // Check if user exists
+  // Find user by email
+  newTask.save().then(task => {
 
-    // console.log("DB Response from adding new task");
-    // console.log(task);
+    //console.log("Task added in DB successfully");
+    //console.log(task);
+    console.log("Added task in DB with id: " + task._id);
+    //console.log("Need to add to user now: "+userId);
 
-    // console.log("Need to add to user now")
+    User.findByIdAndUpdate({ '_id': userId }, { $push: { tasks: task._id } }, { new: true })
+      .then(function () {
+        // If the User was updated successfully, send it back to the client
+        console.log("Successfully added task to user: " + userId);
 
-    User.findOneAndUpdate({}, { $push: { tasks: task._id } }, { new: true })
-    .then(function() {
-      // If the User was updated successfully, send it back to the client
-      res.json(task);
-    })
-    .catch(function(err) {
-      // If an error occurs, send it back to the client
-      //console.log("Error posting task to user in DB")
-      res.json(err);
-    });
+        //adding task ID in obj to return to user
+        newTask.id = task._id;
 
-    res.json(task);
-
-  }).catch(function(err) {
+        res.json(task);
+      })
+      .catch(function (err) {
+        // If an error occurs, send it back to the client
+        console.error("Error posting task to user in DB: " + err);
+        res.status(500).json(err);
+      });
+  }).catch(function (err) {
     // If an error occurs, send it back to the client
-    //console.log("Error saving task in DB")
-    res.json(err);
+    console.error("Error saving task in DB: " + err);
+    res.status(500).json(err);
   });;
 });
 
+// @route POST api/tasks/updateTask
+// @desc Update task star curStars and completion field
+// @param taskName, new taskcurStars, taskId, task completed
+// @return updated task
 router.post("/updateTask", (req, res) => {
   // Form validation
 
-  console.log("Task body is: ");
-  console.log(req.body);
+  // console.log("Task body is: ");
+  // console.log(req.body);
 
   const name = req.body.name;
   const newStars = req.body.newStars;
-  const oldStars = req.body.oldStars
-  const userName = req.body.user;
+  // const oldStars = req.body.oldStars
+  // const userName = req.body.user;
+  const taskId = req.body.taskId;
+  const completed = req.body.completed;
 
-  const newTask = new Task({
+  const newTask = {
     name,
-    stars: newStars
-  });
+    curStars: newStars,
+    completed
+  };
 
-  User.findOne({ 'name': userName }).then(user => {
-    
-    if (user) {
-      
-      let taskIds = user.tasks;
-      // console.log("tasks UNDONE from id are: ");
-      // console.log(taskIds);
+  Task.findByIdAndUpdate(
+    { '_id': taskId },
+    { $set: newTask }, 
+    { new: false }
+  )
+    .then(updateResponse => {
 
-      if( taskIds === null || typeof taskIds === 'undefined' || taskIds === 'undefined'){
-        return res.status(200).json([]);
-      } else {
+      // console.log("Update Response is: ");
+      // console.log(updateResponse);
 
-        Task.findOneAndUpdate(
-          { $and: [ {'_id': { $in : taskIds}}, {name}, {stars: oldStars} ] },
-          { $set: newTask },
-          { new: false }
-        )
-        .then( updateResponse => {
-      
-          console.log("Update Response is: ");
-          console.log(updateResponse);
+      // console.log("All tasks UNDONE from DB are: ");
+      // console.log(tasks);
+      console.log("Successfully updated task "+taskId+" in DB.");
 
-          // console.log("All tasks UNDONE from DB are: ");
-          // console.log(tasks);
+      res.status(200).json(newTask);
+    })
+    .catch(function (err) {
+      console.error("Failed to update task" + err);
+      // If an error occurs, send it back to the client
+      res.status(500).json(err);
+    });;
 
-          res.status(200).json(newTask);
-        })
-        .catch(function(err) {
-          console.log("Failed to update task"+err);
-          // If an error occurs, send it back to the client
-          //console.log("Error posting task to user in DB")
-          res.json(err);
-        });;
-      }
-
-    } else {
-      res.status(400).json({ user : "User does not exist." });
-    }
-  });
 });
 
 module.exports = router;
