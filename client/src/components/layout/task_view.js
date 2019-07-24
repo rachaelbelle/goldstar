@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Axios from "axios";
+import axios from "axios";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { Modal, Button, TextInput, Icon } from 'react-materialize';
@@ -8,12 +8,16 @@ import StarRatingComponent from 'react-star-rating-component';
 
 class Tasks extends Component {
 
-    state = {
-        userData: [],
-        showModal: false,
-        taskStars: '',
-        taskName: ''
-    };
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            userData: [],
+            showModal: false,
+            taskStars: 0,
+            taskName: '',
+        };
+      }
 
     componentDidMount() {
         this.getTasks()
@@ -22,15 +26,38 @@ class Tasks extends Component {
     getTasks = () => {
         const data = [
             {
-                stars: 2,
+                curStars: 1,
+                maxStars: 2,
                 name: 'Buy groceries'
             },
             {
-                stars: 3,
+                curStars: 2,
+                maxStars: 5,
                 name: 'Apply to 5 jobs'
             }
         ]
-        this.setState({ userData: data })
+
+        axios
+        .post("/api/tasks/getUndoneTasks", this.props.auth.user)
+        .then(res => {
+            
+            if( res.data.length === 0 ) {
+                console.log("Tasks returned are 0, will use local table");
+                this.setState({ 
+                    userData: data, 
+                })
+            } else {
+                console.log("Got data from DB, will set that in task view");
+                this.setState({ 
+                    userData: res.data, 
+                })
+            }
+
+        })
+        .catch(err => {
+            console.log("Errored out when getting task data: "+err);
+        });
+
     }
 
     openModal = () => {
@@ -42,7 +69,9 @@ class Tasks extends Component {
     closeModal = () => {
         // console.log("Closing modal")
         this.setState({
-            showModal: false
+            showModal: false,
+            taskName: '',
+            taskStars: 0
         })
     }
 
@@ -61,6 +90,44 @@ class Tasks extends Component {
         })
     }
 
+    uiStarUpdate(nextValue, prevValue, name){
+        debugger;
+
+        const { userData } = this.state;
+        const user = this.props.auth.user.name;
+
+        const updateTask = {
+            oldStars: prevValue,
+            newStars: nextValue,
+            name,
+            user
+        };
+
+        axios
+        .post("/api/tasks/updateTask/", updateTask)
+        .then(res => {
+            
+            debugger;
+
+            userData.forEach( task => {
+                if( task.name === name ){
+                    task.stars = nextValue;
+                }
+            })
+
+            this.setState({
+                userData
+            })
+
+        })
+        .catch(err => {
+            console.log("Errored out when getting task data: "+err);
+        });
+
+       
+
+    }
+
     saveTask = () => {
         //make call to db
         //axios post data to express route
@@ -73,25 +140,40 @@ class Tasks extends Component {
 
         let newData = userData.slice(0);
         let newTask = {
-            stars: taskStars,
-            name: taskName
+            curStars: 0,
+            maxStars: taskStars,
+            name: taskName,
+            user: this.props.auth.user,
         };
         newData.push(newTask);
 
-        // console.log("New array is: ")
-        // console.log(newData)
+        axios
+        .post("/api/tasks/createNewTask", newTask)
+        .then(res => {
+
+            console.log(res.data);
+            debugger;
+
+        })
+        .catch(err =>
+            {
+                console.log("Errored when trying to save task");
+            }
+        );
 
         this.closeModal();
         this.setState({
             userData: newData,
-            taskName: '',
-            taskStars: 0
         })
     }
 
     render() {
         const { user } = this.props.auth;
         const { userData, showModal, taskName, taskStars } = this.state;
+
+        console.log("user is: ");
+        console.log(user);
+
         return (
             <>
                 <div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
@@ -107,23 +189,13 @@ class Tasks extends Component {
                     <ul>{
                         userData.map(task =>
                             <li key={task.name} style={{ margin: 10, display: "inline-block" }} className="container left-align">
-                                <div  style={{
-                                                "fontSize": "5vw",
-
-                                                '*, *:before, *:after': {
-                                                    "fontSize": "5vw",
-                                                    "verticalAlign": "middle"
-                                                }
-                                            }}
-                                > 
                                     <StarRatingComponent
                                         name={task.name}
-                                        starCount={task.stars}
-                                        value={task.stars}
-                                        editing={false}
+                                        starCount={task.maxStars}
+                                        value={task.curStars}
+                                        onStarClick={this.uiStarUpdate.bind(this)}
                                     />
                                     <span style={{"fontSize": "2vw", paddingLeft: "25px"}} >Name: {task.name} </span> 
-                                </div>
                             </li>
                         )
                     }

@@ -1,3 +1,28 @@
 .dv-star-rating-star {
-    font-size: 100px;
+    font-size: 50px;
+}
+
+i {
+    font-size: 5vh; 
+    vertical-align: 'middle';
+    height: 5vh;
+}
+
+li {
+    vertical-align: 'middle';
+    height: 5vh;
+    clear: both;
+    margin: 10
+}
+
+.starName {
+    font-size: 2vw; 
+    padding-left: 25;
+    vertical-align: 'middle';
+    height: 5vh;
+}
+
+.clr{
+    clear:both;
+    float: left; 
 }

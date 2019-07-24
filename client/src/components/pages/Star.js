@@ -22,7 +22,7 @@ class Star extends React.Component {
     return (
       <>
       <div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
-        <div className="col s10 m6 l4">
+      <div className="col s10 m6 l4">
                         <Link to="/dashboard" className="btn-flat waves-effect">
                             <i className="material-icons ">keyboard_backspace</i>
                             Back to dashboard

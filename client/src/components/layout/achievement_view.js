@@ -57,24 +57,17 @@ class Earnings extends Component {
             totalStars += task.stars;
             liElements.push(
                 <li key={task.name} style={{ margin: 10, display: "inline-block" }} className="container left-align">
-                    <div  style={{
-                                    "fontSize": "5vw",
-
-                                    '*, *:before, *:after': {
-                                        "fontSize": "5vw",
-                                        "verticalAlign": "middle"
-                                    }
-                                }}
-                    > 
                         <StarRatingComponent
                             name={task.name}
                             starCount={task.stars}
                             value={task.stars}
                             editing={false}
+                            key={task.name}
+                            id={task.name}
                         />
-                        <span style={{"fontSize": "2vw", paddingLeft: "25px"}} >Name: {task.name} </span> 
-                    </div>
+                        <span className="starName" style={{}} >Name: {task.name} </span>
                 </li>
+                
             );
         });
 
@@ -101,6 +94,7 @@ class Earnings extends Component {
                     <p style={{ "fontSize": "2vw" }}>Go to My Tasks</p>
                     <p style={{ "fontSize": "2vw" }}>Need some motivation?</p>
                     <p style={{ "fontSize": "2vw" }}>Go to motivational videos or check out other users' tasks</p>
+                    
                 </>
             </>
         );

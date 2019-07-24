@@ -19,13 +19,13 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  notes: [
+  tasks: [
     {
       type: Schema.Types.ObjectId,
       ref: "Task"
     }
   ]
   
-});
+}, { autoCreate: true });
 
 module.exports = User = mongoose.model("users", UserSchema);
