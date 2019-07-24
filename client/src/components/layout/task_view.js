@@ -221,12 +221,12 @@ class Tasks extends Component {
                     }
                     {
                         ( userData && userData.length > 0 ) 
-                        ?   <ul className="row" style={{ margin: 10, display: "inline-block" }}>
+                        ?   <ul className="row" style={{ margin: 10 }}>
                             {
                                 userData.map(task =>
-                                    <li key={task.name}  className="tabs col s10 left left-align">
+                                    <li key={task._id}  className="container col s10 m10 l10 left left-align">
                                         <StarRatingComponent
-                                            className="tab col s1 m1 l1 left left-align"
+                                            className="col s4 m4 l4 left left-align"
                                             name={task.name}
                                             starCount={task.maxStars}
                                             value={task.curStars}
@@ -239,7 +239,7 @@ class Tasks extends Component {
                                                 );
                                             }}
                                             />
-                                        <span id="taskname" className="tab col s5 m5 l5 left left-align"> {task.name} </span>
+                                        <span id="taskname" className="col s5 m5 l5 left left-align offset-s1 offset-m1 offset-l1"> {task.name} </span>
                                     </li>
                                 )
                             }

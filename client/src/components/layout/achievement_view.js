@@ -81,9 +81,9 @@ class Earnings extends Component {
             totalStars += task.curStars;
             liElements.push(
                 
-                  <li key={task.name}  className="tabs col s10 left left-align">
+                  <li key={task._id}  className="tabs col s10 m10 l10 left left-align">
                         <StarRatingComponent
-                            className="tab col s1 m1 l1 left left-align"
+                            className="tab col s4 m4 l4 left left-align"
                             name={task.name}
                             starCount={task.maxStars}
                             value={task.curStars}
@@ -96,7 +96,7 @@ class Earnings extends Component {
                                 );
                               }}
                             />
-                        <span id="taskname" className="tab col s5 m5 l5 left left-align"> {task.name} </span>
+                        <span id="taskname" className="tab col s5 m5 l5 left left-align offset-s1 offset-m1 offset-l1"> {task.name} </span>
                   </li>
                 
             );
