@@ -11,7 +11,7 @@ class Navbar extends Component {
             style={{
               fontFamily: "monospace",
               fontWeight: "bold",
-              fontSize: '60px',
+              fontSize: "5vw",
             }}
             className="col s12 brand-logo center black-text"
           >

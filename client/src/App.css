@@ -1,3 +1,19 @@
 .dv-star-rating-star {
-    font-size: 100px;
+    font-size: 3vw;
+    vertical-align: middle;
+    color: gold;
 }
+li{
+    margin: 10;
+    display: "inline-block";
+}
+#goldStarSolid{
+    color: gold;
+}
+.btn{
+    background-color: gold;
+    color: black;
+}
+.btn:hover {
+    background-color: gold;
+ }
