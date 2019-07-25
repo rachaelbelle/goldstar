@@ -1,16 +1,41 @@
-.dv-star-rating-star {
+.dv-star-rating-star .dv-star-rating-full-star {
     font-size: 3vw;
     vertical-align: middle;
     color: gold;
+    /* float: left; */
 }
-li{
-    margin: 10;
-    display: "inline-block";
+
+ul {
+    display: flex;
 }
-#goldStarSolid{
-    color: gold;
+
+li {
+    width: 100%;
+    display: inline-block;
+    flex-basis : 100% 
 }
-.btn{
+
+li:nth-child(2n) {
+    background-color: rgb(226, 225, 225);
+}
+
+li.tab {
+    flex-basis : 50.%;
+    /* border : blue dashed 1px; */
+ }
+
+#taskname {
+    /* display: inline-block; */
+    vertical-align: middle;
+    font-size: 2vw;
+    text-align: left;
+}
+
+.tab .tabs {
+    text-align: left;
+}
+
+.btn {
     background-color: gold;
     color: black;
 }
