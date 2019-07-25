@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
+const dotenv = require('dotenv');
 
 const users = require("./routes/api/users");
 const tasks = require("./routes/api/tasks");
@@ -16,16 +17,22 @@ app.use(
 );
 app.use(bodyParser.json());
 
-// DB Config
-const db = require("./config/keys").mongoURI;
-const dbTest = require("./config/keys").mongoURItest;
+// call dotenv and it will return an Object with a parsed key 
+const env = dotenv.config().parsed;
+
+const db = env.mongoURI;
+const dbTest = env.mongoURItest;
 
 // Connect to MongoDB
 if(process.env.NODE_ENV === 'production'){
   mongoose
   .connect(
     db,
-    { useNewUrlParser: true }
+    { 
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useCreateIndex: true
+     }
   )
   .then(() => console.log("MongoDB PROD successfully connected"))
   .catch(err => console.log(err));
@@ -33,7 +40,11 @@ if(process.env.NODE_ENV === 'production'){
   mongoose
   .connect(
     dbTest,
-    { useNewUrlParser: true }
+    { 
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useCreateIndex: true
+     }
   )
   .then(() => console.log("MongoDB TEST successfully connected."))
   .catch(err => console.log(err));
