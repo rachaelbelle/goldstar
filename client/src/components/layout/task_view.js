@@ -130,19 +130,19 @@ class Tasks extends Component {
             .post("/api/tasks/updateTask/", updateTask)
             .then(res => {
 
-                if( completed ){
-                    newTaskArray = userData.filter(function (task) { return task._id !== taskId  });
+                if (completed) {
+                    newTaskArray = userData.filter(function (task) { return task._id !== taskId });
                 } else {
-                    newTaskArray = userData.map( task => {
-                        if( task._id === taskId ) {
+                    newTaskArray = userData.map(task => {
+                        if (task._id === taskId) {
                             task.curStars = nextValue
                             return task;
                         } else {
                             return task;
                         }
                     })
-                } 
-                
+                }
+
 
                 this.setState({
                     userData: newTaskArray
@@ -181,7 +181,7 @@ class Tasks extends Component {
 
                 console.log("Successfully created new task in DB: ");
                 console.log(res.data);
-                newData.push({ curStars: 0, maxStars: taskStars, name: taskName, '_id':res.data._id, completed: false });
+                newData.push({ curStars: 0, maxStars: taskStars, name: taskName, '_id': res.data._id, completed: false });
 
 
                 this.closeModal();
@@ -215,36 +215,36 @@ class Tasks extends Component {
                 </div>
                 <>
                     {
-                        ( userData && userData.length > 0 )
-                        ? <h1 style={{ "fontSize": "3vw" }}>Ready to kill it today, {user.name.split(" ")[0]}?</h1> 
-                        : <h1 style={{ "fontSize": "3vw" }}>You are Killing it {user.name.split(" ")[0]}! Lets add some more <FontAwesomeIcon id='goldStarSolid' icon={faStar} /> !</h1>
+                        (userData && userData.length > 0)
+                            ? <h1 style={{ "fontSize": "3vw" }}>Ready to kill it today, {user.name.split(" ")[0]}?</h1>
+                            : <h1 style={{ "fontSize": "3vw" }}>You are Killing it {user.name.split(" ")[0]}! Lets add some more <FontAwesomeIcon id='goldStarSolid' icon={faStar} /> !</h1>
                     }
                     {
-                        ( userData && userData.length > 0 ) 
-                        ?   <ul className="row" style={{ margin: 10 }}>
-                            {
-                                userData.map(task =>
-                                    <li key={task._id}  className="container col s10 m10 l10 left left-align">
-                                        <StarRatingComponent
-                                            className="col s4 m4 l4 left left-align"
-                                            name={task.name}
-                                            starCount={task.maxStars}
-                                            value={task.curStars}
-                                            onStarClick={this.uiStarUpdate.bind(this)} 
-                                            renderStarIcon={(index, value) => {
-                                                return (
-                                                <span>
-                                                    {(index <= value) ? <FontAwesomeIcon id='goldStarSolid' icon={faStar}/> : <FontAwesomeIcon icon={faStarEmpty}/>}
-                                                </span>
-                                                );
-                                            }}
+                        (userData && userData.length > 0)
+                            ? <ul className="row" style={{ margin: 10 }}>
+                                {
+                                    userData.map(task =>
+                                        <li key={task._id} className="col s10 m10 l10 left left-align">
+                                            <StarRatingComponent
+                                                className="col s4 m4 l4"
+                                                name={task.name}
+                                                starCount={task.maxStars}
+                                                value={task.curStars}
+                                                onStarClick={this.uiStarUpdate.bind(this)}
+                                                renderStarIcon={(index, value) => {
+                                                    return (
+                                                        <span>
+                                                            {(index <= value) ? <FontAwesomeIcon id='goldStarSolid' pull="left" icon={faStar} /> : <FontAwesomeIcon pull="left" icon={faStarEmpty} />}
+                                                        </span>
+                                                    );
+                                                }}
                                             />
-                                        <span id="taskname" className="col s5 m5 l5 left left-align offset-s1 offset-m1 offset-l1"> {task.name} </span>
-                                    </li>
-                                )
-                            }
+                                            <span id="taskname" className="col s5 m5 l5 left left-align offset-s1 offset-m1 offset-l1"> {task.name} </span>
+                                        </li>
+                                    )
+                                }
                             </ul>
-                        : null
+                            : null
                     }
                     <Modal header="Adding task" open={showModal} trigger={<Button >Click to add new Task</Button>}>
                         <p style={{ "fontSize": "2vw" }}>
@@ -256,7 +256,7 @@ class Tasks extends Component {
                                 name="rate1"
                                 starCount={5}
                                 value={taskStars}
-                                onStarClick={this.taskStarUpdate.bind(this)} 
+                                onStarClick={this.taskStarUpdate.bind(this)}
                                 renderStarIcon={(index, value) => {
                                     return (
                                         <span>
@@ -278,11 +278,56 @@ class Tasks extends Component {
                         </Button>
                     </Modal>
 
-
-                    <p style={{ "fontSize": "2vw" }}>Want to see how great you're already doing?</p>
+                    <></>
+                    {/* <p style={{ "fontSize": "2vw" }}>Want to see how great you're already doing?</p>
                     <p style={{ "fontSize": "2vw" }}>Go to My Achievements</p>
                     <p style={{ "fontSize": "2vw" }}>Need some motivation?</p>
-                    <p style={{ "fontSize": "2vw" }}>Go to motivational videos or check out other users' tasks</p>
+                    <p style={{ "fontSize": "2vw" }}>Go to motivational videos or check out other users' tasks</p> */}
+                    <div style={{ display: "inline-block" }} className="">
+                        <Link
+                            key="achievement_btn"
+                            to="/achievements"
+                            style={{
+                                width: "195px",
+                                borderRadius: "3px",
+                                letterSpacing: "1.5px",
+                                color: "black",
+                                margin: "5px",
+                            }}
+                            className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+                        >
+                            Achievements
+              </Link>
+                        <Link
+                            key="star_btn"
+                            to="/star"
+                            style={{
+                                width: "300px",
+                                borderRadius: "3px",
+                                letterSpacing: "1.5px",
+                                color: "black",
+                                margin: "5px"
+                            }}
+                            className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+                        >
+                            Motivational Videos
+              </Link>
+                    </div>
+                    <div></div>
+                    <button
+                        style={{
+                            width: "150px",
+                            borderRadius: "3px",
+                            letterSpacing: "1.5px",
+                            marginTop: "1rem",
+                            color: "black",
+                            margin: "10px"
+                        }}
+                        onClick={this.onLogoutClick}
+                        className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+                    >
+                        Logout
+            </button>
                 </>
 
             </>

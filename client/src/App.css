@@ -1,18 +1,33 @@
-.dv-star-rating-star {
+.dv-star-rating-star .dv-star-rating-full-star {
     font-size: 3vw;
     vertical-align: middle;
     color: gold;
-}
-li {
-    margin: 10;
-    display: inline-block;
+    /* float: left; */
 }
 
-#taskname {
+ul {
+    display: flex;
+}
+
+li {
+    width: 100%;
     display: inline-block;
+    flex-basis : 100% 
+}
+
+li:nth-child(2n) {
+    background-color: rgb(226, 225, 225);
+}
+
+li.tab {
+    flex-basis : 50.%;
+    /* border : blue dashed 1px; */
+ }
+
+#taskname {
+    /* display: inline-block; */
     vertical-align: middle;
     font-size: 2vw;
-    display: inline-block;
     text-align: left;
 }
 
@@ -20,13 +35,6 @@ li {
     text-align: left;
 }
 
-FontAwesomeIcon {
-    display: inline-block;
-}
-
-#goldStarSolid {
-    color: gold;
-}
 .btn {
     background-color: gold;
     color: black;

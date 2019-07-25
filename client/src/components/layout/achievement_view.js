@@ -60,8 +60,8 @@ class Earnings extends Component {
             .then(res => {
 
                 console.log("Got data from DB, will set that in achievement view");
-                this.setState({ 
-                    userData: res.data 
+                this.setState({
+                    userData: res.data
                 })
             })
             .catch(err => {
@@ -80,25 +80,25 @@ class Earnings extends Component {
         userData.forEach(task => {
             totalStars += task.curStars;
             liElements.push(
-                
-                  <li key={task._id}  className="tabs col s10 m10 l10 left left-align">
-                        <StarRatingComponent
-                            className="tab col s4 m4 l4 left left-align"
-                            name={task.name}
-                            starCount={task.maxStars}
-                            value={task.curStars}
-                            editing={false}
-                            renderStarIcon={(index, value) => {
-                                return (
-                                  <span>
-                                      {(index <= value) ? <FontAwesomeIcon id='goldStarSolid' icon={faStar}/> : <FontAwesomeIcon icon={faStarEmpty}/>}
-                                  </span>
-                                );
-                              }}
-                            />
-                        <span id="taskname" className="tab col s5 m5 l5 left left-align offset-s1 offset-m1 offset-l1"> {task.name} </span>
-                  </li>
-                
+
+                <li key={task._id} className="tabs">
+                    <StarRatingComponent
+                        className="tab"
+                        name={task.name}
+                        starCount={task.maxStars}
+                        value={task.curStars}
+                        editing={false}
+                        renderStarIcon={(index, value) => {
+                            return (
+                                <span>
+                                    {(index <= value) ? <FontAwesomeIcon color="gold" className='fa-align-left' icon={faStar} /> : <FontAwesomeIcon color="gold" className='fa-align-left' transform="left-4 grow-2.5" icon={faStarEmpty} />}
+                                </span>
+                            );
+                        }}
+                    />
+                    <span id="taskname" className="tab left left-align offset-s1 offset-m1 offset-l1"> {task.name} </span>
+                </li>
+
             );
         });
 
@@ -114,18 +114,63 @@ class Earnings extends Component {
                 </div>
                 <>
                     <h1 style={{ "fontSize": "3vw" }}>Today's Earnings</h1>
-                    <p style={{ "fontSize": "2vw" }}>Welcome back <span style={{color: "gold"}}> {user.name.split(" ")[0]}</span>! Here are the gold stars you've earned so far:</p>
-                    <ul className="row" style={{ margin: 10, display: "inline-block" }}>{liElements}</ul>
+                    <p style={{ "fontSize": "2vw" }}>Welcome back <span style={{ color: "gold" }}> {user.name.split(" ")[0]}</span>! Here are the gold stars you've earned so far:</p>
+                    <ul style={{ margin: 10, display: "inline-block" }}>{liElements}</ul>
                     <p style={{ "fontSize": "2vw" }}>You have earned {totalStars}
                         <span style={{ color: "gold" }}>
                             <FontAwesomeIcon icon={faStar} />
                         </span>
-                        {(totalStars > 1)?"s":null} today.</p>
-                    <p style={{ "fontSize": "2vw" }}>Ready to earn some more stars?</p>
+                        {(totalStars > 1) ? "s" : null} today.</p>
+                    {/* <p style={{ "fontSize": "2vw" }}>Ready to earn some more stars?</p>
                     <p style={{ "fontSize": "2vw" }}>Go to My Tasks</p>
                     <p style={{ "fontSize": "2vw" }}>Need some motivation?</p>
-                    <p style={{ "fontSize": "2vw" }}>Go to motivational videos or check out other users' tasks</p>
-                    
+                    <p style={{ "fontSize": "2vw" }}>Go to motivational videos or check out other users' tasks</p> */}
+                    <div style={{ display: "inline-block" }} className="">
+
+                        <Link
+                            key="task_btn"
+                            to="/tasks"
+                            style={{
+                                width: "195px",
+                                borderRadius: "3px",
+                                letterSpacing: "1.5px",
+                                color: "black",
+                                margin: "5px"
+                            }}
+                            className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+                        >
+                            Earn Stars
+                        </Link>
+                        <Link
+                            key="star_btn"
+                            to="/star"
+                            style={{
+                                width: "300px",
+                                borderRadius: "3px",
+                                letterSpacing: "1.5px",
+                                color: "black",
+                                margin: "5px"
+                            }}
+                            className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+                        >
+                            Motivational Videos
+                        </Link>
+                    </div>
+                    <></>
+                    <button
+                        style={{
+                            width: "150px",
+                            borderRadius: "3px",
+                            letterSpacing: "1.5px",
+                            marginTop: "1rem",
+                            color: "black",
+                            margin: "10px"
+                        }}
+                        onClick={this.onLogoutClick}
+                        className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+                    >
+                        Logout
+                    </button>
                 </>
             </>
         );
