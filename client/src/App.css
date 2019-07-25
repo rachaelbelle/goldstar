@@ -17,3 +17,6 @@ li{
 .btn:hover {
     background-color: gold;
  }
+ .tabs{
+     margin: 15px;
+ }

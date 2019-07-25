@@ -58,11 +58,12 @@ class Earnings extends Component {
             totalStars += task.stars;
             liElements.push(
                 <div>
-                  <li key={task.name}  className="container left-align">
+                  <li key={task.name}  className="container left-align tabs">
                         <StarRatingComponent
+                            className="tab col5 left-align"
                             name={task.name}
-                            starCount={task.stars}
-                            value={task.stars}
+                            starCount={task.maxStars}
+                            value={task.curStars}
                             editing={false}
                             renderStarIcon={(index, value) => {
                                 return (
@@ -72,7 +73,7 @@ class Earnings extends Component {
                                 );
                               }}
                             />
-                        <span style={{"fontSize": "2vw", paddingLeft: "25px"}}> {task.name} </span>
+                        <span id="taskname" className="tab col5 left-align"> {task.name} </span>
                   </li>
                 </div>
             );

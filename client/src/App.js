@@ -55,7 +55,7 @@ class App extends Component {
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/achievements" component={Earnings} />
-              <PrivateRoute exact path="/tasks" component={Tasks} /> 
+              <PrivateRoute exact path="/tasks" component={Tasks} />
               <PrivateRoute exact path="/star" component={Star}/>}
               {/* <PrivateRoute exact path="/chatpage" component={Chatpage} /> */}
             </Switch>
@@ -63,6 +63,7 @@ class App extends Component {
         </Router>
       </Provider>
     );
-  }
+  };
 }
+
 export default App;
