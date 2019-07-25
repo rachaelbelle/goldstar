@@ -11,14 +11,17 @@ const TaskSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  stars : {
+  curStars : {
       type: Number,
-      default: 1
+      default: 0
+  },
+  maxStars : {
+    type: Number
   },
   completed: {
       type: Boolean,
       default: false
   }
-});
+}, { autoCreate: true });
 
 module.exports = Task = mongoose.model("tasks", TaskSchema);
