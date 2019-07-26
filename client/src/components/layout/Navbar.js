@@ -7,22 +7,25 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navbar-fixed">
-        <div className="nav-wrapper white">
+        {/* <nav className="z-depth-0"> */}
+          <div className="nav-wrapper white">
             <Link to="/"
               style={{
                 fontFamily: "monospace",
                 fontWeight: "bold",
-                fontSize: "4vw",
+                fontSize: '50px',
               }}
-              className="col s12 brand-logo center black-text"
+              className="col s5 brand-logo center black-text"
             >
-              <p style={{ color: "gold" }}>
-                <FontAwesomeIcon icon={faStar} />
-                GOLD STAR
-                    <FontAwesomeIcon icon={faStar} />
-              </p>
+                <p style={{color:"gold"}}>
+                  <FontAwesomeIcon icon={faStar} />
+                  GOLD STAR
+                  <FontAwesomeIcon icon={faStar} />
+                </p>
+
             </Link>
-        </div>
+          </div>
+        {/* </nav> */}
       </div>
     );
   }
