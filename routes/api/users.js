@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys");
 const passport = require("passport");
+let keys = require('../../server.js');
 
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
@@ -61,7 +61,6 @@ router.post("/register", (req, res) => {
 // @access Public
 router.post("/login", (req, res) => {
   // Form validation
-
   const { errors, isValid } = validateLoginInput(req.body);
 
   // Check validation
@@ -92,7 +91,7 @@ router.post("/login", (req, res) => {
         // Sign token
         jwt.sign(
           payload,
-          keys.secretOrKey,
+          keys.secret,
           {
             expiresIn: 31556926 // 1 year in seconds
           },

@@ -84,8 +84,7 @@ router.post("/getUndoneTasks", (req, res) => {
         console.log("ERROR: Got null or undefined users from DB.")
         return res.status(200).json([]);
       } else {
-
-        console.log("User has: "+taskIds.length+" undone tasks")
+        console.log("User has: "+taskIds.length+" tasks")
 
         Task.find({
           '_id': { $in: taskIds }, completed: false
@@ -99,9 +98,7 @@ router.post("/getUndoneTasks", (req, res) => {
               return res.status(200).json([]);
             } else {
 
-              console.log("Got all undone tasks for user. Returing them to UI.")
-              // console.log("Will return to UI the tasks: ");
-              // console.log(tasks);
+              console.log("Got all undone ("+tasks.length+") tasks for user. Returing them to UI.")
               return res.status(200).json(tasks)
             }
           });
@@ -120,7 +117,7 @@ router.post("/getUndoneTasks", (req, res) => {
 router.post("/getAllCompletedTasks", (req, res) => {
   // Form validation
 
-  // console.log("Get all UNDONE tasks request: ");
+  console.log("Get all completed tasks for user with id: "+req.body.id);
   // console.log(req.body);
 
   User.findById({ '_id': req.body.id }).then(user => {
@@ -135,6 +132,8 @@ router.post("/getAllCompletedTasks", (req, res) => {
         console.error("Users taskIds Returned a null or undefined array")
         return res.status(400).json("Users taskIds Returned a null or undefined array.");
       } else {
+
+        console.log("User has: "+taskIds.length+" tasks")
 
         Task.find(
           {
@@ -154,7 +153,7 @@ router.post("/getAllCompletedTasks", (req, res) => {
           } else {
             // console.log("Will return to UI the tasks: ");
             // console.log(tasks);
-            console.log("Returning to UI "+tasks.length+" tasks");
+            console.log("Returning to UI "+tasks.length+" completed tasks");
             return res.status(200).json(tasks)
           }
 

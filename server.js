@@ -4,8 +4,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const dotenv = require('dotenv');
 
-const users = require("./routes/api/users");
-const tasks = require("./routes/api/tasks");
+
 
 const app = express();
 
@@ -17,14 +16,16 @@ app.use(
 );
 app.use(bodyParser.json());
 
-// call dotenv and it will return an Object with a parsed key 
-const env = dotenv.config().parsed;
-
-const db = process.env.MONGODB_URI;
-const dbTest = env.mongoURItest;
+//do not need here, but needed for export
+let secret;
 
 // Connect to MongoDB
 if(process.env.NODE_ENV === 'production'){
+
+  const db = process.env.MONGODB_URI;
+  secret = process.env.secretOrKey
+  module.exports = {secret: secret};
+
   mongoose
   .connect(
     db,
@@ -37,6 +38,12 @@ if(process.env.NODE_ENV === 'production'){
   .then(() => console.log("MongoDB PROD successfully connected"))
   .catch(err => console.log(err));
 } else {
+
+  const env = dotenv.config().parsed;
+  const dbTest = env.mongoURItest;
+  secret = env.secretOrKey;
+  module.exports = {secret: secret};
+
   mongoose
   .connect(
     dbTest,
@@ -49,6 +56,9 @@ if(process.env.NODE_ENV === 'production'){
   .then(() => console.log("MongoDB TEST successfully connected."))
   .catch(err => console.log(err));
 }
+
+const users = require("./routes/api/users");
+const tasks = require("./routes/api/tasks");
 
 // Passport middleware
 app.use(passport.initialize());
