@@ -2,8 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
+const dotenv = require('dotenv');
 
 const users = require("./routes/api/users");
+const tasks = require("./routes/api/tasks");
 
 const app = express();
 
@@ -15,17 +17,38 @@ app.use(
 );
 app.use(bodyParser.json());
 
-// DB Config
-const db = require("./config/keys").mongoURI;
+// call dotenv and it will return an Object with a parsed key 
+const env = dotenv.config().parsed;
+
+const db = env.mongoURI;
+const dbTest = env.mongoURItest;
 
 // Connect to MongoDB
-mongoose
+if(process.env.NODE_ENV === 'production'){
+  mongoose
   .connect(
     db,
-    { useNewUrlParser: true }
+    { 
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useCreateIndex: true
+     }
   )
-  .then(() => console.log("MongoDB successfully connected"))
+  .then(() => console.log("MongoDB PROD successfully connected"))
   .catch(err => console.log(err));
+} else {
+  mongoose
+  .connect(
+    dbTest,
+    { 
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useCreateIndex: true
+     }
+  )
+  .then(() => console.log("MongoDB TEST successfully connected."))
+  .catch(err => console.log(err));
+}
 
 // Passport middleware
 app.use(passport.initialize());
@@ -35,9 +58,11 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
+app.use("/api/tasks", tasks);
 
 //serve static assets when we are in production
 if(process.env.NODE_ENV === 'production'){
+  console.log("Production Mode!");
   //set static folder
   app.use(express.static('client/build'));
 

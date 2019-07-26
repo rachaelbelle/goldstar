@@ -2,6 +2,9 @@
   "name": "mern-auth",
   "version": "1.0.0",
   "description": "Mern Auth Example",
+  "engines": {
+    "node": "8.6.0"
+  },
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
@@ -25,5 +28,8 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "validator": "^10.9.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.0.0"
   }
 }
