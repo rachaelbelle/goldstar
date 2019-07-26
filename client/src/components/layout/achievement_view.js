@@ -142,19 +142,19 @@ class Earnings extends Component {
                             Earn Stars
                         </Link>
                         <Link
-                            key="star_btn"
-                            to="/star"
-                            style={{
-                                width: "300px",
-                                borderRadius: "3px",
-                                letterSpacing: "1.5px",
-                                color: "black",
-                                margin: "5px"
-                            }}
-                            className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
-                        >
-                            Motivational Videos
-                        </Link>
+                key="video_btn"
+                to="/video"
+                style={{
+                  width: "300px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                  color: "black",
+                  margin: "5px"
+                }}
+                className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+              >
+                Motivational Videos
+              </Link>
                     </div>
                     <></>
                     <button

@@ -5,11 +5,11 @@
     /* float: left; */
 }
 
-ul {
+/* ul {
     display: flex;
-}
+} */
 
-li {
+/* li {
     width: 100%;
     display: inline-block;
     flex-basis : 100% 
@@ -17,7 +17,7 @@ li {
 
 li:nth-child(2n) {
     background-color: rgb(226, 225, 225);
-}
+} */
 
 li.tab {
     flex-basis : 50.%;

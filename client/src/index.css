@@ -1,6 +1,8 @@
 .search-bar{
   margin: 20px;
   text-align: center;
+  border-radius: 2px;
+  box-shadow: gold;
 }
 
 .search-bar input{
