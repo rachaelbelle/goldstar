@@ -1,76 +1,53 @@
-import React from 'react';
-import YouTube from 'react-youtube';
- 
-class video extends React.Component {
-  
-    constructor() {
-        super();
-     
+import React, { Component } from 'react';
+import SearchBar from './Search_bar';
+import YTSearch from 'youtube-api-search';
+import VideoList from './video_list'
+import VideoDetail from './video_detail';
+const API_KEY = 'AIzaSyAIT-FfbTd5D7I5FtSY7XfaltbUN0zvRKg';
 
-        let myVideos = [
-            {
-                title: "Some title",
-                id: "EE7L3OXGLO8"
-            },
-            {
-                title: "Title 2",
-                id: "_gJyJ8NvZgg"
-            }
-        ]
+class video extends Component {
+    constructor(props) {
+        super(props);
 
         this.state = {
-            name: '',
-            videos: myVideos,
-            currentVideo: 'HofCckYqvJg'
+            videos: [],
+            selectedVideo: null
         };
-      }  
-  
-    changeVideo = (data) => {
-        //get video id
-        let id = 'HofCckYqvJg'
 
-        this.setState({
-            currentVideo: id
-        })
+        this.videoSearch('Motivational Videos');
+
     }
 
-
-    render() {
-    const opts = {
-      height: '390',
-      width: '640',
-      playerVars: { // https://developers.google.com/youtube/player_parameters
-        autoplay: 1
+    videoSearch(searchTerm) {
+      YTSearch({key: API_KEY, term: searchTerm}, (data) => {
+        console.log(data);
+          this.setState({
+              videos: data,
+              selectedVideo: data[0]
+            });
+      });
+    }
+      render() {
+        return (
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col s12">
+                <SearchBar onSearchTermChange={searchTerm => this.videoSearch(searchTerm)}/>
+              </div>
+              <div className="col s12 m12 l8">
+                <VideoDetail video={this.state.selectedVideo}/>
+              </div>
+              <div className="col s12 m12 l4">
+                <VideoList
+                  onVideoSelect={userSelected => this.setState({selectedVideo: userSelected})}
+                  videos={this.state.videos}
+                />
+              </div>
+            </div>
+          </div>
+        );
       }
-    };
-    const {currentVideo} = this.state;
- 
-    return (
-        <>    
-            <YouTube
-                videoId={currentVideo}
-                opts={opts}
-                onReady={this._onReady}
-            />
-            {
-            <a herf="#" on click="console.log('The link was clicked.'); return
-             false">
-                click me
-            </a>
-             
-                
-                /*
-            somehow show list of videos
-            onClick={this.changeVideo}
-            */}
-        </>
-    );
-  }
- 
-  _onReady(event) {
-    // access to player in all event handlers via event.target
-    event.target.pauseVideo();
-  }
+
 }
- 
+        
 export default video;

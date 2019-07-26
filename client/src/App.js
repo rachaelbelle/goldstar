@@ -17,9 +17,11 @@ import Dashboard from "./components/dashboard/Dashboard";
 
 import Earnings from "./components/pages/achievment";
 import Star from "./components/pages/Star";
-import Video from "./components/pages/Youtube";
+import video from "./components/pages/Youtube";
+import SearchBar from "./components/pages/Search_bar";
 
 import "./App.css";
+
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -54,7 +56,7 @@ class App extends Component {
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/achievements" component={Earnings} />
               <PrivateRoute exact path="/star" component={Star}/>
-              <PrivateRoute exact path="/Searchbar" component={Video}/>
+              <PrivateRoute exact path="/video" component={video}/>
               {/* <PrivateRoute exact path="/chatpage" component={Chatpage} /> */}
             </Switch>
           </div>
