@@ -20,7 +20,7 @@ class video extends Component {
 
         //if we are in heroku, the api key will be part of the system environments... otehrwise, import from .env file
         if(process.env.NODE_ENV === 'production'){
-          API_KEY = process.env.youtube_API_KEY
+          API_KEY = process.env.YOUTUBE_API_KEY
         } else {
           API_KEY = 'AIzaSyAIT-FfbTd5D7I5FtSY7XfaltbUN0zvRKg';
         }

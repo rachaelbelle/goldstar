@@ -23,7 +23,7 @@ let secret;
 if(process.env.NODE_ENV === 'production'){
 
   const db = process.env.MONGODB_URI;
-  secret = process.env.secretOrKey
+  secret = process.env.SECRET_OR_KEY
   module.exports = {secret: secret};
 
   mongoose
