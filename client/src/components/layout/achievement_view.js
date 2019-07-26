@@ -34,27 +34,6 @@ class Earnings extends Component {
     }
 
     getAchievements = () => {
-        //input being a string
-        // const data = API.get()
-        // const data = [
-        //     {
-        //         curStars: 2,
-        //         maxStars: 2,
-        //         name: 'Buy groceries'
-        //     },
-        //     {
-        //         curStars: 3,
-        //         maxStars: 3,
-        //         name: 'Apply to 5 jobs'
-        //     },
-        //     {
-        //         curStars: 1,
-        //         maxStars: 1,
-        //         name: 'Eat Breakfast'
-        //     }
-        // ]
-        // this.setState({ userData: data })
-
         axios
             .post("/api/tasks/getAllCompletedTasks", this.props.auth.user)
             .then(res => {
@@ -81,9 +60,9 @@ class Earnings extends Component {
             totalStars += task.curStars;
             liElements.push(
 
-                <li key={task._id} className="tabs">
+                <li key={task._id} className="">
                     <StarRatingComponent
-                        className="tab"
+                        className="col s3 m3 l3"
                         name={task.name}
                         starCount={task.maxStars}
                         value={task.curStars}
@@ -91,12 +70,12 @@ class Earnings extends Component {
                         renderStarIcon={(index, value) => {
                             return (
                                 <span>
-                                    {(index <= value) ? <FontAwesomeIcon color="gold" className='fa-align-left' icon={faStar} /> : <FontAwesomeIcon color="gold" className='fa-align-left' transform="left-4 grow-2.5" icon={faStarEmpty} />}
+                                    {(index <= value) ? <FontAwesomeIcon id='goldStarSolid' pull="left" icon={faStar} /> : <FontAwesomeIcon pull="left" icon={faStarEmpty} />}
                                 </span>
                             );
                         }}
                     />
-                    <span id="taskname" className="tab left left-align offset-s1 offset-m1 offset-l1"> {task.name} </span>
+                    <span id="taskname" className="col s6 m6 l6 offset-s1 offset-m1 offset-l1"> {task.name} </span>
                 </li>
 
             );
@@ -115,7 +94,7 @@ class Earnings extends Component {
                 <>
                     <h1 style={{ "fontSize": "3vw" }}>Today's Earnings</h1>
                     <p style={{ "fontSize": "2vw" }}>Welcome back <span style={{ color: "gold" }}> {user.name.split(" ")[0]}</span>! Here are the gold stars you've earned so far:</p>
-                    <ul style={{ margin: 10, display: "inline-block" }}>{liElements}</ul>
+                    <ul style={{ margin: 10 }} className="row">{liElements}</ul>
                     <p style={{ "fontSize": "2vw" }}>You have earned {totalStars}
                         <span style={{ color: "gold" }}>
                             <FontAwesomeIcon icon={faStar} />
