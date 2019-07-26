@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
+//importing supporting pages
 import SearchBar from './Search_bar';
-import YTSearch from 'youtube-api-search';
 import VideoList from './video_list'
 import VideoDetail from './video_detail';
-import { Link } from "react-router-dom";
-const API_KEY = 'AIzaSyAIT-FfbTd5D7I5FtSY7XfaltbUN0zvRKg';
+//importing packages
+import YTSearch from 'youtube-api-search';
+//importing logoutuser functionality
+import { logoutUser } from "../../actions/authActions";
+
+//const API_KEY = 'AIzaSyAIT-FfbTd5D7I5FtSY7XfaltbUN0zvRKg';
+let API_KEY='';
 
 class video extends Component {
     constructor(props) {
         super(props);
 
+        //if we are in heroku, the api key will be part of the system environments... otehrwise, import from .env file
+        if(process.env.NODE_ENV === 'production'){
+          API_KEY = process.env.YOUTUBE_API_KEY
+        } else {
+          API_KEY = 'AIzaSyAIT-FfbTd5D7I5FtSY7XfaltbUN0zvRKg';
+        }
         this.state = {
             videos: [],
             selectedVideo: null
@@ -18,6 +32,11 @@ class video extends Component {
         this.videoSearch('Motivational Videos');
 
     }
+
+    onLogoutClick = e => {
+      e.preventDefault();
+      this.props.logoutUser();
+    };
 
     videoSearch(searchTerm) {
       YTSearch({key: API_KEY, term: searchTerm}, (data) => {
@@ -108,4 +127,15 @@ class video extends Component {
 
 }
         
-export default video;
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+video.propTypes = {
+  auth: PropTypes.object.isRequired
+}
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(video);

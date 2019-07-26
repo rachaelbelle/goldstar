@@ -1,7 +1,7 @@
 {
-  "name": "mern-auth",
+  "name": "goldstar-server",
   "version": "1.0.0",
-  "description": "Mern Auth Example",
+  "description": "Goldstar application",
   "engines": {
     "node": "8.6.0"
   },

@@ -1,12 +1,15 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+
 import { logoutUser } from "../../actions/authActions";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 class Dashboard extends Component {
+
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
