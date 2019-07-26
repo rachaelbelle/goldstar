@@ -224,9 +224,9 @@ class Tasks extends Component {
                             ? <ul className="row" style={{ margin: 10 }}>
                                 {
                                     userData.map(task =>
-                                        <li key={task._id} className="col s10 m10 l10 left left-align">
+                                        <li key={task._id} className="">
                                             <StarRatingComponent
-                                                className="col s4 m4 l4"
+                                                className="col s3 m3 l3"
                                                 name={task.name}
                                                 starCount={task.maxStars}
                                                 value={task.curStars}
@@ -239,15 +239,15 @@ class Tasks extends Component {
                                                     );
                                                 }}
                                             />
-                                            <span id="taskname" className="col s5 m5 l5 left left-align offset-s1 offset-m1 offset-l1"> {task.name} </span>
+                                            <span id="taskname" className="col s6 m6 l6 offset-s1 offset-m1 offset-l1"> {task.name} </span>
                                         </li>
                                     )
                                 }
                             </ul>
                             : null
                     }
-                    <Modal header="Adding task" open={showModal} trigger={<Button >Click to add new Task</Button>}>
-                        <p style={{ "fontSize": "2vw" }}>
+                    <Modal header="Adding task" open={showModal} trigger={<Button className="btn btn-large waves-effect waves-light hoverable yellow accent-3" >Click to add new Task</Button>}>
+                        <p style={{ "fontSize": "2vw"}}>
                             Don't fear adding... you can do it <span style={{ color: "gold" }}> {user.name.split(" ")[0]}!</span>
                         </p>
                         <form>
@@ -267,10 +267,10 @@ class Tasks extends Component {
 
                             />
                         </form>
-                        <Button waves="light" style={{ marginRight: '5px' }} onClick={this.closeModal}>
+                        <Button className="btn btn-large waves-effect waves-light hoverable yellow accent-3" waves="light" style={{ marginRight: '5px' }} onClick={this.closeModal}>
                             Cancel
                     </Button >
-                        <Button type="submit" waves="light" onClick={this.saveTask}>
+                        <Button className="btn btn-large waves-effect waves-light hoverable yellow accent-3" type="submit" waves="light" onClick={this.saveTask}>
                             Save
                         <Icon right>
                                 send

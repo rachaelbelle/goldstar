@@ -5,13 +5,16 @@
     /* float: left; */
 }
 
-ul {
-    display: flex;
+FontAwesomeIcon {
+    color: gold;
 }
+/* ul {
+    display: flex;
+} */
 
 li {
     width: 100%;
-    display: inline-block;
+    /* display: inline-block; */
     flex-basis : 100% 
 }
 
@@ -19,19 +22,11 @@ li:nth-child(2n) {
     background-color: rgb(226, 225, 225);
 }
 
-li.tab {
-    flex-basis : 50.%;
-    /* border : blue dashed 1px; */
- }
 
 #taskname {
     /* display: inline-block; */
     vertical-align: middle;
     font-size: 2vw;
-    text-align: left;
-}
-
-.tab .tabs {
     text-align: left;
 }
 
