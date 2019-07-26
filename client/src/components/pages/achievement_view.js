@@ -1,20 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios";
 import PropTypes from 'prop-types';
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+//importing logout user specific functions
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
+//importing npm packages
 import StarRatingComponent from 'react-star-rating-component';
+//importing styling packages
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-// import API from "./apiland"
-// api is...
-// const api = {
-//     get: function() {
-//         Axios.get("/achievements")
-//     }
-// }
-
 
 class Earnings extends Component {
 
@@ -28,6 +24,11 @@ class Earnings extends Component {
             taskName: '',
         };
     }
+
+    onLogoutClick = e => {
+        e.preventDefault();
+        this.props.logoutUser();
+    };
 
     componentDidMount() {
         this.getAchievements()
@@ -47,8 +48,6 @@ class Earnings extends Component {
                 console.log("Errored out when getting task data: " + err);
             });
     }
-
-
 
     render() {
         const { user } = this.props.auth;
@@ -99,11 +98,8 @@ class Earnings extends Component {
                         <span style={{ color: "gold" }}>
                             <FontAwesomeIcon icon={faStar} />
                         </span>
-                        {(totalStars > 1) ? "s" : null} today.</p>
-                    {/* <p style={{ "fontSize": "2vw" }}>Ready to earn some more stars?</p>
-                    <p style={{ "fontSize": "2vw" }}>Go to My Tasks</p>
-                    <p style={{ "fontSize": "2vw" }}>Need some motivation?</p>
-                    <p style={{ "fontSize": "2vw" }}>Go to motivational videos or check out other users' tasks</p> */}
+                        {(totalStars > 1) ? "s" : null} today.
+                    </p>
                     <div style={{ display: "inline-block" }} className="">
 
                         <Link
@@ -121,18 +117,18 @@ class Earnings extends Component {
                             Earn Stars
                         </Link>
                         <Link
-                key="video_btn"
-                to="/video"
-                style={{
-                  width: "300px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px",
-                  color: "black",
-                  margin: "5px"
-                }}
-                className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
-              >
-                Motivational Videos
+                            key="video_btn"
+                            to="/video"
+                            style={{
+                                width: "300px",
+                                borderRadius: "3px",
+                                letterSpacing: "1.5px",
+                                color: "black",
+                                margin: "5px"
+                            }}
+                            className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+                        >
+                            Motivational Videos
               </Link>
                     </div>
                     <></>
@@ -161,10 +157,11 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-
 Earnings.propTypes = {
     auth: PropTypes.object.isRequired
 }
+
 export default connect(
-    mapStateToProps
-)(Earnings)
+    mapStateToProps,
+    { logoutUser }
+)(Earnings);

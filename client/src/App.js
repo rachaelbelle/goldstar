@@ -1,29 +1,27 @@
 import React, { Component } from "react";
+import { Provider } from "react-redux";
+//auth specific imports
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-
 import { setCurrentUser, logoutUser } from "./actions/authActions";
-import { Provider } from "react-redux";
+//middleware and private routes
 import store from "./store";
-
+import PrivateRoute from "./components/private-route/PrivateRoute";
+//UI pages - layout
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
+//UI pages - auth
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-import PrivateRoute from "./components/private-route/PrivateRoute";
+//UI - post login pages
 import Dashboard from "./components/dashboard/Dashboard";
-// import Chatpage from "./components/chatpage/Chatpage";
+import video from "./components/video/Youtube";
+import Earnings from "./components/pages/achievement_view";
+import Tasks from "./components/pages/task_view";
 
-//import Earnings from "./components/pages/achievment";
-import Star from "./components/pages/Star";
-import video from "./components/pages/Youtube";
-import SearchBar from "./components/pages/Search_bar";
-
+//Styling
 import "./App.css";
-import Earnings from "./components/layout/achievement_view";
-import Tasks from "./components/layout/task_view";
-
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -45,6 +43,7 @@ if (localStorage.jwtToken) {
   }
 }
 class App extends Component {
+
   render() {
     return (
       <Provider store={store}>
@@ -58,7 +57,6 @@ class App extends Component {
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/achievements" component={Earnings} />
-              <PrivateRoute exact path="/star" component={Star}/>
               <PrivateRoute exact path="/video" component={video}/>
               <PrivateRoute exact path="/tasks" component={Tasks} /> 
               {/* <PrivateRoute exact path="/chatpage" component={Chatpage} /> */}

@@ -19,7 +19,6 @@ app.use(bodyParser.json());
 
 // call dotenv and it will return an Object with a parsed key 
 const env = dotenv.config().parsed;
-
 const db = process.env.MONGODB_URI;
 const dbTest = env.mongoURItest;
 
