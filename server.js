@@ -26,9 +26,6 @@ if(process.env.NODE_ENV === 'production'){
   secret = process.env.SECRET_OR_KEY
   module.exports = {secret: secret};
 
-  console.log("ENV variables");
-  console.log(process.env);
-
   mongoose
   .connect(
     db,
