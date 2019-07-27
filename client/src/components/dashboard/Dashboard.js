@@ -1,12 +1,15 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+
 import { logoutUser } from "../../actions/authActions";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 class Dashboard extends Component {
+
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
@@ -60,10 +63,10 @@ class Dashboard extends Component {
                 Tasks
               </Link>
               <Link
-                key="star_btn"
-                to="/star"
+                key="video_btn"
+                to="/video"
                 style={{
-                  width: "250px",
+                  width: "300px",
                   borderRadius: "3px",
                   letterSpacing: "1px",
                   fontSize: "12px",

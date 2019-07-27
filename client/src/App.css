@@ -5,33 +5,27 @@
     /* float: left; */
 }
 
-ul {
-    display: flex;
+FontAwesomeIcon {
+    color: gold;
 }
+/* ul {
+    display: flex;
+} */
 
-li {
+/* li {
     width: 100%;
-    display: inline-block;
     flex-basis : 100% 
 }
 
 li:nth-child(2n) {
     background-color: rgb(226, 225, 225);
-}
+} */
 
-li.tab {
-    flex-basis : 50.%;
-    /* border : blue dashed 1px; */
- }
 
 #taskname {
     /* display: inline-block; */
     vertical-align: middle;
     font-size: 2vw;
-    text-align: left;
-}
-
-.tab .tabs {
     text-align: left;
 }
 
@@ -41,4 +35,7 @@ li.tab {
 }
 .btn:hover {
     background-color: gold;
+ }
+ .tabs{
+     margin: 15px;
  }

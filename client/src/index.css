@@ -8,8 +8,38 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.search-bar{
+  margin: 20px;
+  text-align: center;
+  border-radius: 2px;
+  box-shadow: gold;
+}
+
+.search-bar input{
+  width: 75%;
+}
+
+.video-item img{
+  max-width: 64px;
+  text-align: left;
+}
+
+.video-detail .details{
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid gold;
+  border-radius: 4px;
+}
+
+.list-group-item{
+  cursor: pointer;
+}
+
+.list-group-item:hover{
+  background-color: gold;
 }
