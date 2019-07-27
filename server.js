@@ -3,9 +3,6 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const dotenv = require('dotenv');
-
-
-
 const app = express();
 
 // Bodyparser middleware
@@ -18,13 +15,17 @@ app.use(bodyParser.json());
 
 //do not need here, but needed for export
 let secret;
+let YOUTUBE_API_KEY;
+let GOOGLEMAPS_API_KEY;
 
 // Connect to MongoDB
 if(process.env.NODE_ENV === 'production'){
 
   const db = process.env.MONGODB_URI;
-  secret = process.env.SECRET_OR_KEY
-  module.exports = {secret: secret};
+  secret = process.env.SECRET_OR_KEY;
+  YOUTUBE_API_KEY=process.env.YOUTUBE_API_KEY;
+  GOOGLEMAPS_API_KEY=process.env.GOOGLEMAPS_API_KEY;
+
 
   mongoose
   .connect(
@@ -41,10 +42,9 @@ if(process.env.NODE_ENV === 'production'){
 
   const env = dotenv.config().parsed;
   const dbTest = env.mongoURItest;
-  secret = env.secretOrKey;
-  module.exports = {secret: secret};
-
-
+  secret = env.SECRET_OR_KEY;
+  YOUTUBE_API_KEY=env.YOUTUBE_API_KEY;
+  GOOGLEMAPS_API_KEY=env.GOOGLEMAPS_API_KEY;
 
   mongoose
   .connect(
@@ -58,6 +58,12 @@ if(process.env.NODE_ENV === 'production'){
   .then(() => console.log("MongoDB TEST successfully connected."))
   .catch(err => console.log(err));
 }
+
+module.exports = {
+  secret: secret,
+  YOUTUBE_API_KEY: YOUTUBE_API_KEY,
+  GOOGLEMAPS_API_KEY: GOOGLEMAPS_API_KEY
+};
 
 const users = require("./routes/api/users");
 const tasks = require("./routes/api/tasks");
