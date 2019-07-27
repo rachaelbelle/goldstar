@@ -177,20 +177,20 @@ class Tasks extends Component {
 		console.log(user);
 
 		return (
-			<>
+			<div className="container">
 				<div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
 					<div className="col s10 m6 l4">
 						<Link to="/dashboard" className="btn-flat waves-effect">
 							<i className="material-icons ">keyboard_backspace</i>
 							Back to dashboard
-                        </Link>
+            </Link>
 					</div>
 				</div>
 				<>
 					{
 						(userData && userData.length > 0)
-							? <h1 style={{ "fontSize": "3vw" }}>Ready to kill it today, {user.name.split(" ")[0]}?</h1>
-							: <h1 style={{ "fontSize": "3vw" }}>You are Killing it {user.name.split(" ")[0]}! Lets add some more <FontAwesomeIcon id='goldStarSolid' icon={faStar} /> !</h1>
+							? <h1 style={{ "fontSize": "3vw" }}>What amazing thing will you achieve today, {user.name.split(" ")[0]}?!</h1>
+							: <h1 style={{ "fontSize": "3vw" }}>So very proud of you {user.name.split(" ")[0]}! Lets add some more <FontAwesomeIcon id='goldStarSolid' icon={faStar} /> !</h1>
 					}
 					{
 						(userData && userData.length > 0)
@@ -207,7 +207,7 @@ class Tasks extends Component {
 												renderStarIcon={(index, value) => {
 													return (
 														<span>
-															{(index <= value) ? <FontAwesomeIcon id='goldStarSolid' pull="left" icon={faStar} /> : <FontAwesomeIcon pull="left" icon={faStarEmpty} />}
+															{(index <= value) ? <FontAwesomeIcon id='goldStarSolid' pull="left" icon={faStar} /> : <FontAwesomeIcon id='goldStarEmpty' pull="left" icon={faStarEmpty} />}
 														</span>
 													);
 												}}
@@ -219,7 +219,8 @@ class Tasks extends Component {
 							</ul>
 							: null
 					}
-					<Modal header="Adding task" open={showModal} trigger={<Button className="btn btn-medium waves-effect waves-light hoverable yellow accent-3" >Add new Task</Button>}>
+
+					<Modal header="Adding task" open={showModal} trigger={<Button className="btn modal-btn btn-medium waves-effect waves-light hoverable yellow accent-3" >Add new Task</Button>}>
 						<p style={{ "fontSize": "2vw" }}>
 							Don't fear adding... you can do it <span style={{ color: "gold" }}> {user.name.split(" ")[0]}!</span>
 						</p>
@@ -233,79 +234,74 @@ class Tasks extends Component {
 								renderStarIcon={(index, value) => {
 									return (
 										<span>
-											{(index <= value) ? <FontAwesomeIcon id='goldStarSolid' icon={faStar} /> : <FontAwesomeIcon icon={faStarEmpty} />}
+											{(index <= value) ? <FontAwesomeIcon id='goldStarSolid' icon={faStar} /> : <FontAwesomeIcon id='goldStarEmpty' icon={faStarEmpty} />}
 										</span>
 									);
 								}}
-
 							/>
 						</form>
 						<Button className="btn btn-large waves-effect waves-light hoverable yellow accent-3" waves="light" style={{ marginRight: '5px' }} onClick={this.closeModal}>
 							Cancel
-                    </Button >
+            </Button >
 						<Button className="btn btn-large waves-effect waves-light hoverable yellow accent-3" type="submit" waves="light" onClick={this.saveTask}>
 							Save
-                        <Icon right>
+              <Icon right>
 								send
-                        </Icon>
+                </Icon>
 						</Button>
 					</Modal>
-					
+
 					<>
 						<p></p>
 					</>
-					<div style={{ display: "inline-block" }} className="">
-
-                        <Link
-                            key="achievement_btn"
-                            to="/achievements"
-                            style={{
-                                width: "195px",
-                                borderRadius: "3px",
-                                letterSpacing: "1.5px",
-                                color: "black",
-                                margin: "5px"
-                            }}
-                            className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
-                        >
-                            Achievements
-                        </Link>
-                        <Link
-                            key="video_btn"
-                            to="/video"
-                            style={{
-                                width: "300px",
-                                borderRadius: "3px",
-                                letterSpacing: "1.5px",
-                                color: "black",
-                                margin: "5px"
-                            }}
-                            className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
-                        >
-                            Motivational Videos
-              </Link>
-                    </div>
-                    <>
-						<p></p>
-					</>
-                    <button
-                        style={{
-                            width: "150px",
-                            borderRadius: "3px",
-                            letterSpacing: "1.5px",
-                            marginTop: "1rem",
-                            color: "black",
-                            margin: "10px"
-                        }}
-                        onClick={this.onLogoutClick}
-                        className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
-                    >
-                        Logout
-                    </button>
-                </>
-            </>
-        );
-    }
+					<div style={{ display: "inline-block" }} className="col 6 offset-3">
+						<Link
+							key="achievement_btn"
+							to="/achievements"
+							style={{
+								width: "195px",
+								borderRadius: "3px",
+								letterSpacing: "1.5px",
+								color: "black",
+								margin: "5px"
+							}}
+							className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+						>
+							Achievements
+					</Link>
+						<Link
+							key="video_btn"
+							to="/video"
+							style={{
+								width: "300px",
+								borderRadius: "3px",
+								letterSpacing: "1.5px",
+								color: "black",
+								margin: "5px"
+							}}
+							className="btn btn-large waves-effect waves-light hoverable yellow accent-3">
+							Motivational Videos
+			</Link>
+						<>
+							<button
+								style={{
+									width: "150px",
+									borderRadius: "3px",
+									letterSpacing: "1.5px",
+									marginTop: "1rem",
+									color: "black",
+									margin: "10px"
+								}}
+								onClick={this.onLogoutClick}
+								className="btn btn-large waves-effect waves-light hoverable yellow accent-3">
+								Logout
+			</button>
+						</>
+					</div>
+				</>
+			</div>
+		);
+	}
 }
 
 const mapStateToProps = state => ({

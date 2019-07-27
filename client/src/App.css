@@ -1,29 +1,53 @@
-.dv-star-rating-star .dv-star-rating-full-star {
+/* .dv-star-rating-star .dv-star-rating-full-star {
     font-size: 3vw;
     vertical-align: middle;
     color: gold;
-    /* float: left; */
-}
+    float: left; */
 
-FontAwesomeIcon {
+
+#goldStarSolid{
+    font-size: 2vw;
+    vertical-align: middle;
     color: gold;
 }
-/* ul {
-    display: flex;
-} */
-
-/* li {
-    width: 100%;
-    flex-basis : 100% 
+#goldStarEmpty{
+    font-size: 2vw;
+    vertical-align: middle;
+    color: gold;
 }
 
-li:nth-child(2n) {
+#goldStarEmpty{
+    font-size: 2vw;
+    vertical-align: middle;
+    color: gold;
+}
+/* .dv-star-rating-star .dv-star-rating-full-star #goldStarSolid {
+    font-size: 3vw;
+    vertical-align: middle;
+    color: gold;
+    float: left;
+} */
+
+/* FontAwesomeIcon {
+    color: gold;
+} */
+
+/* ul {
+    display: flex;
+}
+
+li {
+    width: 100%;
+    flex-basis : 100%
+} */
+
+/* li:nth-child(2n) {
     background-color: rgb(226, 225, 225);
 } */
 
 
 #taskname {
-    /* display: inline-block; */
+    display: inline-block;
     vertical-align: middle;
     font-size: 2vw;
     text-align: left;
@@ -32,6 +56,7 @@ li:nth-child(2n) {
 .btn {
     background-color: gold;
     color: black;
+    font-family: 'Coustard', serif;
 }
 .btn:hover {
     background-color: gold;
@@ -39,3 +64,12 @@ li:nth-child(2n) {
  .tabs{
      margin: 15px;
  }
+
+.modal-btn {
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.buttonDiv {
+    vertical-align: middle;
+}
