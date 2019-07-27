@@ -18,6 +18,10 @@ class video extends Component {
     constructor(props) {
         super(props);
 
+
+        console.log("UI PROCCESS ENV VARS:");
+        console.log(process.env);
+
         //if we are in heroku, the api key will be part of the system environments... otehrwise, import from .env file
         if(process.env.NODE_ENV === 'production'){
           API_KEY = process.env.YOUTUBE_API_KEY
