@@ -42,9 +42,18 @@ if (localStorage.jwtToken) {
     window.location.href = "./login";
   }
 }
+
+console.log("&&&&&&&&&&&&&& Process ENV Variables UI &&&&&&&&&&&&&&&&&&");
+console.log(process.env);
+
+
 class App extends Component {
 
   render() {
+
+    console.log("*********** Process ENV Variables UI *******");
+    console.log(process.env);
+
     return (
       <Provider store={store}>
         <Router>
