@@ -16,9 +16,13 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 //UI - post login pages
 import Dashboard from "./components/dashboard/Dashboard";
-import video from "./components/video/Youtube";
-import Earnings from "./components/pages/achievement_view";
-import Tasks from "./components/pages/task_view";
+// import Chatpage from "./components/chatpage/Chatpage";
+
+//import Earnings from "./components/pages/achievment";
+import Star from "./components/pages/Star";
+import video from "./components/pages/Youtube";
+import SearchBar from "./components/pages/Search_bar";
+import DirectionMap from "./components/pages/maps";
 
 //Styling
 import "./App.css";
@@ -59,6 +63,7 @@ class App extends Component {
               <PrivateRoute exact path="/achievements" component={Earnings} />
               <PrivateRoute exact path="/video" component={video}/>
               <PrivateRoute exact path="/tasks" component={Tasks} />
+              <PrivateRoute exact path="/maps" component={DirectionMap} />
               {/* <PrivateRoute exact path="/chatpage" component={Chatpage} /> */}
             </Switch>
           </div>
