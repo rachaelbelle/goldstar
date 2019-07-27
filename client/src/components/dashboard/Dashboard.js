@@ -25,8 +25,8 @@ class Dashboard extends Component {
             <h4 style={{ "fontSize": "3vw" }}>
               Welcome, {user.name.split(" ")[0]}
               <p className="flow-text grey-text text-darken-1" style={{ "fontSize": "2vw" }}>
-                So glad to have you here! Welcome to
-                <span style={{ fontFamily: "monospace" }}> GOLDSTAR
+                So glad to have you here! Welcome to { " " }
+                <span style={{ fontFamily: "monospace" }}>GOLDSTAR
                   <span style={{ color: "gold" }}>
                     <FontAwesomeIcon icon={faStar} />
                   </span>
