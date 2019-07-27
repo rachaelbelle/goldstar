@@ -16,18 +16,18 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
 
     return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
+      <div style={{ height: "25vh" }} className="container valign-wrapper">
         <div className="row">
           <div className="landing-copy col s12 center-align">
-            <h4 style={{ "fontSize": "4vw" }}>
-              <b>Welcome, </b> {user.name.split(" ")[0]}
+            <h4 style={{ "fontSize": "3vw" }}>
+              Welcome, {user.name.split(" ")[0]}.
               <p className="flow-text grey-text text-darken-1" style={{ "fontSize": "2vw" }}>
-                So glad you have you here! Welcome to {" "}
-                <span style={{ fontFamily: "monospace" }}>GOLDSTAR
+                Ready to crush it today?
+                {/* <span style={{ fontFamily: "monospace" }}>GOLDSTAR
                   <span style={{ color: "gold" }}>
                     <FontAwesomeIcon icon={faStar} />
                   </span>
-                </span>
+                </span> */}
               </p>
             </h4>
             <div style={{display:"inline-block" }} className="">
@@ -63,15 +63,16 @@ class Dashboard extends Component {
                 key="star_btn"
                 to="/star"
                 style={{
-                  width: "195px",
+                  width: "250px",
                   borderRadius: "3px",
-                  letterSpacing: "1.5px",
+                  letterSpacing: "1px",
+                  fontSize: "12px",
                   color: "black",
-                  margin: "5px"
+                  margin: "2px"
                 }}
                 className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
               >
-                Stars
+                Motivational Videos
               </Link>
             </div>
             <div></div>
