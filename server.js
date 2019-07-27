@@ -26,6 +26,9 @@ if(process.env.NODE_ENV === 'production'){
   secret = process.env.SECRET_OR_KEY
   module.exports = {secret: secret};
 
+  console.log("ENV variables");
+  console.log(process.env);
+
   mongoose
   .connect(
     db,
@@ -43,6 +46,8 @@ if(process.env.NODE_ENV === 'production'){
   const dbTest = env.mongoURItest;
   secret = env.secretOrKey;
   module.exports = {secret: secret};
+
+
 
   mongoose
   .connect(
