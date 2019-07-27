@@ -82,7 +82,10 @@ class Earnings extends Component {
 
         return (
             <>
-                <div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
+                {/* <div style={{ height: "75vh" }} className="container valign-wrapper">
+                    <div className="row">
+                        <div className="landing-copy col s12 center-align"> */}
+                 <div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
                     <div className="col s10 m6 l4">
                         <Link to="/dashboard" className="btn-flat waves-effect">
                             <i className="material-icons ">keyboard_backspace</i>
@@ -91,62 +94,67 @@ class Earnings extends Component {
                     </div>
                 </div>
                 <>
-                    <h1 style={{ "fontSize": "3vw" }}>Today's Earnings</h1>
-                    <p style={{ "fontSize": "2vw" }}>Welcome back <span style={{ color: "gold" }}> {user.name.split(" ")[0]}</span>! Here are the gold stars you've earned so far:</p>
-                    <ul style={{ margin: 10 }} className="row">{liElements}</ul>
-                    <p style={{ "fontSize": "2vw" }}>You have earned {totalStars}
-                        <span style={{ color: "gold" }}>
-                            <FontAwesomeIcon icon={faStar} />
-                        </span>
-                        {(totalStars > 1) ? "s" : null} today.
-                    </p>
-                    <div style={{ display: "inline-block" }} className="">
+                    <div style={{ height: "100vh" }} className="container">
 
-                        <Link
-                            key="task_btn"
-                            to="/tasks"
-                            style={{
-                                width: "195px",
-                                borderRadius: "3px",
-                                letterSpacing: "1.5px",
-                                color: "black",
-                                margin: "5px"
-                            }}
-                            className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
-                        >
-                            Earn Stars
+                        <h1 style={{ "fontSize": "3vw" }}>Today's Earnings</h1>
+                        <p style={{ "fontSize": "2vw" }}>Welcome back <span style={{ color: "gold" }}> {user.name.split(" ")[0]}</span>! Here are the gold stars you've earned so far:</p>
+                        <ul style={{ margin: 10 }} className="row">{liElements}</ul>
+                        <p style={{ "fontSize": "2vw" }}>You have earned {totalStars}
+                            <span style={{ color: "gold" }}>
+                                <FontAwesomeIcon icon={faStar} />
+                            </span>
+                            {(totalStars > 1) ? "s" : null} today.
+                    </p>
+                        <div style={{ display: "inline-block" }} className="col 6 offset 3">
+
+                            <Link
+                                key="task_btn"
+                                to="/tasks"
+                                style={{
+                                    width: "195px",
+                                    borderRadius: "3px",
+                                    letterSpacing: "1.5px",
+                                    color: "black",
+                                    margin: "5px"
+                                }}
+                                className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+                            >
+                                Earn Stars
                         </Link>
-                        <Link
-                            key="video_btn"
-                            to="/video"
+                            <Link
+                                key="video_btn"
+                                to="/video"
+                                style={{
+                                    width: "300px",
+                                    borderRadius: "3px",
+                                    letterSpacing: "1.5px",
+                                    color: "black",
+                                    margin: "5px"
+                                }}
+                                className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+                            >
+                                Motivational Videos
+              </Link>
+                        </div>
+                        <></>
+                        <button
                             style={{
-                                width: "300px",
+                                width: "150px",
                                 borderRadius: "3px",
                                 letterSpacing: "1.5px",
+                                marginTop: "1rem",
                                 color: "black",
-                                margin: "5px"
+                                margin: "10px"
                             }}
+                            onClick={this.onLogoutClick}
                             className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
                         >
-                            Motivational Videos
-              </Link>
-                    </div>
-                    <></>
-                    <button
-                        style={{
-                            width: "150px",
-                            borderRadius: "3px",
-                            letterSpacing: "1.5px",
-                            marginTop: "1rem",
-                            color: "black",
-                            margin: "10px"
-                        }}
-                        onClick={this.onLogoutClick}
-                        className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
-                    >
-                        Logout
+                            Logout
                     </button>
+                    </div>
+
                 </>
+
             </>
         );
     }

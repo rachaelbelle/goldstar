@@ -183,7 +183,7 @@ class Tasks extends Component {
 						<Link to="/dashboard" className="btn-flat waves-effect">
 							<i className="material-icons ">keyboard_backspace</i>
 							Back to dashboard
-                        </Link>
+            </Link>
 					</div>
 				</div>
 				<>
@@ -207,7 +207,7 @@ class Tasks extends Component {
 												renderStarIcon={(index, value) => {
 													return (
 														<span>
-															{(index <= value) ? <FontAwesomeIcon id='goldStarSolid' pull="left" icon={faStar} /> : <FontAwesomeIcon pull="left" icon={faStarEmpty} />}
+															{(index <= value) ? <FontAwesomeIcon id='goldStarSolid' pull="left" icon={faStar} /> : <FontAwesomeIcon id='goldStarEmpty' pull="left" icon={faStarEmpty} />}
 														</span>
 													);
 												}}
@@ -233,79 +233,74 @@ class Tasks extends Component {
 								renderStarIcon={(index, value) => {
 									return (
 										<span>
-											{(index <= value) ? <FontAwesomeIcon id='goldStarSolid' icon={faStar} /> : <FontAwesomeIcon icon={faStarEmpty} />}
+											{(index <= value) ? <FontAwesomeIcon id='goldStarSolid' icon={faStar} /> : <FontAwesomeIcon id='goldStarEmpty' icon={faStarEmpty} />}
 										</span>
 									);
 								}}
-
 							/>
 						</form>
 						<Button className="btn btn-large waves-effect waves-light hoverable yellow accent-3" waves="light" style={{ marginRight: '5px' }} onClick={this.closeModal}>
 							Cancel
-                    </Button >
+            </Button >
 						<Button className="btn btn-large waves-effect waves-light hoverable yellow accent-3" type="submit" waves="light" onClick={this.saveTask}>
 							Save
-                        <Icon right>
+              <Icon right>
 								send
-                        </Icon>
+                </Icon>
 						</Button>
 					</Modal>
-					
+
 					<>
 						<p></p>
 					</>
 					<div style={{ display: "inline-block" }} className="">
-
-                        <Link
-                            key="achievement_btn"
-                            to="/achievements"
-                            style={{
-                                width: "195px",
-                                borderRadius: "3px",
-                                letterSpacing: "1.5px",
-                                color: "black",
-                                margin: "5px"
-                            }}
-                            className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
-                        >
-                            Achievements
-                        </Link>
-                        <Link
-                            key="video_btn"
-                            to="/video"
-                            style={{
-                                width: "300px",
-                                borderRadius: "3px",
-                                letterSpacing: "1.5px",
-                                color: "black",
-                                margin: "5px"
-                            }}
-                            className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
-                        >
-                            Motivational Videos
-              </Link>
-                    </div>
-                    <>
-						<p></p>
+						<Link
+							key="achievement_btn"
+							to="/achievements"
+							style={{
+								width: "195px",
+								borderRadius: "3px",
+								letterSpacing: "1.5px",
+								color: "black",
+								margin: "5px"
+							}}
+							className="btn btn-large waves-effect waves-light hoverable yellow accent-3">
+							Achievements
+            </Link>
+						<Link
+							key="video_btn"
+							to="/video"
+							style={{
+								width: "300px",
+								borderRadius: "3px",
+								letterSpacing: "1.5px",
+								color: "black",
+								margin: "5px"
+							}}
+							className="btn btn-large waves-effect waves-light hoverable yellow accent-3">
+							Motivational Videos
+            </Link>
+					</div>
+					<>
 					</>
-                    <button
-                        style={{
-                            width: "150px",
-                            borderRadius: "3px",
-                            letterSpacing: "1.5px",
-                            marginTop: "1rem",
-                            color: "black",
-                            margin: "10px"
-                        }}
-                        onClick={this.onLogoutClick}
-                        className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
-                    >
-                        Logout
-                    </button>
-                </>
-            </>
-        );
-    }
+					<button
+						style={{
+							width: "150px",
+							borderRadius: "3px",
+							letterSpacing: "1.5px",
+							marginTop: "1rem",
+							color: "black",
+							margin: "10px"
+						}}
+						onClick={this.onLogoutClick}
+						className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+					>
+						Logout
+						</button>
+				</>
+			</>
+		);
+	}
 }
 
 const mapStateToProps = state => ({
