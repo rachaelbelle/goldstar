@@ -1,8 +1,19 @@
-.dv-star-rating-star .dv-star-rating-full-star {
+/* .dv-star-rating-star .dv-star-rating-full-star {
     font-size: 3vw;
     vertical-align: middle;
     color: gold;
-    /* float: left; */
+    float: left; */
+
+
+#goldStarSolid{
+    font-size: 2vw;
+    vertical-align: middle;
+    color: gold;
+}
+#goldStarEmpty{
+    font-size: 2vw;
+    vertical-align: middle;
+    color: gold;
 }
 
 FontAwesomeIcon {
@@ -39,3 +50,12 @@ li:nth-child(2n) {
  .tabs{
      margin: 15px;
  }
+
+.modal-btn {
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.buttonDiv {
+    vertical-align: middle;
+}

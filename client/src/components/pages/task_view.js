@@ -177,7 +177,7 @@ class Tasks extends Component {
 		console.log(user);
 
 		return (
-			<>
+			<div className="container">
 				<div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
 					<div className="col s10 m6 l4">
 						<Link to="/dashboard" className="btn-flat waves-effect">
@@ -189,8 +189,8 @@ class Tasks extends Component {
 				<>
 					{
 						(userData && userData.length > 0)
-							? <h1 style={{ "fontSize": "3vw" }}>Ready to kill it today, {user.name.split(" ")[0]}?</h1>
-							: <h1 style={{ "fontSize": "3vw" }}>You are Killing it {user.name.split(" ")[0]}! Lets add some more <FontAwesomeIcon id='goldStarSolid' icon={faStar} /> !</h1>
+							? <h1 style={{ "fontSize": "3vw" }}>What amazing thing will you achieve today, {user.name.split(" ")[0]}?!</h1>
+							: <h1 style={{ "fontSize": "3vw" }}>So very proud of you {user.name.split(" ")[0]}! Lets add some more <FontAwesomeIcon id='goldStarSolid' icon={faStar} /> !</h1>
 					}
 					{
 						(userData && userData.length > 0)
@@ -207,7 +207,7 @@ class Tasks extends Component {
 												renderStarIcon={(index, value) => {
 													return (
 														<span>
-															{(index <= value) ? <FontAwesomeIcon id='goldStarSolid' pull="left" icon={faStar} /> : <FontAwesomeIcon pull="left" icon={faStarEmpty} />}
+															{(index <= value) ? <FontAwesomeIcon id='goldStarSolid' pull="left" icon={faStar} /> : <FontAwesomeIcon id='goldStarEmpty' pull="left" icon={faStarEmpty} />}
 														</span>
 													);
 												}}
@@ -219,7 +219,8 @@ class Tasks extends Component {
 							</ul>
 							: null
 					}
-					<Modal header="Adding task" open={showModal} trigger={<Button className="btn btn-medium waves-effect waves-light hoverable yellow accent-3" >Add new Task</Button>}>
+					
+					<Modal header="Adding task" open={showModal} trigger={<Button className="btn modal-btn btn-medium waves-effect waves-light hoverable yellow accent-3" >Add new Task</Button>}>
 						<p style={{ "fontSize": "2vw" }}>
 							Don't fear adding... you can do it <span style={{ color: "gold" }}> {user.name.split(" ")[0]}!</span>
 						</p>
@@ -233,7 +234,7 @@ class Tasks extends Component {
 								renderStarIcon={(index, value) => {
 									return (
 										<span>
-											{(index <= value) ? <FontAwesomeIcon id='goldStarSolid' icon={faStar} /> : <FontAwesomeIcon icon={faStarEmpty} />}
+											{(index <= value) ? <FontAwesomeIcon id='goldStarSolid' icon={faStar} /> : <FontAwesomeIcon id='goldStarEmpty' icon={faStarEmpty} />}
 										</span>
 									);
 								}}
@@ -254,7 +255,7 @@ class Tasks extends Component {
 					<>
 						<p></p>
 					</>
-					<div style={{ display: "inline-block" }} className="">
+					<div style={{ display: "inline-block" }} className="col 6 offset-3">
 
                         <Link
                             key="achievement_btn"
@@ -283,11 +284,9 @@ class Tasks extends Component {
                             className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
                         >
                             Motivational Videos
-              </Link>
-                    </div>
+              			</Link>
                     <>
-						<p></p>
-					</>
+					
                     <button
                         style={{
                             width: "150px",
@@ -302,8 +301,10 @@ class Tasks extends Component {
                     >
                         Logout
                     </button>
-                </>
+					</>
+                </div>
             </>
+			</div>
         );
     }
 }

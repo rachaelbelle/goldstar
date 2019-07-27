@@ -81,7 +81,7 @@ class Earnings extends Component {
         });
 
         return (
-            <>
+            <div className="container">
                 <div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
                     <div className="col s10 m6 l4">
                         <Link to="/dashboard" className="btn-flat waves-effect">
@@ -147,7 +147,7 @@ class Earnings extends Component {
                         Logout
                     </button>
                 </>
-            </>
+            </div>
         );
     }
 
