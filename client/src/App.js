@@ -16,12 +16,14 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 //UI - post login pages
 import Dashboard from "./components/dashboard/Dashboard";
+import Earnings from "./components/pages/achievement_view";
+import Tasks from "./components/pages/task_view";
 // import Chatpage from "./components/chatpage/Chatpage";
 
 //import Earnings from "./components/pages/achievment";
-import Star from "./components/pages/Star";
-import video from "./components/pages/Youtube";
-import SearchBar from "./components/pages/Search_bar";
+// import Star from "./components/pages/Star";
+import video from "./components/video/Youtube";
+import SearchBar from "./components/video/Search_bar";
 import DirectionMap from "./components/pages/maps";
 
 //Styling
