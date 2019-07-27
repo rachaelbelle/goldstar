@@ -102,7 +102,7 @@ class Earnings extends Component {
                             </span>
                             {(totalStars > 1) ? "s" : null} today.
                     </p>
-                        <div style={{ display: "inline-block" }} className="col 6 offset 3">
+                        <div style={{ display: "inline-block" }} className="col 12">
 
                             <Link
                                 key="task_btn"

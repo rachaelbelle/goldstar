@@ -19,18 +19,18 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
 
     return (
-      <div style={{ height: "25vh" }} className="container valign-wrapper">
+      <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
           <div className="landing-copy col s12 center-align">
             <h4 style={{ "fontSize": "3vw" }}>
-              Welcome, {user.name.split(" ")[0]}.
+              Welcome, {user.name.split(" ")[0]}
               <p className="flow-text grey-text text-darken-1" style={{ "fontSize": "2vw" }}>
-                Ready to crush it today?
-                {/* <span style={{ fontFamily: "monospace" }}>GOLDSTAR
+                So glad to have you here! Welcome to
+                <span style={{ fontFamily: "monospace" }}> GOLDSTAR
                   <span style={{ color: "gold" }}>
                     <FontAwesomeIcon icon={faStar} />
                   </span>
-                </span> */}
+                </span>
               </p>
             </h4>
             <div style={{display:"inline-block" }} className="">
