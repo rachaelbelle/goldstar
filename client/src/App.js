@@ -19,6 +19,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Star from "./components/pages/Star";
 import video from "./components/pages/Youtube";
 import SearchBar from "./components/pages/Search_bar";
+import DirectionMap from "./components/pages/maps";
 
 import "./App.css";
 import Earnings from "./components/layout/achievement_view";
@@ -61,6 +62,7 @@ class App extends Component {
               <PrivateRoute exact path="/star" component={Star}/>
               <PrivateRoute exact path="/video" component={video}/>
               <PrivateRoute exact path="/tasks" component={Tasks} /> 
+              <PrivateRoute exact path="/maps" component={DirectionMap} />
               {/* <PrivateRoute exact path="/chatpage" component={Chatpage} /> */}
             </Switch>
           </div>
