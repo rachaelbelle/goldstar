@@ -4,16 +4,15 @@ import { Link } from "react-router-dom";
 class Landing extends Component {
   render() {
     return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
+      <div style={{ height: "25vh" }} className="container valign-wrapper">
         <div className="row">
           <div className="col s12 center-align">
             <h4>
-              <b>GOLD STAR</b> login page using{" "}
-              <span style={{ fontFamily: "monospace" }}>MERN</span>
-              methodology
+              Welcome to Gold Star.
             </h4>
             <p className="flow-text grey-text text-darken-1">
-              Using express, passport, REACT and mongo!
+                In a fast-paced world, it can be hard to keep your eye on the prize. Use this handy tool to keep track of your daily tasks,
+                celebrate the little wins in life, and find motivation when you need it the most!
             </p>
             <br />
             <div className="col s6">
@@ -39,7 +38,7 @@ class Landing extends Component {
                   letterSpacing: "1.5px",
                   color: "black",
                 }}
-                className="btn btn-large btn-flat waves-effect white black-text"
+                className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
               >
                 Log In
               </Link>

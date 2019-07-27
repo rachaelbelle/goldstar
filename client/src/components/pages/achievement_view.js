@@ -81,11 +81,8 @@ class Earnings extends Component {
         });
 
         return (
-            <>
-                {/* <div style={{ height: "75vh" }} className="container valign-wrapper">
-                    <div className="row">
-                        <div className="landing-copy col s12 center-align"> */}
-                 <div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
+            <div className="container">
+                <div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
                     <div className="col s10 m6 l4">
                         <Link to="/dashboard" className="btn-flat waves-effect">
                             <i className="material-icons ">keyboard_backspace</i>
@@ -154,8 +151,7 @@ class Earnings extends Component {
                     </div>
 
                 </>
-
-            </>
+            </div>
         );
     }
 

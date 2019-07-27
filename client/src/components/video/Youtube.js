@@ -14,9 +14,16 @@ import { logoutUser } from "../../actions/authActions";
 //const API_KEY = 'AIzaSyAIT-FfbTd5D7I5FtSY7XfaltbUN0zvRKg';
 let API_KEY='';
 
+console.log("!!!!!!!!!!!!!!!!! UI PROCCESS ENV VARS: !!!!!!!!!!!!!!!!!!!!!!");
+console.log(process.env);
+
 class video extends Component {
     constructor(props) {
         super(props);
+
+
+        console.log("$$$$$$$$$$$$$$$$$$ UI PROCCESS ENV VARS: $$$$$$$$$$$$$$$$$$$");
+        console.log(process.env);
 
         //if we are in heroku, the api key will be part of the system environments... otehrwise, import from .env file
         if(process.env.NODE_ENV === 'production'){
@@ -48,6 +55,10 @@ class video extends Component {
       });
     }
       render() {
+
+        console.log("^^^^^^^^^^^^^^^ UI PROCCESS ENV VARS: ^^^^^^^^^^^^^^^^^^");
+        console.log(process.env);
+
         return (
           <>
           <>
