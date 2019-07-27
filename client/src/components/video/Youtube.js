@@ -105,24 +105,22 @@ class video extends Component {
               color: "black",
               margin: "5px",
             }}
-            className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
-          >
+            className="btn btn-large waves-effect waves-light hoverable yellow accent-3">
             Achievements
               </Link>
           <Link
             key="task_btn"
             to="/tasks"
             style={{
-              width: "195px",
+              width: "235px",
               borderRadius: "3px",
               letterSpacing: "1.5px",
               color: "black",
               margin: "5px"
             }}
-            className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
-          >
-            Tasks
-                        </Link>
+            className="btn btn-large waves-effect waves-light hoverable yellow accent-3">
+            Earn More Stars
+          </Link>
         </div>
         <div></div>
         <button
