@@ -57,9 +57,16 @@ li {
     background-color: gold;
     color: black;
     font-family: 'Coustard', serif;
+    height: 7vh;
+    width: 7vw;
 }
 .btn:hover {
+    transition: all .2 ease-in-out;
+    transform: scale(1.1);
     background-color: gold;
+    color: gold;
+    text-shadow: 1px 1px 2px gold, 0 0 25px yellow, 0 0 5px gold;
+    box-shadow: 0 9px 11px 0 rgb(243, 199, 2), 0 17px 50px 0 rgb(247, 210, 0);
  }
  .tabs{
      margin: 15px;
@@ -68,6 +75,8 @@ li {
 .modal-btn {
     margin-bottom: 50px;
     margin-top: 20px;
+    height: 30px;
+    width: 200px;
 }
 
 .buttonDiv {
