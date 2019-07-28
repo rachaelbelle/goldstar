@@ -49,18 +49,10 @@ if (localStorage.jwtToken) {
   }
 }
 
-console.log("&&&&&&&&&&&&&& Process ENV Variables UI &&&&&&&&&&&&&&&&&&");
-console.log(process.env);
-
-
 class App extends Component {
 
   render() {
-
-    console.log("*********** Process ENV Variables UI *******");
-    console.log(process.env);
-
-    return (
+  return (
       <Provider store={store}>
         <Router>
           <div className="App">

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
+import axios from "axios";
 //importing supporting pages
 import SearchBar from './Search_bar';
 import VideoList from './video_list'
@@ -11,33 +12,33 @@ import YTSearch from 'youtube-api-search';
 //importing logoutuser functionality
 import { logoutUser } from "../../actions/authActions";
 
-//const API_KEY = 'AIzaSyAIT-FfbTd5D7I5FtSY7XfaltbUN0zvRKg';
-let API_KEY = '';
-
-console.log("!!!!!!!!!!!!!!!!! UI PROCCESS ENV VARS: !!!!!!!!!!!!!!!!!!!!!!");
-console.log(process.env);
-
 class video extends Component {
   constructor(props) {
     super(props);
 
+    this.getKeys();
 
-    console.log("$$$$$$$$$$$$$$$$$$ UI PROCCESS ENV VARS: $$$$$$$$$$$$$$$$$$$");
-    console.log(process.env);
-
-    //if we are in heroku, the api key will be part of the system environments... otehrwise, import from .env file
-    if (process.env.NODE_ENV === 'production') {
-      API_KEY = process.env.YOUTUBE_API_KEY
-    } else {
-      API_KEY = 'AIzaSyAIT-FfbTd5D7I5FtSY7XfaltbUN0zvRKg';
-    }
     this.state = {
       videos: [],
-      selectedVideo: null
+      selectedVideo: null,
+      API_KEY: '',
     };
+  }
 
-    this.videoSearch('Motivational Videos');
+  getKeys = () => {
+    axios
+      .post("/api/tasks/getKeys", this.props.auth.user)
+      .then(res => {
 
+        this.videoSearch('Motivational Videos', res.data.YOUTUBE_API_KEY);
+
+          this.setState({
+              API_KEY: res.data.YOUTUBE_API_KEY
+          })
+      })
+      .catch(err => {
+          console.log("Errored out when getting task data: " + err);
+      });
   }
 
   onLogoutClick = e => {
@@ -45,21 +46,27 @@ class video extends Component {
     this.props.logoutUser();
   };
 
-  videoSearch(searchTerm) {
-    YTSearch({ key: API_KEY, term: searchTerm }, (data) => {
-      console.log(data);
-      this.setState({
-        videos: data,
-        selectedVideo: data[0]
+  videoSearch(searchTerm, key) {
+
+      YTSearch({ key: key, term: searchTerm }, (data) => {
+        //console.log(data);
+        this.setState({
+          videos: data,
+          selectedVideo: data[0]
+        });
       });
-    });
+
   }
+
   render() {
 
-    console.log("^^^^^^^^^^^^^^^ UI PROCCESS ENV VARS: ^^^^^^^^^^^^^^^^^^");
-    console.log(process.env);
+    const { API_KEY } = this.state;
 
     return (
+
+      (typeof API_KEY === 'undefined' || API_KEY === null || API_KEY === '')?
+        null
+      :
       <>
         <>
           <div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
@@ -74,7 +81,7 @@ class video extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col s12">
-              <SearchBar onSearchTermChange={searchTerm => this.videoSearch(searchTerm)} />
+              <SearchBar onSearchTermChange={searchTerm => this.videoSearch(searchTerm, API_KEY)} />
             </div>
             <div className="col s12 m12 l8">
               <VideoDetail video={this.state.selectedVideo} />
@@ -105,7 +112,7 @@ class video extends Component {
             key="task_btn"
             to="/tasks"
             style={{
-              width: "195px",
+              width: "235px",
               borderRadius: "3px",
               letterSpacing: "1.5px",
               color: "black",

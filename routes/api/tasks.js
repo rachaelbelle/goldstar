@@ -4,6 +4,9 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
+let serverkeys = require('../../server.js');
+
+
 
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
@@ -11,6 +14,20 @@ const validateLoginInput = require("../../validation/login");
 
 // Load User model
 const Task = require("../../models/Task");
+
+
+// @route GET api/tasks/getKeys
+// @desc Get all keys from .env or process.env(Heroku)
+// @param none
+// @return object with keys { key1: #1, key2: #2...}
+router.post("/getKeys", (req, res) => {
+
+  console.log("Sending keys from .env or process.env to UI");
+  //console.log(serverkeys);
+
+  return res.status(200).json(serverkeys)
+});
+
 
 // @route GET api/tasks/getAllTasks
 // @desc Get all Tasks from user
@@ -68,6 +85,8 @@ router.post("/getUndoneTasks", (req, res) => {
 
   // console.log("Get all UNDONE tasks request: ");
   // console.log(req.body);
+  console.log("***** KEYS *****");
+  console.log(serverkeys);
 
   console.log("Getting all undone tasks for user: "+req.body.id);
 
