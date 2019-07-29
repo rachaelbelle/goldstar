@@ -4,19 +4,46 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faQuoteLeft ,faQuoteRight } from '@fortawesome/free-solid-svg-icons';
 
 import { logoutUser } from "../../actions/authActions";
 
+import quote from 'inspirational-quotes';
+
 class Dashboard extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      text: '',
+      author: '',
+    }
+  }
 
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
 
+  componentDidMount() {
+    this.setQuote();
+  }
+
+  setQuote = () => {
+    let myQuote = quote.getQuote();
+    
+    this.setState({
+      text: myQuote.text,
+      author: myQuote.author
+    })
+  }
+
   render() {
     const { user } = this.props.auth;
+    const { text, author } = this.state;
+
+    console.log("Quote: "+text+", by: "+author);
 
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
@@ -31,6 +58,14 @@ class Dashboard extends Component {
                     <FontAwesomeIcon icon={faStar} />
                   </span>
                 </span>
+              </p>
+              <p>
+                <FontAwesomeIcon icon={faQuoteLeft} />
+                {text}
+                <FontAwesomeIcon icon={faQuoteRight} />
+              </p>
+              <p style={{fontStyle: "italic"}}>
+                {author}
               </p>
             </h4>
             <div style={{display:"inline-block" }} className="">

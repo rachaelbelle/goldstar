@@ -108,7 +108,7 @@ class Earnings extends Component {
                                 key="task_btn"
                                 to="/tasks"
                                 style={{
-                                    width: "195px",
+                                    width: "5vw",
                                     borderRadius: "3px",
                                     letterSpacing: "1.5px",
                                     color: "black",
@@ -122,7 +122,7 @@ class Earnings extends Component {
                                 key="video_btn"
                                 to="/video"
                                 style={{
-                                    width: "300px",
+                                    width: "5vw",
                                     borderRadius: "3px",
                                     letterSpacing: "1.5px",
                                     color: "black",
@@ -136,7 +136,7 @@ class Earnings extends Component {
                         <></>
                         <button
                             style={{
-                                width: "150px",
+                                width: "5vw",
                                 borderRadius: "3px",
                                 letterSpacing: "1.5px",
                                 marginTop: "1rem",
