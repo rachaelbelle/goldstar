@@ -119,7 +119,7 @@ class video extends Component {
               margin: "5px"
             }}
             className="btn btn-large waves-effect waves-light hoverable yellow accent-3">
-            Earn More Stars
+            Earn Stars
           </Link>
         </div>
         <div></div>

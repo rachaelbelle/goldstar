@@ -66,7 +66,7 @@ class App extends Component {
               <PrivateRoute exact path="/achievements" component={Earnings} />
               <PrivateRoute exact path="/video" component={video}/>
               <PrivateRoute exact path="/tasks" component={Tasks} />
-              <PrivateRoute exact path="/maps" component={DirectionMap} />
+              {/* <PrivateRoute exact path="/maps" component={DirectionMap} /> */}
               {/* <PrivateRoute exact path="/chatpage" component={Chatpage} /> */}
             </Switch>
           </div>
