@@ -13,7 +13,7 @@ const VideoDetail = (props) => {
     return (
         <div className="video-detail">
             <div className="video-container">
-                <iframe title="video" src={url} frameborder="0" allowfullscreen></iframe>
+                <iframe title="video" src={url} frameBorder="0" allowFullScreen></iframe>
             </div>                
             <div className="details">
                 <div>{video.snippet.title}</div>

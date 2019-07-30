@@ -57,5 +57,6 @@ code {
 }
 
 .list-group-item:hover{
-  background-color: gold;
+  background-color: rgb(255,215,0,0.4)
+
 }

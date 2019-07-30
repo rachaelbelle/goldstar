@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faQuoteLeft ,faQuoteRight } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faQuoteLeft ,faQuoteRight, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { logoutUser } from "../../actions/authActions";
 
@@ -27,11 +27,26 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
+
+    //need this so the quote can populate as soon as the page loads
     this.setQuote();
+    //then every other 10 seconds, a new quote will populate
+    this.timerId = setInterval( () => {
+      this.setQuote();
+    }, 10 * 1000);
+    
+  }
+
+  componentWillUnmount() {
+    //when we want to change pages, we need to clear the interval
+    clearInterval(this.timerId);
   }
 
   setQuote = () => {
     let myQuote = quote.getQuote();
+    while( myQuote.text.length >= 150 ){
+      myQuote = quote.getQuote();
+    }
     
     this.setState({
       text: myQuote.text,
@@ -43,15 +58,13 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
     const { text, author } = this.state;
 
-    console.log("Quote: "+text+", by: "+author);
-
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
           <div className="landing-copy col s12 center-align">
             <h4 style={{ "fontSize": "3vw" }}>
               Welcome, {user.name.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1" style={{ "fontSize": "2vw" }}>
+              <p className="flow-text grey-text text-darken-1" style={{ "fontSize": "3vw" }}>
                 So glad to have you here! Welcome to { " " }
                 <span style={{ fontFamily: "monospace" }}>GOLDSTAR
                   <span style={{ color: "gold" }}>
@@ -59,7 +72,7 @@ class Dashboard extends Component {
                   </span>
                 </span>
               </p>
-              <p>
+              <p style={{ "fontSize": "4vh" }}>
                 <FontAwesomeIcon icon={faQuoteLeft} />
                 {text}
                 <FontAwesomeIcon icon={faQuoteRight} />
@@ -73,13 +86,14 @@ class Dashboard extends Component {
                 key="achievement_btn"
                 to="/achievements"
                 style={{
-                  width: "195px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px",
-                  color: "black",
-                  margin: "5px",
+                  width: "17vw",
+                  //borderRadius: "3px",
+                  //height: "6vh",
+                  //letterSpacing: "1.5px",
+                  //color: "black",
+                  //margin: "5px",
                 }}
-                className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+                className="btn waves-effect waves-light hoverable yellow accent-3"
               >
                 Achievements
               </Link>
@@ -87,13 +101,14 @@ class Dashboard extends Component {
                 key="task_btn"
                 to="/tasks"
                 style={{
-                  width: "195px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px",
-                  color: "black",
-                  margin: "5px"
+                  width: "12vw",
+                  //borderRadius: "3px",
+                  //height: "6vh",
+                  //letterSpacing: "1.5px",
+                  //color: "black",
+                  //margin: "5px"
                 }}
-                className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+                className="btn waves-effect waves-light hoverable yellow accent-3"
               >
                 Tasks
               </Link>
@@ -101,33 +116,39 @@ class Dashboard extends Component {
                 key="video_btn"
                 to="/video"
                 style={{
-                  width: "300px",
-                  borderRadius: "3px",
-                  letterSpacing: "1px",
-                  fontSize: "12px",
-                  color: "black",
-                  margin: "2px"
+                  width: "25vw",
+                  //borderRadius: "3px",
+                  //height: "6vh",
+                  //letterSpacing: "1px",
+                  //fontSize: "12px",
+                  //color: "black",
+                  //margin: "2px"
                 }}
-                className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+                className="btn waves-effect waves-light hoverable yellow accent-3"
               >
                 Motivational Videos
               </Link>
             </div>
             <div></div>
-            <button
+            <Link
+              key="logout"
+              to="#"
               style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
+                width: "22vw",
+                //borderRadius: "3px",
+                //letterSpacing: "1.5px",
                 marginTop: "1rem",
-                color: "black",
-                margin: "10px"
+                //color: "black",
+                //margin: "10px"
               }}
               onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
+              className="btn waves-effect waves-light hoverable yellow accent-3"
             >
+              <span style={{ marginRight: "1rem" }}>
+                <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
+              </span>
               Logout
-            </button>
+            </Link>
 
           </div>
         </div>
