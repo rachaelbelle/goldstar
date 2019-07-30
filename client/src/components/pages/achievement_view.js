@@ -39,7 +39,7 @@ class Earnings extends Component {
             .post("/api/tasks/getAllCompletedTasks", this.props.auth.user)
             .then(res => {
 
-                console.log("Got data from DB, will set that in achievement view");
+                //console.log("Got data from DB, will set that in achievement view");
                 this.setState({
                     userData: res.data
                 })

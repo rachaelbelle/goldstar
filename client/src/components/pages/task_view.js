@@ -39,7 +39,7 @@ class Tasks extends Component {
 		axios
 			.post("/api/tasks/getUndoneTasks", this.props.auth.user)
 			.then(res => {
-				console.log("Successfully got Task data from back-end.");
+				//console.log("Successfully got Task data from back-end.");
 				this.setState({
 					userData: res.data,
 				})
@@ -154,7 +154,7 @@ class Tasks extends Component {
 			.post("/api/tasks/createNewTask", newTask)
 			.then(res => {
 
-				console.log("Successfully created new task in DB with id: " + res.data._id);
+				//console.log("Successfully created new task in DB with id: " + res.data._id);
 				newData.push({ curStars: 0, maxStars: taskStars, name: taskName, '_id': res.data._id, completed: false });
 				this.closeModal();
 
@@ -172,9 +172,6 @@ class Tasks extends Component {
 	render() {
 		const { user } = this.props.auth;
 		const { userData, showModal, taskName, taskStars } = this.state;
-
-		console.log("user is: ");
-		console.log(user);
 
 		return (
 			<div className="container">

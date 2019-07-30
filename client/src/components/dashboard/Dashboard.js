@@ -53,8 +53,6 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
     const { text, author } = this.state;
 
-    console.log("Quote: "+text+", by: "+author);
-
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
