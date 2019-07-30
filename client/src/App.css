@@ -69,13 +69,18 @@ letter-spacing: 1.5px;
 color: black;
 margin: 5px; */
 
+p {
+    font-size: 3vh;
+    line-height: 1.4;
+}
+
 .btn {
     background-color: gold;
     color: black;
     font-family: 'Coustard', serif;
     height: 4vh;
     margin: 1vh;
-    font-size: 1vw;
+    font-size: 1vh;
     vertical-align: middle;
 }
 .btn:hover {

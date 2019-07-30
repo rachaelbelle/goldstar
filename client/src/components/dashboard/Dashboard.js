@@ -64,7 +64,7 @@ class Dashboard extends Component {
           <div className="landing-copy col s12 center-align">
             <h4 style={{ "fontSize": "3vw" }}>
               Welcome, {user.name.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1" style={{ "fontSize": "2vw" }}>
+              <p className="flow-text grey-text text-darken-1" style={{ "fontSize": "3vw" }}>
                 So glad to have you here! Welcome to { " " }
                 <span style={{ fontFamily: "monospace" }}>GOLDSTAR
                   <span style={{ color: "gold" }}>
@@ -72,7 +72,7 @@ class Dashboard extends Component {
                   </span>
                 </span>
               </p>
-              <p>
+              <p style={{ "fontSize": "4vh" }}>
                 <FontAwesomeIcon icon={faQuoteLeft} />
                 {text}
                 <FontAwesomeIcon icon={faQuoteRight} />

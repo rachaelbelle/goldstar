@@ -12,13 +12,13 @@ class Navbar extends Component {
               style={{
                 fontFamily: "monospace",
                 fontWeight: "bold",
-                fontSize: '5vw',
+                fontSize: '5vh',
                 height: "1vh",
                 lineHeight: "0",
               }}
               className="col 5 brand-logo center"
             >
-                <p style={{color:"gold"}}>
+                <p style={{color:"gold",fontSize: '5vh'}}>
                   <FontAwesomeIcon icon={faStar} />
                   GOLD STAR
                   <FontAwesomeIcon icon={faStar} />
