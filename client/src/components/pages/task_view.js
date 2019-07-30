@@ -183,7 +183,7 @@ class Tasks extends Component {
 						<Link to="/dashboard" className="btn-flat waves-effect">
 							<i className="material-icons ">keyboard_backspace</i>
 							Back to dashboard
-            </Link>
+            			</Link>
 					</div>
 				</div>
 				<>
@@ -254,7 +254,7 @@ class Tasks extends Component {
 					<>
 						<p></p>
 					</>
-					<div style={{ display: "inline-block" }} className="col 6 offset-3">
+					<div style={{ display: "inline-block" }} className="col 12">
 						<Link
 							key="achievement_btn"
 							to="/achievements"
@@ -295,7 +295,7 @@ class Tasks extends Component {
 								onClick={this.onLogoutClick}
 								className="btn btn-large waves-effect waves-light hoverable yellow accent-3">
 								Logout
-			</button>
+							</button>
 						</>
 					</div>
 				</>

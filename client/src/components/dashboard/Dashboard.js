@@ -27,7 +27,17 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
+
     this.setQuote();
+    this.timerId = setInterval( () => {
+      this.setQuote();
+    }, 10 * 1000);
+    
+  }
+
+  componentWillUnmount() {
+
+    clearInterval(this.timerId);
   }
 
   setQuote = () => {

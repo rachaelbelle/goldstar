@@ -67,8 +67,10 @@ li {
     background-color: gold;
     color: black;
     font-family: 'Coustard', serif;
-    height: 7vh;
-    width: 7vw;
+    height: 6vh;
+    width: 5vw;
+    font-size: 1vw;
+    vertical-align: middle;
 }
 .btn:hover {
     transition: all .2 ease-in-out;

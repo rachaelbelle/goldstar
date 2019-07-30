@@ -103,12 +103,11 @@ class Earnings extends Component {
                             {(totalStars > 1) ? "s" : null} today.
                     </p>
                         <div style={{ display: "inline-block" }} className="col 12">
-
                             <Link
                                 key="task_btn"
                                 to="/tasks"
                                 style={{
-                                    width: "5vw",
+                                    width: "20vw",
                                     borderRadius: "3px",
                                     letterSpacing: "1.5px",
                                     color: "black",
@@ -122,7 +121,7 @@ class Earnings extends Component {
                                 key="video_btn"
                                 to="/video"
                                 style={{
-                                    width: "5vw",
+                                    width: "31vw",
                                     borderRadius: "3px",
                                     letterSpacing: "1.5px",
                                     color: "black",
@@ -133,21 +132,22 @@ class Earnings extends Component {
                                 Motivational Videos
               </Link>
                         </div>
-                        <></>
-                        <button
-                            style={{
-                                width: "5vw",
-                                borderRadius: "3px",
-                                letterSpacing: "1.5px",
-                                marginTop: "1rem",
-                                color: "black",
-                                margin: "10px"
-                            }}
-                            onClick={this.onLogoutClick}
-                            className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
-                        >
-                            Logout
-                    </button>
+                        <>
+							<button
+								style={{
+									width: "150px",
+									borderRadius: "3px",
+									letterSpacing: "1.5px",
+									marginTop: "1rem",
+									color: "black",
+									margin: "10px"
+								}}
+								onClick={this.onLogoutClick}
+								className="btn btn-large waves-effect waves-light hoverable yellow accent-3">
+								Logout
+							</button>
+						</>
+                        
                     </div>
 
                 </>
