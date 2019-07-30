@@ -44,6 +44,9 @@ class Dashboard extends Component {
 
   setQuote = () => {
     let myQuote = quote.getQuote();
+    while( myQuote.text.length >= 150 ){
+      myQuote = quote.getQuote();
+    }
     
     this.setState({
       text: myQuote.text,
