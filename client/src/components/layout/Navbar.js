@@ -6,16 +6,17 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 class Navbar extends Component {
   render() {
     return (
-      <div className="navbar-fluid">
+      <div className="container">
           <div className="nav-wrapper">
             <Link to="/"
               style={{
                 fontFamily: "monospace",
                 fontWeight: "bold",
                 fontSize: '5vw',
-                height: "16vh",
+                height: "1vh",
+                lineHeight: "0",
               }}
-              className="col 5 brand-logo center black-text"
+              className="col 5 brand-logo center"
             >
                 <p style={{color:"gold"}}>
                   <FontAwesomeIcon icon={faStar} />
