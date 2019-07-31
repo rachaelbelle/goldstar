@@ -78,10 +78,16 @@ p {
     background-color: gold;
     color: black;
     font-family: 'Coustard', serif;
+    /* display: flex; */
+    justify-content: center;
+    /* display: inline-block; */
     height: 4vh;
     margin: 1vh;
-    font-size: 1vh;
-    vertical-align: middle;
+    font-size: 2vh;
+    text-align: center;
+    /* vertical-align: middle; */
+    padding: 0px;
+
 }
 .btn:hover {
     transition: all .2 ease-in-out;
@@ -103,4 +109,7 @@ p {
 
 .buttonDiv {
     vertical-align: middle;
+}
+#logo{
+    font-size: 12vh;
 }
