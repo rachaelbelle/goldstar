@@ -18,10 +18,10 @@ class Navbar extends Component {
               }}
               className="col 5 brand-logo center"
             >
-                <p style={{color:"gold",fontSize: '5vh'}}>
+                <p style={{color:"gold",fontSize: '9vh',}} data-placement="top">
                   <FontAwesomeIcon icon={faStar} />
-                  GOLD STAR
-                  <FontAwesomeIcon icon={faStar} />
+                  <span id="logo">GOLD STAR</span>
+                  <FontAwesomeIcon icon={faStar}  />
                 </p>
             </Link>
           </div>
