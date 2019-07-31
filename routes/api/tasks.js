@@ -53,20 +53,18 @@ router.get("/getAllTasks", (req, res) => {
         Task.find({
           '_id': { $in: taskIds }
         })
-          .then(tasks => {
+        .sort([['date', -1]])
+        .then(tasks => {
 
-            console.log("All tasks UNDONE from DB are: ");
-            console.log(tasks);
+          if (tasks === null || typeof tasks === 'undefined' || tasks === 'undefined') {
+            return res.status(200).json([]);
+          } else {
+            // console.log("Will return to UI the tasks: ");
+            // console.log(tasks);
+            return res.status(200).json(tasks)
+          }
 
-            if (tasks === null || typeof tasks === 'undefined' || tasks === 'undefined') {
-              return res.status(200).json([]);
-            } else {
-              // console.log("Will return to UI the tasks: ");
-              // console.log(tasks);
-              return res.status(200).json(tasks)
-            }
-
-          });
+        });
       }
 
     } else {
@@ -85,8 +83,6 @@ router.post("/getUndoneTasks", (req, res) => {
 
   // console.log("Get all UNDONE tasks request: ");
   // console.log(req.body);
-  console.log("***** KEYS *****");
-  console.log(serverkeys);
 
   console.log("Getting all undone tasks for user: "+req.body.id);
 
@@ -108,19 +104,20 @@ router.post("/getUndoneTasks", (req, res) => {
         Task.find({
           '_id': { $in: taskIds }, completed: false
         })
-          .then(tasks => {
-            // console.log("All tasks UNDONE from DB are: ");
-            // console.log(tasks);
+        .sort([['date', -1]])
+        .then(tasks => {
+          // console.log("All tasks UNDONE from DB are: ");
+          // console.log(tasks);
 
-            if (tasks === null || typeof tasks === 'undefined' || tasks === 'undefined') {
-              console.log("ERROR: Got null or undefined tasks from DB.")
-              return res.status(200).json([]);
-            } else {
+          if (tasks === null || typeof tasks === 'undefined' || tasks === 'undefined') {
+            console.log("ERROR: Got null or undefined tasks from DB.")
+            return res.status(200).json([]);
+          } else {
 
-              console.log("Got all undone ("+tasks.length+") tasks for user. Returing them to UI.")
-              return res.status(200).json(tasks)
-            }
-          });
+            console.log("Got all undone ("+tasks.length+") tasks for user. Returing them to UI.")
+            return res.status(200).json(tasks)
+          }
+        });
       }
     } else {
       return res.status(400).json({ user: "User does not exist." });
@@ -183,6 +180,90 @@ router.post("/getAllCompletedTasks", (req, res) => {
     } else {
       console.error("User does not exist in DB");
       return res.status(400).json("User does not exist.");
+    }
+  });
+
+});
+
+// @route POST api/tasks/getAllCompletedTasks
+// @desc Get all complete Tasks from other users
+// @param user obj which includes id and name
+// @return array of complete tasks
+router.post("/getCompletedTasksNotUser", (req, res) => {
+  // Form validation
+
+  console.log("Get all completed tasks Not from current user with id: "+req.body.id);
+  // console.log(req.body);
+
+  User.findById({ '_id': req.body.id }).then(user => {
+
+    if (user) {
+
+      let taskIds = user.tasks;
+      // console.log("tasks UNDONE from id are: ");
+      // console.log(taskIds);
+
+      if (taskIds === null || typeof taskIds === 'undefined' || taskIds === 'undefined') {
+        console.error("Users taskIds Returned a null or undefined array")
+        return res.status(400).json("Users taskIds Returned a null or undefined array.");
+      } else {
+
+        console.log("User has: "+taskIds.length+" tasks")
+
+        Task.find(
+          {
+          '_id': { $nin: taskIds }, 
+          completed: true
+          }
+        )
+        .sort([['date', -1]])
+        .then(tasks => {
+
+          // console.log("All tasks UNDONE from DB are: ");
+          // console.log(tasks);
+
+          if (tasks === null || typeof tasks === 'undefined' || tasks === 'undefined') {
+            console.error("Tasks from user id list returned a null or undefined array")
+            return res.status(400).json("Tasks from user id list returned a null or undefined array.");
+          } else {
+            // console.log("Will return to UI the tasks: ");
+            // console.log(tasks);
+            console.log("Returning to UI "+tasks.length+" completed tasks from other users");
+            return res.status(200).json(tasks)
+          }
+
+        });
+
+      }
+
+    } else {
+      console.error("User does not exist in DB");
+      return res.status(400).json("User does not exist.");
+    }
+  });
+
+});
+
+// @route POST api/tasks/getAllCompletedTasks
+// @desc Get all complete Tasks from other users
+// @param user obj which includes id and name
+// @return array of complete tasks
+router.post("/getTaskById", (req, res) => {
+  // Form validation
+
+  console.log("Find and return task with id: "+req.body.id);
+  // console.log(req.body);
+
+  Task.findById({ _id: req.body.id }).then(task => {
+
+    if (task) {
+      
+      console.log("Task Found. Returning to UI.");
+      return res.status(200).json(task);
+          
+    } else {
+      console.error("Task does not exist in DB");
+      return res.status(400).json("Task does not exist.");
     }
   });
 
