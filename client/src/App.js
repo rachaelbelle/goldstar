@@ -18,6 +18,7 @@ import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import Earnings from "./components/pages/achievement_view";
 import Tasks from "./components/pages/task_view";
+import EarningsOthers from "./components/pages/achievement_other_users";
 // import Chatpage from "./components/chatpage/Chatpage";
 
 //import Earnings from "./components/pages/achievment";
@@ -66,7 +67,7 @@ class App extends Component {
               <PrivateRoute exact path="/video" component={video}/>
               <PrivateRoute exact path="/tasks" component={Tasks} />
               <PrivateRoute exact path="/maps" component={DirectionMap} />
-              {/* <PrivateRoute exact path="/chatpage" component={Chatpage} /> */}
+              <PrivateRoute exact path="/taskSuggestions" component={EarningsOthers} />
             </Switch>
           </div>
         </Router>

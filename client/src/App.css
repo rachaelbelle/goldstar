@@ -16,6 +16,49 @@
     color: gold;
 }
 
+li#tasks:nth-child(2n) {
+    background-color: rgb(255,215,0,0.3);
+}
+
+li#tasks {
+    background-color: rgb(255,215,0,0.1);
+    margin-bottom: 0px;
+}
+
+
+
+/* .dv-star-rating-star .dv-star-rating-full-star #goldStarSolid {
+    font-size: 3vw;
+    vertical-align: middle;
+    color: gold;
+    float: left;
+} */
+
+/* FontAwesomeIcon {
+    color: gold;
+} */
+
+/* ul {
+    display: flex;
+}
+
+li {
+    width: 100%;
+    flex-basis : 100%
+} */
+
+
+
+/* .navbar-fixed {
+    border-width: 0px;
+    -webkit-box-shadow: 0px 0px;
+    box-shadow: 0px 0px;
+    background-color: rgba(0,0,0,0.0);
+    background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
+    background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+    background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+} */
+
 #taskname {
     display: inline-block;
     vertical-align: middle;

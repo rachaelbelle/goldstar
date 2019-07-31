@@ -269,6 +269,21 @@ class Tasks extends Component {
 							>
 								Achievements
 							</Link>
+							<Link
+								key="other_users_tasks"
+								to="/taskSuggestions"
+								style={{
+								width: "22vw",
+								//borderRadius: "3px",
+								//height: "6vh",
+								//letterSpacing: "1.5px",
+								//color: "black",
+								//margin: "5px",
+								}}
+								className="btn waves-effect waves-light hoverable yellow accent-3"
+							>
+								Task Suggestions
+							</Link>
                                 <Link
                                     key="video_btn"
                                     to="/video"
@@ -284,7 +299,7 @@ class Tasks extends Component {
                                     className="btn waves-effect waves-light hoverable yellow accent-3"
                                 >
                                     Motivational Videos
-              </Link>
+              				</Link>
                             </div>
                             <div >
                                 <Link
