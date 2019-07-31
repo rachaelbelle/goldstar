@@ -10,7 +10,7 @@ import StarRatingComponent from 'react-star-rating-component';
 //importing styling packages
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons'
-import { faStar, faSignOutAlt, faSave, faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faSignOutAlt, faPlus} from '@fortawesome/free-solid-svg-icons'
 
 class EarningsOthers extends Component {
 

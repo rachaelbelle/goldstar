@@ -1,18 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys");
-const passport = require("passport");
 let serverkeys = require('../../server.js');
 
-
-
-// Load input validation
-const validateRegisterInput = require("../../validation/register");
-const validateLoginInput = require("../../validation/login");
-
-// Load User model
+// Load Task model
 const Task = require("../../models/Task");
 
 
@@ -36,20 +26,21 @@ router.post("/getKeys", (req, res) => {
 router.get("/getAllTasks", (req, res) => {
   // Form validation
 
-  console.log("user id is: " + req.body.user.id)
+  console.log("Getting all tasks for user id: " + req.body.user.id)
 
   User.findOne({ '_id': req.body.user.id }).then(user => {
 
     if (user) {
 
       let taskIds = user.tasks;
-      // console.log("tasks UNDONE from id are: ");
-      // console.log(taskIds);
 
       if (taskIds === null || typeof taskIds === 'undefined' || taskIds === 'undefined') {
-        return res.status(200).json([]);
+        console.errror("Was not able to get tasks for user.");
+        return res.status(500).json([]);
+
       } else {
 
+        console.log("Found: "+taskIds.length+" undone tasks.");
         Task.find({
           '_id': { $in: taskIds }
         })
@@ -57,10 +48,10 @@ router.get("/getAllTasks", (req, res) => {
         .then(tasks => {
 
           if (tasks === null || typeof tasks === 'undefined' || tasks === 'undefined') {
-            return res.status(200).json([]);
+            console.error("Failed to retrieve tasks using task ids.");
+            return res.status(500).json([]);
           } else {
-            // console.log("Will return to UI the tasks: ");
-            // console.log(tasks);
+            console.log("Found tasks in DB... forwarding to UI.");
             return res.status(200).json(tasks)
           }
 
@@ -68,6 +59,7 @@ router.get("/getAllTasks", (req, res) => {
       }
 
     } else {
+      console.error("User does not exist");
       return res.status(400).json({ user: "User does not exist." });
     }
   });
@@ -96,7 +88,7 @@ router.post("/getUndoneTasks", (req, res) => {
       //console.log(taskIds);
 
       if (taskIds === null || typeof taskIds === 'undefined' || taskIds === 'undefined') {
-        console.log("ERROR: Got null or undefined users from DB.")
+        console.error("ERROR: Got null or undefined users from DB.")
         return res.status(200).json([]);
       } else {
         console.log("User has: "+taskIds.length+" tasks")
@@ -110,7 +102,7 @@ router.post("/getUndoneTasks", (req, res) => {
           // console.log(tasks);
 
           if (tasks === null || typeof tasks === 'undefined' || tasks === 'undefined') {
-            console.log("ERROR: Got null or undefined tasks from DB.")
+            console.error("Got null or undefined tasks from DB.")
             return res.status(200).json([]);
           } else {
 
@@ -120,6 +112,7 @@ router.post("/getUndoneTasks", (req, res) => {
         });
       }
     } else {
+      console.error("User does not exist in DB.");
       return res.status(400).json({ user: "User does not exist." });
     }
   });
@@ -164,7 +157,7 @@ router.post("/getAllCompletedTasks", (req, res) => {
           // console.log(tasks);
 
           if (tasks === null || typeof tasks === 'undefined' || tasks === 'undefined') {
-            console.error("Tasks from user id list returned a null or undefined array")
+            console.error("Tasks from task id list returned a null or undefined array")
             return res.status(400).json("Tasks from user id list returned a null or undefined array.");
           } else {
             // console.log("Will return to UI the tasks: ");
@@ -223,7 +216,7 @@ router.post("/getCompletedTasksNotUser", (req, res) => {
           // console.log(tasks);
 
           if (tasks === null || typeof tasks === 'undefined' || tasks === 'undefined') {
-            console.error("Tasks from user id list returned a null or undefined array")
+            console.error("Tasks from task id list returned a null or undefined array")
             return res.status(400).json("Tasks from user id list returned a null or undefined array.");
           } else {
             // console.log("Will return to UI the tasks: ");
@@ -292,13 +285,15 @@ router.post("/createNewTask", (req, res) => {
     maxStars
   });
 
+  console.log("Creating task with name: "+name+", and maxStars: "+maxStars);
+
   // Find user by email
   newTask.save().then(task => {
 
     //console.log("Task added in DB successfully");
     //console.log(task);
     console.log("Added task in DB with id: " + task._id);
-    //console.log("Need to add to user now: "+userId);
+    console.log("Need to add to user now: "+userId);
 
     User.findByIdAndUpdate({ '_id': userId }, { $push: { tasks: task._id } }, { new: true })
       .then(function () {
@@ -344,6 +339,8 @@ router.post("/updateTask", (req, res) => {
     curStars: newStars,
     completed
   };
+
+  console.log("Updating task with id: "+taskId+" with stars: "+newStars);
 
   Task.findByIdAndUpdate(
     { '_id': taskId },
