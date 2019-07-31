@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 class Register extends Component {
   constructor() {
@@ -128,15 +130,20 @@ class Register extends Component {
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
                   style={{
-                    width: "150px",
-                    borderRadius: "3px",
-                    letterSpacing: "1.5px",
-                    marginTop: "1rem",
-                    color: "black",
+                    // width: "150px",
+                    // borderRadius: "3px",
+                    // letterSpacing: "1.5px",
+                    // marginTop: "1rem",
+                    // color: "black",
+                    width: "25vw",
+                    height: "6vh",
                   }}
                   type="submit"
                   className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
                 >
+                  <span style={{ marginRight: "1rem" }}>
+                    <FontAwesomeIcon icon={faUserPlus} size="lg" />
+                  </span>
                   Sign up
                 </button>
               </div>

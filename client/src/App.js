@@ -23,7 +23,6 @@ import Tasks from "./components/pages/task_view";
 //import Earnings from "./components/pages/achievment";
 // import Star from "./components/pages/Star";
 import video from "./components/video/Youtube";
-import SearchBar from "./components/video/Search_bar";
 import DirectionMap from "./components/pages/maps";
 
 //Styling

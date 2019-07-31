@@ -10,7 +10,7 @@ import StarRatingComponent from 'react-star-rating-component';
 //imorting styling packages
 import { Modal, Button, TextInput, Icon } from 'react-materialize';
 import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons'
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Tasks extends Component {
@@ -39,7 +39,7 @@ class Tasks extends Component {
 		axios
 			.post("/api/tasks/getUndoneTasks", this.props.auth.user)
 			.then(res => {
-				console.log("Successfully got Task data from back-end.");
+				//console.log("Successfully got Task data from back-end.");
 				this.setState({
 					userData: res.data,
 				})
@@ -154,7 +154,7 @@ class Tasks extends Component {
 			.post("/api/tasks/createNewTask", newTask)
 			.then(res => {
 
-				console.log("Successfully created new task in DB with id: " + res.data._id);
+				//console.log("Successfully created new task in DB with id: " + res.data._id);
 				newData.push({ curStars: 0, maxStars: taskStars, name: taskName, '_id': res.data._id, completed: false });
 				this.closeModal();
 
@@ -173,17 +173,14 @@ class Tasks extends Component {
 		const { user } = this.props.auth;
 		const { userData, showModal, taskName, taskStars } = this.state;
 
-		console.log("user is: ");
-		console.log(user);
-
 		return (
-			<div className="container">
+			<div className="container-fluid">
 				<div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
 					<div className="col s10 m6 l4">
 						<Link to="/dashboard" className="btn-flat waves-effect">
 							<i className="material-icons ">keyboard_backspace</i>
 							Back to dashboard
-            </Link>
+            			</Link>
 					</div>
 				</div>
 				<>
@@ -254,50 +251,64 @@ class Tasks extends Component {
 					<>
 						<p></p>
 					</>
-					<div style={{ display: "inline-block" }} className="col 6 offset-3">
-						<Link
-							key="achievement_btn"
-							to="/achievements"
-							style={{
-								width: "195px",
-								borderRadius: "3px",
-								letterSpacing: "1.5px",
-								color: "black",
-								margin: "5px"
-							}}
-							className="btn btn-large waves-effect waves-light hoverable yellow accent-3"
-						>
-							Achievements
-					</Link>
-						<Link
-							key="video_btn"
-							to="/video"
-							style={{
-								width: "300px",
-								borderRadius: "3px",
-								letterSpacing: "1.5px",
-								color: "black",
-								margin: "5px"
-							}}
-							className="btn btn-large waves-effect waves-light hoverable yellow accent-3">
-							Motivational Videos
-			</Link>
-						<>
-							<button
+					<div className="container valign-wrapper center-align">
+                        <div className="row">
+                            <div style={{ display: "inline-block" }} className="landing-copy col 12 center-align">
+							<Link
+								key="achievement_btn"
+								to="/achievements"
 								style={{
-									width: "150px",
-									borderRadius: "3px",
-									letterSpacing: "1.5px",
-									marginTop: "1rem",
-									color: "black",
-									margin: "10px"
+								width: "17vw",
+								//borderRadius: "3px",
+								//height: "6vh",
+								//letterSpacing: "1.5px",
+								//color: "black",
+								//margin: "5px",
 								}}
-								onClick={this.onLogoutClick}
-								className="btn btn-large waves-effect waves-light hoverable yellow accent-3">
-								Logout
-			</button>
-						</>
-					</div>
+								className="btn waves-effect waves-light hoverable yellow accent-3"
+							>
+								Achievements
+							</Link>
+                                <Link
+                                    key="video_btn"
+                                    to="/video"
+                                    style={{
+                                        width: "25vw",
+                                        //borderRadius: "3px",
+                                        //height: "6vh",
+                                        //letterSpacing: "1px",
+                                        //fontSize: "12px",
+                                        //color: "black",
+                                        //margin: "2px"
+                                    }}
+                                    className="btn waves-effect waves-light hoverable yellow accent-3"
+                                >
+                                    Motivational Videos
+              </Link>
+                            </div>
+                            <div >
+                                <Link
+                                    key="logout"
+                                    to="#"
+                                    style={{
+                                        width: "22vw",
+                                        //borderRadius: "3px",
+                                        //letterSpacing: "1.5px",
+                                        marginTop: "1rem",
+                                        //color: "black",
+                                        //margin: "10px"
+                                    }}
+                                    onClick={this.onLogoutClick}
+                                    className="btn waves-effect waves-light hoverable yellow accent-3"
+                                >
+                                    <span style={{ marginRight: "1rem" }}>
+                                        <FontAwesomeIcon icon={faSignOutAlt} size="2x" />
+                                    </span>
+                                    Logout
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
 				</>
 			</div>
 		);
