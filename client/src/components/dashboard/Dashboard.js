@@ -34,7 +34,7 @@ class Dashboard extends Component {
     this.timerId = setInterval( () => {
       this.setQuote();
     }, 10 * 1000);
-    
+
   }
 
   componentWillUnmount() {
@@ -47,7 +47,7 @@ class Dashboard extends Component {
     while( myQuote.text.length >= 150 ){
       myQuote = quote.getQuote();
     }
-    
+
     this.setState({
       text: myQuote.text,
       author: myQuote.author

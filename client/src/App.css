@@ -1,10 +1,3 @@
-/* .dv-star-rating-star .dv-star-rating-full-star {
-    font-size: 3vw;
-    vertical-align: middle;
-    color: gold;
-    float: left; */
-
-
 
 #goldStarSolid{
     font-size: 2vw;
@@ -22,39 +15,6 @@
     vertical-align: middle;
     color: gold;
 }
-/* .dv-star-rating-star .dv-star-rating-full-star #goldStarSolid {
-    font-size: 3vw;
-    vertical-align: middle;
-    color: gold;
-    float: left;
-} */
-
-/* FontAwesomeIcon {
-    color: gold;
-} */
-
-/* ul {
-    display: flex;
-}
-
-li {
-    width: 100%;
-    flex-basis : 100%
-} */
-
-/* li:nth-child(2n) {
-    background-color: rgb(226, 225, 225);
-} */
-
-/* .navbar-fixed {
-    border-width: 0px;
-    -webkit-box-shadow: 0px 0px;
-    box-shadow: 0px 0px;
-    background-color: rgba(0,0,0,0.0);
-    background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
-    background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
-    background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
-} */
 
 #taskname {
     display: inline-block;
@@ -62,12 +22,6 @@ li {
     font-size: 2vw;
     text-align: left;
 }
-/* width: 22vw;
-border-radius: 3px;
-height: 6vh;
-letter-spacing: 1.5px;
-color: black;
-margin: 5px; */
 
 p {
     font-size: 3vh;
@@ -78,15 +32,17 @@ p {
     background-color: gold;
     color: black;
     font-family: 'Coustard', serif;
-    /* display: flex; */
     justify-content: center;
-    /* display: inline-block; */
-    height: 4vh;
-    margin: 1vh;
-    font-size: 2vh;
-    text-align: center;
-    /* vertical-align: middle; */
+    /* height: 4vh;
+    margin: 1vh; */
+    /* font-size: 2vh; */
     padding: 0px;
+    margin-right: 15px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    height: 30px;
+    /* width: 75px; */
+
 
 }
 .btn:hover {
@@ -112,4 +68,8 @@ p {
 }
 #logo{
     font-size: 12vh;
+}
+.buttonText{
+    padding-bottom: 10px;
+    text-align: center;
 }
