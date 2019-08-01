@@ -13,7 +13,7 @@ Here's how it works:
 * Take a look at other users' tasks and add them to your to-do list if you wish
 * Come back every day to be greeted with an inspirational quote!
 
-Please visit [http://getagoldstar.herokuapp.com/] to view and use our app!
+Please visit http://getagoldstar.herokuapp.com/ to view and use our app!
 
 If you would like to check out the code and run it locally, please complete the following steps:
 
@@ -47,7 +47,5 @@ npm run dev
 
 // Server runs on http://localhost:5000 and client on http://localhost:3000
 ```
-When the above steps are complete, visit [http://localhost:3000] to view the application.
-
-
+When the above steps are complete, visit http://localhost:3000/ to view the application.
 
