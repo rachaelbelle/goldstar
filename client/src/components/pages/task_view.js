@@ -237,10 +237,10 @@ class Tasks extends Component {
 								}}
 							/>
 						</form>
-						<Button className="btn btn-large waves-effect waves-light hoverable yellow accent-3" waves="light" style={{ marginRight: '5px' }} onClick={this.closeModal}>
+						<Button className="btn btn-medium waves-effect waves-light hoverable yellow accent-3" waves="light" style={{ marginRight: '5px' }} onClick={this.closeModal}>
 							Cancel
             </Button >
-						<Button className="btn btn-large waves-effect waves-light hoverable yellow accent-3" type="submit" waves="light" onClick={this.saveTask}>
+						<Button className="btn btn-medium waves-effect waves-light hoverable yellow accent-3" type="submit" waves="light" onClick={this.saveTask}>
 							Save
               <Icon right>
 								send
