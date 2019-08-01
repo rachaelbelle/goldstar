@@ -22,6 +22,18 @@
     vertical-align: middle;
     color: gold;
 }
+
+li#tasks:nth-child(2n) {
+    background-color: rgb(255,215,0,0.3);
+} 
+
+li#tasks {
+    background-color: rgb(255,215,0,0.1);
+    margin-bottom: 0px;
+} 
+
+
+
 /* .dv-star-rating-star .dv-star-rating-full-star #goldStarSolid {
     font-size: 3vw;
     vertical-align: middle;
@@ -42,9 +54,7 @@ li {
     flex-basis : 100%
 } */
 
-/* li:nth-child(2n) {
-    background-color: rgb(226, 225, 225);
-} */
+
 
 /* .navbar-fixed {
     border-width: 0px;
