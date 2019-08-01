@@ -81,6 +81,7 @@ class video extends Component {
             </div>
           </>
           <div className="container-fluid">
+            <h1 style={{ "fontSize": "3vw" }}>Motivational Videos</h1>
             <div className="row">
               <div className="col s12">
                 <SearchBar onSearchTermChange={searchTerm => this.videoSearch(searchTerm, API_KEY)} />
