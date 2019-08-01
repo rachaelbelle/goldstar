@@ -130,13 +130,13 @@ class EarningsOthers extends Component {
                     </div>
                 </div>
 
-                <div style={{ height: "100vh" }} className="container">
+                <div style={{ height: "75vh" }} className="container">
                     <h1 style={{ "fontSize": "4vw" }}>Completed Tasks From Other Users</h1>
                     <p style={{ "fontSize": "2vw" }}>Hi <span style={{ color: "gold" }}> {user.name.split(" ")[0]}</span>, lets add a task from a list of other users completed tasks:</p>
                     <ul style={{ margin: 10 }} className="row">{liElements}</ul>
                 </div>
 
-				<div className="container valign-wrapper">
+				<div className="container">
                   <div className="row">
                     <div style={{ display: "inline-block" }} className="landing-copy col 12">
 					   <Link
@@ -148,7 +148,16 @@ class EarningsOthers extends Component {
                          className="btn waves-effect waves-light hoverable yellow accent-3">
 								Tasks
 							</Link>
-							<Link
+                            <Link
+                                key="map_btn"
+                                to="/maps"
+                                style={{
+                                    width: "25vw",
+                                }}
+                                className="btn waves-effect waves-light hoverable yellow accent-3">
+                                User Locations
+              				</Link>
+                              <Link
 								key="video_btn"
 								to="/video"
 								style={{
@@ -157,15 +166,7 @@ class EarningsOthers extends Component {
 								className="btn waves-effect waves-light hoverable yellow accent-3">
 								Motivational Videos
 							</Link>
-                                <Link
-                                    key="map_btn"
-                                    to="/maps"
-                                    style={{
-                                        width: "25vw",
-                                    }}
-                                    className="btn waves-effect waves-light hoverable yellow accent-3">
-                                    User Locations
-              				</Link>
+
                             </div>
                         </div>
                         <div className="container">
