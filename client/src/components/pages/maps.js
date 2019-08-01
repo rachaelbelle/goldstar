@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 //import GoogleMapReact, { Marker } from 'google-map-react';
 import { geolocated } from "react-geolocated";
-import Marker from './marker';
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
@@ -47,48 +47,64 @@ class SimpleMap extends Component {
       return  API_KEY === '' ?
         null
       : 
-          <div className="container" style={{ height: '60vh', width: '80%' }}>
-          {
-            (this.props && this.props.coords && this.props.coords.latitude && this.props.coords.longitude) 
-            ?
-              
+          <div className="container-fluid">
+            <div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
+                <div className="col s10 m6 l4">
+                    <Link to="/dashboard" className="btn-flat waves-effect">
+                        <i className="material-icons ">keyboard_backspace</i>
+                        Back to dashboard
+                </Link>
+                </div>
+            </div>
+            <div className="container" style={{ height: '60vh', width: '80%' }}>
+            {
+              (this.props && this.props.coords && this.props.coords.latitude && this.props.coords.longitude) 
+              ?
+                
+                  <GoogleMapReact
+                    bootstrapURLKeys={{ key: API_KEY }}
+                    defaultCenter={{
+                      lat: center.lat,
+                      lng: center.lng
+                    }}
+                    center={{lat: this.props.coords.latitude, lng: this.props.coords.longitude}}
+                    defaultZoom={zoom}
+                  >
+                    <AnyReactComponent
+                    lat={this.props.coords.latitude}
+                    lng={this.props.coords.longitude}
+                    text="You are here"
+                  /> 
+                  </GoogleMapReact>
+              :
                 <GoogleMapReact
                   bootstrapURLKeys={{ key: API_KEY }}
                   defaultCenter={{
                     lat: center.lat,
                     lng: center.lng
                   }}
-                  center={{lat: this.props.coords.latitude, lng: this.props.coords.longitude}}
                   defaultZoom={zoom}
                 >
+                  <AnyReactComponent
+                    lat={center.lat}
+                    lng={center.lng}
+                    text="Bootcamp"
+                  /> 
                 </GoogleMapReact>
-            :
-              <GoogleMapReact
-                bootstrapURLKeys={{ key: API_KEY }}
-                defaultCenter={{
-                  lat: center.lat,
-                  lng: center.lng
-                }}
-                defaultZoom={zoom}
-              >
-              </GoogleMapReact>
-            }
-            {/* <AnyReactComponent
-              lat={this.props.coords.latitude}
-              lng={this.props.coords.longitude}
-              text="My Marker"
-            /> */}
-            {/* <Marker
-              name={'Your position'}
-              // position={
-              //   {
-              //     lat: this.props.coords.latitude ? this.props.coords.latitude : center.lat,
-              //     lng: this.props.coords.longitude ? this.props.coords.longitude : center.lng
-              //   }
-              // }
-              draggable={false}
-            /> */}
-          
+              }
+              
+              {/*<Marker
+                name={'Your position'}
+                // position={
+                //   {
+                //     lat: this.props.coords.latitude ? this.props.coords.latitude : center.lat,
+                //     lng: this.props.coords.longitude ? this.props.coords.longitude : center.lng
+                //   }
+                // }
+                draggable={false}
+              /> */}
+            
+          </div>
         </div>
 
   }
