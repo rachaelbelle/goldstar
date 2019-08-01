@@ -1,7 +1,23 @@
 export const GoogleApi = function(opts) {
     opts = opts || {};
   
-    if (!opts.hasOwnProperty('AIzaSyDvvrD2UTA3fnclxk1SwYUymFOuZ5Vf4yg')) {
+    // instead of having the api key below where the stars are, we should get it via axios
+
+    // getKeys = () => {
+    //   axios
+    //     .post("/api/tasks/getKeys", {})
+    //     .then(res => {
+  
+    //       this.setState({
+    //         API_KEY: res.data.GOOGLEMAPS_API_KEY
+    //       })
+    //     })
+    //     .catch(err => {
+    //       console.log("Errored out when getting task data: " + err);
+    //     });
+    // }
+
+    if (!opts.hasOwnProperty('*******************')) {
       throw new Error('You must pass an apiKey to use GoogleApi');
     }
   
