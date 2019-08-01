@@ -4,8 +4,11 @@ import GoogleMapReact from 'google-map-react';
 import { geolocated } from "react-geolocated";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+//const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ text }) => <FontAwesomeIcon id='goldStarSolid' icon={faStar} />;
 
 class SimpleMap extends Component {
 
@@ -74,7 +77,7 @@ class SimpleMap extends Component {
                     lat={this.props.coords.latitude}
                     lng={this.props.coords.longitude}
                     text="You are here"
-                  /> 
+                    /> 
                   </GoogleMapReact>
               :
                 <GoogleMapReact
