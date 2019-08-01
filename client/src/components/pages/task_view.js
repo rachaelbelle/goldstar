@@ -186,9 +186,15 @@ class Tasks extends Component {
 				<>
 					{
 						(userData && userData.length > 0)
-							? <h1 style={{ "fontSize": "3vw" }}>What amazing thing will you achieve today, {user.name.split(" ")[0]}?!</h1>
+							? <h1 style={{ "fontSize": "3vw" }}>What amazing things will you achieve today, {user.name.split(" ")[0]}?!</h1>
 							: <h1 style={{ "fontSize": "3vw" }}>So very proud of you {user.name.split(" ")[0]}! Lets add some more <FontAwesomeIcon id='goldStarSolid' icon={faStar} /> !</h1>
 					}
+					<p style={{"fontSize": "1.5vw"}}>
+						As you work on a task, click on the stars to mark your progress.
+					</p>
+					<p style={{"fontSize": "1.5vw"}}>
+						When all the stars are clicked, you will find the task in your achievements page.
+					</p>
 					{
 						(userData && userData.length > 0)
 							? <ul className="row" style={{ margin: 10 }}>
@@ -217,12 +223,15 @@ class Tasks extends Component {
 							: null
 					}
 
-					<Modal header="Adding task" open={showModal} trigger={<Button className="btn modal-btn btn-medium waves-effect waves-light hoverable yellow accent-3" >Add new Task</Button>}>
+					<Modal header="New Task" open={showModal} trigger={<Button className="btn modal-btn btn-medium waves-effect waves-light hoverable yellow accent-3" >Add new Task</Button>}>
 						<p style={{ "fontSize": "2vw" }}>
 							Don't fear adding... you can do it <span style={{ color: "gold" }}> {user.name.split(" ")[0]}!</span>
 						</p>
 						<form>
 							<TextInput label="Task name" data-length={10} value={taskName} onChange={this.taskNameUpdate} />
+						<p style={{ "fontSize": "1vw" }}>
+							Rate this task's difficulty by clicking the stars below (1 star = very easy, 5 stars = very difficult).
+						</p>
 							<StarRatingComponent
 								name="rate1"
 								starCount={5}
@@ -252,78 +261,78 @@ class Tasks extends Component {
 						<p></p>
 					</>
 					<div className="container valign-wrapper center-align">
-                        <div className="row">
-                            <div style={{ display: "inline-block" }} className="landing-copy col 12 center-align">
-							<Link
-								key="achievement_btn"
-								to="/achievements"
-								style={{
-								width: "17vw",
-								//borderRadius: "3px",
-								//height: "6vh",
-								//letterSpacing: "1.5px",
-								//color: "black",
-								//margin: "5px",
-								}}
-								className="btn waves-effect waves-light hoverable yellow accent-3"
-							>
-								Achievements
+						<div className="row">
+							<div style={{ display: "inline-block" }} className="landing-copy col 12 center-align">
+								<Link
+									key="achievement_btn"
+									to="/achievements"
+									style={{
+										width: "17vw",
+										//borderRadius: "3px",
+										//height: "6vh",
+										//letterSpacing: "1.5px",
+										//color: "black",
+										//margin: "5px",
+									}}
+									className="btn waves-effect waves-light hoverable yellow accent-3"
+								>
+									Achievements
 							</Link>
-							<Link
-								key="other_users_tasks"
-								to="/taskSuggestions"
-								style={{
-								width: "22vw",
-								//borderRadius: "3px",
-								//height: "6vh",
-								//letterSpacing: "1.5px",
-								//color: "black",
-								//margin: "5px",
-								}}
-								className="btn waves-effect waves-light hoverable yellow accent-3"
-							>
-								Task Suggestions
+								<Link
+									key="other_users_tasks"
+									to="/taskSuggestions"
+									style={{
+										width: "22vw",
+										//borderRadius: "3px",
+										//height: "6vh",
+										//letterSpacing: "1.5px",
+										//color: "black",
+										//margin: "5px",
+									}}
+									className="btn waves-effect waves-light hoverable yellow accent-3"
+								>
+									Task Suggestions
 							</Link>
-                                <Link
-                                    key="video_btn"
-                                    to="/video"
-                                    style={{
-                                        width: "25vw",
-                                        //borderRadius: "3px",
-                                        //height: "6vh",
-                                        //letterSpacing: "1px",
-                                        //fontSize: "12px",
-                                        //color: "black",
-                                        //margin: "2px"
-                                    }}
-                                    className="btn waves-effect waves-light hoverable yellow accent-3"
-                                >
-                                    Motivational Videos
+								<Link
+									key="video_btn"
+									to="/video"
+									style={{
+										width: "25vw",
+										//borderRadius: "3px",
+										//height: "6vh",
+										//letterSpacing: "1px",
+										//fontSize: "12px",
+										//color: "black",
+										//margin: "2px"
+									}}
+									className="btn waves-effect waves-light hoverable yellow accent-3"
+								>
+									Motivational Videos
               				</Link>
-                            </div>
-                            <div >
-                                <Link
-                                    key="logout"
-                                    to="#"
-                                    style={{
-                                        width: "22vw",
-                                        //borderRadius: "3px",
-                                        //letterSpacing: "1.5px",
-                                        marginTop: "1rem",
-                                        //color: "black",
-                                        //margin: "10px"
-                                    }}
-                                    onClick={this.onLogoutClick}
-                                    className="btn waves-effect waves-light hoverable yellow accent-3"
-                                >
-                                    <span style={{ marginRight: "1rem" }}>
-                                        <FontAwesomeIcon icon={faSignOutAlt} size="2x" />
-                                    </span>
-                                    Logout
+							</div>
+							<div >
+								<Link
+									key="logout"
+									to="#"
+									style={{
+										width: "22vw",
+										//borderRadius: "3px",
+										//letterSpacing: "1.5px",
+										marginTop: "1rem",
+										//color: "black",
+										//margin: "10px"
+									}}
+									onClick={this.onLogoutClick}
+									className="btn waves-effect waves-light hoverable yellow accent-3"
+								>
+									<span style={{ marginRight: "1rem" }}>
+										<FontAwesomeIcon icon={faSignOutAlt} size="2x" />
+									</span>
+									Logout
                                 </Link>
-                            </div>
-                        </div>
-                    </div>
+							</div>
+						</div>
+					</div>
 				</>
 			</div>
 		);
