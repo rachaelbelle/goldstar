@@ -119,7 +119,7 @@ class Earnings extends Component {
                                     }}
                                     className="btn waves-effect waves-light hoverable yellow accent-3"
                                 >
-                                    Tasks
+                                   <span className="buttonText" style={{ verticalAlign: 'middle' }}> Tasks </span>
                                 </Link>
                                 <Link
                                     key="video_btn"
