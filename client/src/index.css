@@ -2,11 +2,14 @@
   margin: 20px;
   text-align: center;
   border-radius: 2px;
-  box-shadow: gold;
+  color: gold;
+  box-shadow: 0 12px 16px 0 rgb(247, 235, 185),0 17px 50px 0 rgb(206, 205, 203);
+  border: grey;
 }
 
 .search-bar input{
   width: 75%;
+  border: grey;
 }
 
 .video-item img{
@@ -26,6 +29,7 @@
 }
 
 .list-group-item:hover{
-  background-color: gold;
+  background-color: white;
+  box-shadow: 0 12px 16px 0 rgb(247, 235, 185),0 17px 50px 0 rgb(206, 205, 203);
 }
 

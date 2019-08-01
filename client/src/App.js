@@ -19,11 +19,15 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Star from "./components/pages/Star";
 import video from "./components/pages/Youtube";
 import SearchBar from "./components/pages/Search_bar";
-import DirectionMap from "./components/pages/maps";
+import SimpleMap from "./components/pages/maps";
+import Weather from "./components/pages/weather";
+import Geo from "./components/pages/geo";
+
 
 import "./App.css";
 import Earnings from "./components/layout/achievement_view";
 import Tasks from "./components/layout/task_view";
+// import navicon from "./components/pages/navicon";
 
 
 // Check for token to keep user logged in
@@ -62,7 +66,9 @@ class App extends Component {
               <PrivateRoute exact path="/star" component={Star}/>
               <PrivateRoute exact path="/video" component={video}/>
               <PrivateRoute exact path="/tasks" component={Tasks} /> 
-              <PrivateRoute exact path="/maps" component={DirectionMap} />
+              <PrivateRoute exact path="/maps" component={SimpleMap} />
+              <PrivateRoute exact path="/weather" component={Weather}/>
+              <PrivateRoute exact path="/demo" component={Geo}/>
               {/* <PrivateRoute exact path="/chatpage" component={Chatpage} /> */}
             </Switch>
           </div>
