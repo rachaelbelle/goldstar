@@ -59,7 +59,7 @@ class SimpleMap extends Component {
                 </Link>
                 </div>
             </div>
-            <div className="container" style={{ height: '60vh', width: '80%' }}>
+            <div className="container" style={{ height: '80vh', width: '80%', marginBottom: "2rem" }}>
             {
               (this.props && this.props.coords && this.props.coords.latitude && this.props.coords.longitude) 
               ?
