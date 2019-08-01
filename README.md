@@ -34,7 +34,7 @@ touch .env
 //if you do not have your mongo protected with a username/password, use the below
 echo "mongoURItest=mongodb://localhost:27017/custommethoddb" >> .env
 //Otherwise use the below format
-echo "mongodb://[*username*]:[*password*]@mongodb0.example.com:27017/custommethoddb" >> .env
+echo "mongoURItest://[*username*]:[*password*]@mongodb0.example.com:27017/custommethoddb" >> .env
 //Add the secret encryption key.
 echo "SECRET_OR_KEY=[*your secret encryption key*]" >> .env
 //Add the YouTube API key.
