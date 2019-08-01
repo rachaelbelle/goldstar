@@ -84,6 +84,7 @@ p {
     margin-bottom: 50px;
     margin-top: 20px;
     height: 30px;
+    width: 17vw;
     /* width: 75px; */
 
 
@@ -99,12 +100,12 @@ p {
      margin: 15px;
  }
 
-.modal-btn {
+/* .modal-btn {
     margin-bottom: 50px;
     margin-top: 20px;
     height: 30px;
     width: 200px;
-}
+} */
 
 .buttonDiv {
     vertical-align: middle;
