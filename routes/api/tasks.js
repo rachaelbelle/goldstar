@@ -129,17 +129,19 @@ router.post("/getAllCompletedTasks", (req, res) => {
   console.log("Get all completed tasks for user with id: "+req.body.id);
   // console.log(req.body);
 
-  User.findById({ '_id': req.body.id }).then(user => {
-
+  User.findById({ '_id': req.body.id })
+  .then( user => {
+  
     if (user) {
 
       let taskIds = user.tasks;
       // console.log("tasks UNDONE from id are: ");
       // console.log(taskIds);
 
-      if (taskIds === null || typeof taskIds === 'undefined' || taskIds === 'undefined') {
+      if (taskIds === null || typeof taskIds === 'undefined' ) {
         console.error("Users taskIds Returned a null or undefined array")
-        return res.status(400).json("Users taskIds Returned a null or undefined array.");
+        return res.status(500).json("Users taskIds Returned a null or undefined array.");
+
       } else {
 
         console.log("User has: "+taskIds.length+" tasks")
@@ -151,14 +153,15 @@ router.post("/getAllCompletedTasks", (req, res) => {
           }
         )
         .sort([['date', -1]])
-        .then(tasks => {
+        .then( tasks => {
 
           // console.log("All tasks UNDONE from DB are: ");
           // console.log(tasks);
 
-          if (tasks === null || typeof tasks === 'undefined' || tasks === 'undefined') {
+          if (tasks === null || typeof tasks === 'undefined' ) {
             console.error("Tasks from task id list returned a null or undefined array")
-            return res.status(400).json("Tasks from user id list returned a null or undefined array.");
+            return res.status(500).json("Tasks from user id list returned a null or undefined array.");
+
           } else {
             // console.log("Will return to UI the tasks: ");
             // console.log(tasks);
