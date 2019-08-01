@@ -77,6 +77,7 @@ class App extends Component {
               <PrivateRoute exact path="/demo" component={Geo}/>
               {/* <PrivateRoute exact path="/chatpage" component={Chatpage} /> */}
             </Switch>
+
           </div>
         </Router>
       </Provider>

@@ -130,9 +130,9 @@ render() {
                 </div>
             </div>
 
-            <div style={{ height: "100vh" }} className="">
+            <div style={{ height: "100vh" }} className="container">
 
-                <h1 style={{ "fontSize": "4vw" }}>Completed Tasks From other users</h1>
+                <h1 style={{ "fontSize": "4vw" }}>Completed Tasks From Other Users</h1>
                 <p style={{ "fontSize": "2vw" }}>Hi <span style={{ color: "gold" }}> {user.name.split(" ")[0]}</span>, lets add a task from a list of other users completed tasks:</p>
                 <ul style={{ margin: 10 }} className="row">{liElements}</ul>
 
