@@ -93,7 +93,7 @@ class Earnings extends Component {
 
                 <div style={{ height: "100vh" }} className="container">
 
-                    <h1 style={{ "fontSize": "3vw" }}>Today's Earnings</h1>
+                    <h1 style={{ "fontSize": "3vw" }}>Today's Achievements</h1>
                     <p style={{ "fontSize": "2vw" }}>Welcome back <span style={{ color: "gold" }}> {user.name.split(" ")[0]}</span>! Here are the gold stars you've earned so far:</p>
                     <ul style={{ margin: 10 }} className="row">{liElements}</ul>
                     <p style={{ "fontSize": "2vw" }}>You have earned {totalStars}

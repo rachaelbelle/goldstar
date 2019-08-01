@@ -189,6 +189,12 @@ class Tasks extends Component {
 							? <h1 style={{ "fontSize": "3vw" }}>What amazing thing will you achieve today, {user.name.split(" ")[0]}?!</h1>
 							: <h1 style={{ "fontSize": "3vw" }}>So very proud of you {user.name.split(" ")[0]}! Lets add some more <FontAwesomeIcon id='goldStarSolid' icon={faStar} /> !</h1>
 					}
+					<p style={{"fontSize": "1.5vw"}}>
+						As you work on a task, click on the stars to mark your progress.
+					</p>
+					<p style={{"fontSize": "1.5vw"}}>
+						When all the stars are clicked, you will find the task in your achievements page.
+					</p>
 					{
 						(userData && userData.length > 0)
 							? <ul className="row" style={{ margin: 10 }}>
@@ -217,12 +223,15 @@ class Tasks extends Component {
 							: null
 					}
 
-					<Modal header="Adding task" open={showModal} trigger={<Button className="btn modal-btn btn-medium waves-effect waves-light hoverable yellow accent-3" >Add new Task</Button>}>
+					<Modal header="New Task" open={showModal} trigger={<Button className="btn modal-btn btn-medium waves-effect waves-light hoverable yellow accent-3" >Add new Task</Button>}>
 						<p style={{ "fontSize": "2vw" }}>
 							Don't fear adding... you can do it <span style={{ color: "gold" }}> {user.name.split(" ")[0]}!</span>
 						</p>
 						<form>
-							<TextInput label="Task name" data-length={10} value={taskName} onChange={this.taskNameUpdate} />
+							<TextInput label="Task name" data-length={40} value={taskName} onChange={this.taskNameUpdate} />
+							<p style={{ "fontSize": "1vw" }}>
+								Rate this task's difficulty by clicking the stars below (1 star = very easy, 5 stars = very difficult).
+							</p>
 							<StarRatingComponent
 								name="rate1"
 								starCount={5}
