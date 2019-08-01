@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 
-import { camelize } from '../lib/String'
+//import { camelize } from '../lib/String'
 
 const evtNames = [
   'click',
@@ -96,7 +96,8 @@ export class Marker extends React.Component {
 
   handleEvent(evt) {
     return (e) => {
-      const evtName = `on${camelize(evt)}`
+      //const evtName = `on${camelize(evt)}`
+      const evtName = evt;
       if (this.props[evtName]) {
         this.props[evtName](this.props, this.marker, e);
       }
