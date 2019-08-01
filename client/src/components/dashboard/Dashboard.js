@@ -26,7 +26,7 @@ class Dashboard extends Component {
     this.props.logoutUser();
   };
 
-  componentDidMount() {
+ componentDidMount() {
 
     //need this so the quote can populate as soon as the page loads
     this.setQuote();
@@ -42,7 +42,7 @@ class Dashboard extends Component {
     clearInterval(this.timerId);
   }
 
-  setQuote = () => {
+ setQuote = () => {
     let myQuote = quote.getQuote();
     while( myQuote.text.length >= 150 ){
       myQuote = quote.getQuote();
@@ -52,7 +52,7 @@ class Dashboard extends Component {
       text: myQuote.text,
       author: myQuote.author
     })
-  }
+  } 
 
   render() {
     const { user } = this.props.auth;
