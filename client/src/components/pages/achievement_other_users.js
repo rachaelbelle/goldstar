@@ -93,9 +93,10 @@ class EarningsOthers extends Component {
 
         userData.forEach(task => {
             liElements.push(
-                <div className="container">
+                <div key={task._id+"-container"} id={task._id+"-container"} className="container">
                     <li key={task._id} id="tasks" className="row" onClick={this.addTask}>
                         <StarRatingComponent
+                            key={task._id+"stars"}
                             className="col s3 m3 l3"
                             name={task.name}
                             starCount={task.maxStars}
@@ -109,8 +110,8 @@ class EarningsOthers extends Component {
                                 );
                             }}
                         />
-                        <span id={task._id} className="col s4 m4 l4 offset-s2 offset-m2 offset-l2"> {task.name} </span>
-                        <span id={task._id}>
+                        <span key={task._id+"name"} id={task._id} className="col s4 m4 l4 offset-s2 offset-m2 offset-l2"> {task.name} </span>
+                        <span key={task._id+"plus"} id={task._id}>
                             <FontAwesomeIcon id='goldStarSolid' pull="left" icon={faPlus} />
                         </span>
                     </li>

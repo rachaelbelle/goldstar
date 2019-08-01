@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import GoogleMapReact, { Marker } from 'google-map-react';
+import GoogleMapReact from 'google-map-react';
+//import GoogleMapReact, { Marker } from 'google-map-react';
 import { geolocated } from "react-geolocated";
+import Marker from './marker';
 import axios from "axios";
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
@@ -44,22 +46,33 @@ class SimpleMap extends Component {
 
       return  API_KEY === '' ?
         null
-      : ! this.props.isGeolocationAvailable ? (
-        // <div>Your browser does not support Geolocation</div>
-        null
-      ) : !this.props.isGeolocationEnabled ? (
-          // <div>Geolocation is not enabled</div>
-          null
-      ) : this.props.coords ? (
+      : 
           <div className="container" style={{ height: '60vh', width: '80%' }}>
-          <GoogleMapReact
-            bootstrapURLKeys={{ key: API_KEY }}
-            defaultCenter={{
-              lat: this.props.coords.latitude || center.lat,
-              lng: this.props.coords.longitude || center.lng
-            }}
-            defaultZoom={zoom}
-          >
+          {
+            (this.props && this.props.coords && this.props.coords.latitude && this.props.coords.longitude) 
+            ?
+              
+                <GoogleMapReact
+                  bootstrapURLKeys={{ key: API_KEY }}
+                  defaultCenter={{
+                    lat: center.lat,
+                    lng: center.lng
+                  }}
+                  center={{lat: this.props.coords.latitude, lng: this.props.coords.longitude}}
+                  defaultZoom={zoom}
+                >
+                </GoogleMapReact>
+            :
+              <GoogleMapReact
+                bootstrapURLKeys={{ key: API_KEY }}
+                defaultCenter={{
+                  lat: center.lat,
+                  lng: center.lng
+                }}
+                defaultZoom={zoom}
+              >
+              </GoogleMapReact>
+            }
             {/* <AnyReactComponent
               lat={this.props.coords.latitude}
               lng={this.props.coords.longitude}
@@ -75,11 +88,9 @@ class SimpleMap extends Component {
               // }
               draggable={false}
             /> */}
-          </GoogleMapReact>
+          
         </div>
-      ) : (
-          <div>Getting the location data&hellip; </div>
-      );
+
   }
 }
 
