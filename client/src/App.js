@@ -24,7 +24,13 @@ import EarningsOthers from "./components/pages/achievement_other_users";
 //import Earnings from "./components/pages/achievment";
 // import Star from "./components/pages/Star";
 import video from "./components/video/Youtube";
-import DirectionMap from "./components/pages/maps";
+// import DirectionMap from "./components/pages/maps";
+// import video from "./components/pages/Youtube";
+// import SearchBar from "./components/pages/Search_bar";
+import SimpleMap from "./components/pages/maps";
+import Weather from "./components/pages/weather";
+import Geo from "./components/pages/geo";
+
 
 //Styling
 import "./App.css";
@@ -66,8 +72,11 @@ class App extends Component {
               <PrivateRoute exact path="/achievements" component={Earnings} />
               <PrivateRoute exact path="/video" component={video}/>
               <PrivateRoute exact path="/tasks" component={Tasks} />
-              <PrivateRoute exact path="/maps" component={DirectionMap} />
               <PrivateRoute exact path="/taskSuggestions" component={EarningsOthers} />
+              <PrivateRoute exact path="/maps" component={SimpleMap} />
+              <PrivateRoute exact path="/weather" component={Weather}/>
+              <PrivateRoute exact path="/demo" component={Geo}/>
+              {/* <PrivateRoute exact path="/chatpage" component={Chatpage} /> */}
             </Switch>
           </div>
         </Router>

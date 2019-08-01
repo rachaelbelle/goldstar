@@ -37,13 +37,13 @@ class EarningsOthers extends Component {
 
     addTask = (taskId) => {
 
-        if (typeof taskId !== 'undefined' && taskId && taskId !== null && taskId !== '' 
+        if (typeof taskId !== 'undefined' && taskId && taskId !== null && taskId !== ''
         && taskId.target.id !== null && taskId.target.id !== ''){
 
             axios
 			.post("/api/tasks/getTaskById", {id: taskId.target.id})
 			.then(res => {
-                
+
                 let newData = res.data;
                 newData.curStars = 0;
                 newData.user = this.props.auth.user;
@@ -93,7 +93,7 @@ render() {
 
     userData.forEach(task => {
         liElements.push(
-
+            <div className="container">
             <li key={task._id} id="tasks" className="row" onClick={this.addTask}>
                 <StarRatingComponent
                     className="col s3 m3 l3"
@@ -109,11 +109,12 @@ render() {
                         );
                     }}
                 />
-                <span id={task._id} className="col s6 m6 l6 offset-s1 offset-m1 offset-l1"> {task.name} </span>
+                <span id={task._id} className="col s4 m4 l4 offset-s2 offset-m2 offset-l2"> {task.name} </span>
                 <span id={task._id}>
                     <FontAwesomeIcon id='goldStarSolid' pull="left" icon={faPlus} />
                 </span>
             </li>
+            </div>
 
         );
     });
@@ -131,10 +132,10 @@ render() {
 
             <div style={{ height: "100vh" }} className="">
 
-                <h1 style={{ "fontSize": "3vw" }}>Completed Tasks From other users</h1>
+                <h1 style={{ "fontSize": "4vw" }}>Completed Tasks From other users</h1>
                 <p style={{ "fontSize": "2vw" }}>Hi <span style={{ color: "gold" }}> {user.name.split(" ")[0]}</span>, lets add a task from a list of other users completed tasks:</p>
                 <ul style={{ margin: 10 }} className="row">{liElements}</ul>
-                
+
                 <div className="container valign-wrapper center-align">
                     <div className="row">
                         <div style={{ display: "inline-block" }} className="landing-copy col 12 center-align">
