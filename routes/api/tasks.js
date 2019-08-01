@@ -13,7 +13,6 @@ const Task = require("../../models/Task");
 router.post("/getKeys", (req, res) => {
 
   console.log("Sending keys from .env or process.env to UI");
-  //console.log(serverkeys);
 
   return res.status(200).json(serverkeys)
 });
