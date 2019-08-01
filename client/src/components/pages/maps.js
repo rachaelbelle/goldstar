@@ -49,7 +49,7 @@ class SimpleMap extends Component {
 
       return  API_KEY === '' ?
         null
-      : 
+      :
           <div className="container-fluid">
             <div style={{ marginTop: "4rem", "fontSize": "0.5vw" }} className="row ">
                 <div className="col s10 m6 l4">
@@ -59,11 +59,12 @@ class SimpleMap extends Component {
                 </Link>
                 </div>
             </div>
-            <div className="container" style={{ height: '80vh', width: '80%', marginBottom: "2rem" }}>
+            <div className="container" style={{ height: "80vh", width: "80%", marginBottom: "2rem" }}>
+
             {
-              (this.props && this.props.coords && this.props.coords.latitude && this.props.coords.longitude) 
+              (this.props && this.props.coords && this.props.coords.latitude && this.props.coords.longitude)
               ?
-                
+
                   <GoogleMapReact
                     bootstrapURLKeys={{ key: API_KEY }}
                     defaultCenter={{
@@ -77,7 +78,7 @@ class SimpleMap extends Component {
                     lat={this.props.coords.latitude}
                     lng={this.props.coords.longitude}
                     text="You are here"
-                    /> 
+                    />
                   </GoogleMapReact>
               :
                 <GoogleMapReact
@@ -92,10 +93,10 @@ class SimpleMap extends Component {
                     lat={center.lat}
                     lng={center.lng}
                     text="Bootcamp"
-                  /> 
+                  />
                 </GoogleMapReact>
               }
-              
+
               {/*<Marker
                 name={'Your position'}
                 // position={
@@ -106,7 +107,7 @@ class SimpleMap extends Component {
                 // }
                 draggable={false}
               /> */}
-            
+
           </div>
         </div>
 
