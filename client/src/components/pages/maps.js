@@ -45,7 +45,18 @@ class SimpleMap extends Component {
 
   render() {
 
-    const { API_KEY, center, zoom } = this.state;
+    const { API_KEY, zoom } = this.state;
+
+    const center = {
+      lat: 40.49,
+      lng: -74.50,
+    }
+
+    if ( this.props && this.props.coords && this.props.coords.latitude && this.props.coords.longitude ) {
+
+        center.lat = this.props.coords.latitude;
+        center.lng = this.props.coords.longitude; 
+    }
 
       return  API_KEY === '' ?
         null
@@ -60,43 +71,21 @@ class SimpleMap extends Component {
                 </div>
             </div>
             <div className="container" style={{ height: "80vh", width: "80%", marginBottom: "2rem" }}>
-
-            {
-              (this.props && this.props.coords && this.props.coords.latitude && this.props.coords.longitude)
-              ?
-
-                  <GoogleMapReact
-                    bootstrapURLKeys={{ key: API_KEY }}
-                    defaultCenter={{
-                      lat: center.lat,
-                      lng: center.lng
-                    }}
-                    center={{lat: this.props.coords.latitude, lng: this.props.coords.longitude}}
-                    defaultZoom={zoom}
-                  >
-                    <AnyReactComponent
-                    lat={this.props.coords.latitude}
-                    lng={this.props.coords.longitude}
-                    text="You are here"
-                    />
-                  </GoogleMapReact>
-              :
-                <GoogleMapReact
-                  bootstrapURLKeys={{ key: API_KEY }}
-                  defaultCenter={{
-                    lat: center.lat,
-                    lng: center.lng
-                  }}
-                  defaultZoom={zoom}
-                >
-                  <AnyReactComponent
-                    lat={center.lat}
-                    lng={center.lng}
-                    text="Bootcamp"
-                  />
-                </GoogleMapReact>
-              }
-
+              <GoogleMapReact
+                bootstrapURLKeys={{ key: API_KEY }}
+                defaultCenter={{
+                  lat: 40.49,
+                  lng: -74.50,
+                }}
+                center={center}
+                defaultZoom={zoom}
+              >
+                <AnyReactComponent
+                lat={ center.lat }
+                lng={center.lng }
+                text="You are here"
+                />
+              </GoogleMapReact>
               {/*<Marker
                 name={'Your position'}
                 // position={
@@ -107,7 +96,6 @@ class SimpleMap extends Component {
                 // }
                 draggable={false}
               /> */}
-
           </div>
         </div>
 
