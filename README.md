@@ -1,4 +1,4 @@
-# goldstar
+# goldstar ⭐️💫⭐️
 
 ## Welcome to Gold Star!
 
