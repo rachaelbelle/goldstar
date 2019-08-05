@@ -93,11 +93,11 @@ class EarningsOthers extends Component {
 
         userData.forEach(task => {
             liElements.push(
-                <div key={task._id+"-container"} id={task._id+"-container"} className="container">
+                <div key={task._id+"-container"} id={task._id+"-container"} className="container" >
                     <li key={task._id} id="tasks" className="row" onClick={this.addTask}>
                         <StarRatingComponent
                             key={task._id+"stars"}
-                            className="col s3 m3 l3"
+                            className="col s3 m3 l5"
                             name={task.name}
                             starCount={task.maxStars}
                             value={task.curStars}
@@ -110,7 +110,7 @@ class EarningsOthers extends Component {
                                 );
                             }}
                         />
-                        <span key={task._id+"name"} id={task._id} className="col s4 m4 l4 offset-s2 offset-m2 offset-l2"> {task.name} </span>
+                        <span key={task._id+"name"} id={task._id} className="col s4 m4 l4 offset-s1 offset-m2 offset-l1"> {task.name} </span>
                         <span key={task._id+"plus"} id={task._id}>
                             <FontAwesomeIcon id='goldStarSolid' pull="left" icon={faPlus} />
                         </span>
@@ -131,7 +131,7 @@ class EarningsOthers extends Component {
                     </div>
                 </div>
 
-                <div style={{ height: "75vh" }} className="container">
+                <div className="container">
                     <h1 style={{ "fontSize": "4vw" }}>Completed Tasks From Other Users</h1>
                     <p style={{ "fontSize": "2vw" }}>Hi <span style={{ color: "gold" }}> {user.name.split(" ")[0]}</span>, lets add a task from a list of other users completed tasks:</p>
                     <ul style={{ margin: 10 }} className="row">{liElements}</ul>
