@@ -27,11 +27,10 @@ if(process.env.NODE_ENV === 'production'){
   YOUTUBE_API_KEY=process.env.YOUTUBE_API_KEY;
   GOOGLEMAPS_API_KEY=process.env.GOOGLEMAPS_API_KEY;
 
-
   mongoose
   .connect(
     db,
-    { 
+    {
       useNewUrlParser: true,
       useFindAndModify: false,
       useCreateIndex: true
@@ -50,7 +49,7 @@ if(process.env.NODE_ENV === 'production'){
   mongoose
   .connect(
     dbTest,
-    { 
+    {
       useNewUrlParser: true,
       useFindAndModify: false,
       useCreateIndex: true
