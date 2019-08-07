@@ -110,7 +110,7 @@ class EarningsOthers extends Component {
                                 );
                             }}
                         />
-                        <span key={task._id+"name"} id={task._id} className="col s6 m6 l4 offset-s1 offset-m1 offset-l1"> {task.name} </span>
+                        <span key={task._id+"name"} id={task._id} className="col s6 m6 l5 offset-s1 offset-m1"> {task.name} </span>
                         <span key={task._id+"plus"} id={task._id}>
                             <FontAwesomeIcon id='goldStarSolid' pull="left" icon={faPlus} />
                         </span>
