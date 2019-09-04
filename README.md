@@ -25,6 +25,8 @@ Please visit http://getagoldstar.herokuapp.com/ to view and use our app!
 
 <br>
 
+<br>
+
 <kbd>
   <img src="client/public/newTask.png" width="193" height="125"/>
 </kbd>
@@ -37,6 +39,8 @@ Please visit http://getagoldstar.herokuapp.com/ to view and use our app!
   <img src="client/public/achievements.png" width="193" height="125"/>
 </kbd>
 
+
+##
 
 If you would like to check out the code and run it locally, please complete the following steps:
 
