@@ -2,7 +2,7 @@
 
 ## Welcome to Gold Star!
 
-In a fast-paced world, we sometimes forget to celebrate life's little wins. Gold Star will motivate you to work towards your goals while reminding you of what a great job you're already doing. 
+In a fast-paced world, we sometimes forget to celebrate life's little wins. Gold Star will motivate you to work towards your goals while reminding you of what a great job you're already doing.
 
 Here's how it works:
 * Create an account and start adding tasks
@@ -15,11 +15,32 @@ Here's how it works:
 
 Please visit http://getagoldstar.herokuapp.com/ to view and use our app!
 
+## Goldstar
+
+<br>
+
+<kbd>
+  <img src="client/public/welcomePage.png" width="600" height="400"/>
+</kbd>
+
+<kbd>
+  <img src="client/public/newTask.png" width="193" height="125"/>
+</kbd>
+
+<kbd>
+  <img src="client/public/tasks.png" width="193" height="125"/>
+</kbd>
+
+<kbd>
+  <img src="client/public/achievements.png" width="193" height="125"/>
+</kbd>
+
+
 If you would like to check out the code and run it locally, please complete the following steps:
 
 ## Mongo Configuration
 
-This app requires a running Mongo database. Make sure you follow the steps below regarding Mongo database configuration. 
+This app requires a running Mongo database. Make sure you follow the steps below regarding Mongo database configuration.
 
 
 ## How to Run locally
@@ -48,4 +69,3 @@ npm run dev
 // Server runs on http://localhost:5000 and client on http://localhost:3000
 ```
 When the above steps are complete, visit http://localhost:3000/ to view the application.
-
