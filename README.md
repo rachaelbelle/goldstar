@@ -23,6 +23,8 @@ Please visit http://getagoldstar.herokuapp.com/ to view and use our app!
   <img src="client/public/welcomePage.png" width="600" height="400"/>
 </kbd>
 
+<br>
+
 <kbd>
   <img src="client/public/newTask.png" width="193" height="125"/>
 </kbd>
